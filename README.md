@@ -1,5 +1,5 @@
 
-# Node-Deployment-Shell-Script
+# Node-Deployment-Configuration
 
 Deployment-Shell-Script for NodeJS Application and various Linux Versions
 

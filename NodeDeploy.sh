@@ -47,13 +47,14 @@ sudo ufw allow 'Nginx Full'
 sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 'Nginx HTTPS'
 sudo pm2 startup
-pm2 save
+sudo pm2 save
 pm2 link x8q42ci627h9p2d 3waim95awx342pa
 # certificate configuration
 sudo apt install certbot python3-certbot-nginx
 # create nginx configuration
 sudo systemctl enable nginx
 sudo systemctl restart nginx
-sudo touch /etc/nginx/sites-available/network
-cd /etc/nginx/sites-available
+sudo su
+cd /etc/nginx/sites-available/
+touch network
 nano network

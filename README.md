@@ -29,7 +29,7 @@ To run this script use this steps
     run "chmod +x your file name"
 ```
 ```bash
-    then just ./ypur file name
+    then just ./your file name
 ```
 
 ## Features

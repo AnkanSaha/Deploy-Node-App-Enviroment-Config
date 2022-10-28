@@ -54,5 +54,3 @@ sudo apt install certbot python3-certbot-nginx
 # create nginx configuration
 sudo systemctl enable nginx
 sudo systemctl restart nginx
-sudo touch /etc/nginx/sites-available/network
-sudo su

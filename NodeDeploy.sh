@@ -26,6 +26,7 @@ sudo apt-get update && sudo apt-get install yarn
 sudo npm install -g npm@latest
 # install pm2
 sudo npm install pm2 -g
+pm2 update
 # git repo from user
 git clone https://github.com/AnkanSaha/Video-Downloader.git
 git clone https://github.com/AnkanSaha/SaveNet.git

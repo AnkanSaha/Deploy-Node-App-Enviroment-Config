@@ -3,9 +3,6 @@ module.exports = {
     name   : "AllSave",
     script : "./Video-Downloader/downloader.js",
     watch: true,
-    env: {
-      "NODE_ENV": "development",
-    },
     env_production : {
       "NODE_ENV": "production"
     }
@@ -14,9 +11,6 @@ module.exports = {
     name   : "SaveNet",
     script : "./SaveNet/data.js",
     watch: true,
-    env: {
-      "NODE_ENV": "development",
-    },
     env_production : {
       "NODE_ENV": "production"
     }
@@ -25,9 +19,6 @@ module.exports = {
     name   : "Portfolio",
     script : "./Portfolio/app.js",
     watch: true,
-    env: {
-      "NODE_ENV": "development",
-    },
     env_production : {
       "NODE_ENV": "production"
     }
@@ -36,9 +27,6 @@ module.exports = {
     name   : "University Result",
     script : "./University-Result/Result.js",
     watch: true,
-    env: {
-      "NODE_ENV": "development",
-    },
     env_production : {
       "NODE_ENV": "production"
     }

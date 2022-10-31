@@ -1,3 +1,4 @@
+# Ubuntu 20.04 LTS (Focal Fossa)
 sudo apt install -y git # git
 sudo apt install -y nginx # nginx
 sudo apt install -y curl # curl
@@ -26,17 +27,22 @@ sudo apt-get update && sudo apt-get install yarn
 sudo npm install -g npm@latest
 # install pm2
 sudo npm install pm2 -g
-pm2 update
+# update pm2  (optional)
+# import a file single file from github
+sudo wget https://raw.githubusercontent.com/robertoostenveld/NodeDeploy/main/NodeDeploy.sh
+sudo pm2 update
 # git repo from user
+git clone https://github.com/AnkanSaha/Node-Deployment-Configuration.git
 git clone https://github.com/AnkanSaha/Video-Downloader.git
 git clone https://github.com/AnkanSaha/SaveNet.git
 git clone https://github.com/AnkanSaha/Portfolio.git
 git clone https://github.com/AnkanSaha/University-Result.git
-# install dependencies
-cd Video-Downloader && npm install && npm run deploy && cd ..
-cd SaveNet && npm install && npm run deploy && cd ..
-cd Portfolio && npm install && npm run deploy && cd ..
-cd University-Result && npm install && npm run deploy && cd ..
+# install dependencies & pm2 start with config file
+cd Video-Downloader && npm installl && cd ..
+cd SaveNet && npm install && cd ..
+cd Portfolio && npm install && cd ..
+cd University-Result && npm install && cd ..
+cd Node-Deployment-Configuration && pm2 start pm2.config.js && cd ..
 #ufw configuration
 sudo ufw enable
 sudo ufw allow 80/tcp

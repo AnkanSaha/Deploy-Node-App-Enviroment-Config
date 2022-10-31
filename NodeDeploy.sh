@@ -36,7 +36,7 @@ git clone https://github.com/AnkanSaha/SaveNet.git
 git clone https://github.com/AnkanSaha/Portfolio.git
 git clone https://github.com/AnkanSaha/University-Result.git
 # install dependencies & pm2 start with config file
-cd Video-Downloader && npm installl && npm run start && cd ..
+cd Video-Downloader && npm install && npm run start && cd ..
 cd SaveNet && npm install && npm run start && cd ..
 cd Portfolio && npm install && npm run start && cd ..
 cd University-Result && npm install && npm run start && cd ..

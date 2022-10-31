@@ -29,7 +29,6 @@ sudo npm install -g npm@latest
 sudo npm install pm2 -g
 # update pm2  (optional)
 # import a file single file from github
-sudo wget https://raw.githubusercontent.com/robertoostenveld/NodeDeploy/main/NodeDeploy.sh
 sudo pm2 update
 # git repo from user
 git clone https://github.com/AnkanSaha/Video-Downloader.git

@@ -32,17 +32,15 @@ sudo npm install pm2 -g
 sudo wget https://raw.githubusercontent.com/robertoostenveld/NodeDeploy/main/NodeDeploy.sh
 sudo pm2 update
 # git repo from user
-git clone https://github.com/AnkanSaha/Node-Deployment-Configuration.git
 git clone https://github.com/AnkanSaha/Video-Downloader.git
 git clone https://github.com/AnkanSaha/SaveNet.git
 git clone https://github.com/AnkanSaha/Portfolio.git
 git clone https://github.com/AnkanSaha/University-Result.git
 # install dependencies & pm2 start with config file
-cd Video-Downloader && npm installl && cd ..
-cd SaveNet && npm install && cd ..
-cd Portfolio && npm install && cd ..
-cd University-Result && npm install && cd ..
-cd Node-Deployment-Configuration && pm2 start pm2.config.js && cd ..
+cd Video-Downloader && npm installl && npm run start && cd ..
+cd SaveNet && npm install && npm run start && cd ..
+cd Portfolio && npm install && npm run start && cd ..
+cd University-Result && npm install && npm run start && cd ..
 #ufw configuration
 sudo ufw enable
 sudo ufw allow 80/tcp

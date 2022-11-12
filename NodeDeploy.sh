@@ -1,4 +1,5 @@
 # Ubuntu 20.04 LTS (Focal Fossa)
+cd ..
 sudo apt install -y git # git
 sudo apt install -y nginx # nginx
 sudo apt install -y curl # curl
@@ -42,6 +43,7 @@ cd Donation-Tracker && npm install && pm2 start donate.js && cd ..
 cd SaveNet && npm install && npm run start && cd ..
 cd Portfolio && npm install && npm run start && cd ..
 cd University-Result && npm install && npm run start && cd ..
+cd Node-Deployment-Configuration && pm2 start auto_Updater.py && cd ..
 #ufw configuration
 sudo ufw enable
 sudo ufw allow 80/tcp

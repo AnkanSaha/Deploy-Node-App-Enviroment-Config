@@ -35,8 +35,10 @@ git clone https://github.com/AnkanSaha/Video-Downloader.git
 git clone https://github.com/AnkanSaha/SaveNet.git
 git clone https://github.com/AnkanSaha/Portfolio.git
 git clone https://github.com/AnkanSaha/University-Result.git
+git clone https://github.com/AnkanSaha/Donation-Tracker.git
 # install dependencies & pm2 start with config file
 cd Video-Downloader && npm install && npm run start && cd ..
+cd Donation-Tracker && npm install && pm2 start donate.js && cd ..
 cd SaveNet && npm install && npm run start && cd ..
 cd Portfolio && npm install && npm run start && cd ..
 cd University-Result && npm install && npm run start && cd ..

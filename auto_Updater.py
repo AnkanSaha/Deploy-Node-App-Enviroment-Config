@@ -2,7 +2,7 @@ import os
 import time as timer
 
 # Path: auto_Updater.py
-time = 864000 # 10 days
+time = 3600 # 10 days
 def Node_update():
     os.system('sudo npm install -g pm2@latest');
     os.system('sudo pm2 update');
@@ -47,6 +47,6 @@ while True:
     time = time - 1
     if time == 0:
         Node_update()
-        time = 864000 # 10 days
+        time = 3600 # 10 days
     else:
         print('Waiting for Update in ' + str(time) + ' Seconds')

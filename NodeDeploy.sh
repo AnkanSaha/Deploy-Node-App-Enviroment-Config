@@ -1,9 +1,12 @@
 # Ubuntu 20.04 LTS (Focal Fossa)
 cd ..
+sudo apt update
+sudo apt upgrade
 sudo apt install -y git # git
 sudo apt install -y nginx # nginx
 sudo apt install -y curl # curl
 sudo apt install -y python3 # python3
+sudo apt install -y python
 sudo apt install -y python3-pip # pip3
 # installing MongoDB for Ubuntu 20.04 LTS
 wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -   # add key

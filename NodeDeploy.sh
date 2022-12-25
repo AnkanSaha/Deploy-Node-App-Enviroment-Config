@@ -39,18 +39,15 @@ git clone https://github.com/AnkanSaha/University-Result.git
 git clone https://github.com/AnkanSaha/Donation-Tracker.git
 # install dependencies & pm2 start with config file
 cd ./Video-Downloader
-npm install && cd ..
+npm install && npm run start && cd ..
 cd ./SaveNet
-npm install && cd ..
+npm install && npm run start && cd ..
 cd ./Portfolio
-npm install && cd ..
+npm install && npm run start && cd ..
 cd ./University-Result
-npm install && cd ..
+npm install && npm run start && cd ..
 cd ./Donation-Tracker
-npm install && cd ..
-# pm2 configuration
-cd ./Node-Deployment-Configuration
-pm2 start ecosystem.config.js
+npm install && npm run start && cd ..
 #ufw configuration
 sudo ufw enable
 sudo ufw allow 80/tcp

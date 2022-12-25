@@ -2,9 +2,9 @@ module.exports = {
   apps : [{
     name   : "Video Downloader",
     script : "./Video-Downloader/downloader.js",
-    instances : "max",
-    exec_mode : "cluster",
+    exec_mode : "fork",
     max_memory_restart: '200M',
+    autorestart: true,
     env: {
       NODE_ENV: "development",
     },
@@ -15,9 +15,9 @@ module.exports = {
   {
     name   : "Portfolio",
     script : "./Portfolio/portfolio.js",
-    instances : "max",
-    exec_mode : "cluster",
+    exec_mode : "fork",
     max_memory_restart: '900M',
+    autorestart: true,
     env: {
       NODE_ENV: "development",
     },
@@ -28,9 +28,9 @@ module.exports = {
   {
     name   : "SaveNet",
     script : "./SaveNet/data.js",
-    instances : "max",
-    exec_mode : "cluster",
+    exec_mode : "fork",
     max_memory_restart: '900M',
+    autorestart: true,
     env: {
       NODE_ENV: "development",
     },
@@ -41,9 +41,9 @@ module.exports = {
 {
   name   : "Donation Tracker",
   script : "./Donation Tracker/donate.js",
-  instances : "max",
-  exec_mode : "cluster",
+  exec_mode : "fork",
   max_memory_restart: '100M',
+  autorestart: true,
   env: {
     NODE_ENV: "development",
   },
@@ -54,9 +54,23 @@ module.exports = {
 {
   name   : "University Result",
   script : "./University-Result/Result.js",
-  instances : "max",
-  exec_mode : "cluster",
+  exec_mode : "fork",
   max_memory_restart: '600M',
+  autorestart: true,
+  env: {
+    NODE_ENV: "development",
+  },
+  env_production : {
+    NODE_ENV: "production"
+  }
+},
+{
+  name   : "Node Auto Update by Python",
+  script : "./auto_Updater.py",
+  exec_mode : "fork",
+  max_memory_restart: '100M',
+  autorestart: true,
+  interpreter: "python",
   env: {
     NODE_ENV: "development",
   },

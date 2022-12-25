@@ -8,7 +8,6 @@ def Node_update():
     os.system('sudo pm2 update');
     os.system('sudo npm install -g npm@latest');
     os.system('sudo npm install -g express@@latest');
-    os.system('sudo npm install -g helmet@latest');
     os.system('sudo npm install -g body-parser@latest');
     os.system('sudo npm install -g mongoose@latest');
     os.system('sudo npm install -g express-session@latest');
@@ -24,7 +23,6 @@ def Node_update():
     os.system('sudo npm install -g unique-random@latest');
     os.system('sudo npm install -g uuid@latest');
     os.system('sudo npm install -g axios@latest');
-
 #loop to run the function every 10 seconds
 while True:
     timer.sleep(1)

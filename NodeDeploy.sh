@@ -1,12 +1,10 @@
 # Ubuntu 20.04 LTS (Focal Fossa)
 cd ..
-sudo apt update
-sudo apt upgrade
 sudo apt install -y git # git
 sudo apt install -y nginx # nginx
 sudo apt install -y curl # curl
 sudo apt install -y python3 # python3
-sudo apt install -y python
+sudo apt install -y python # python2
 sudo apt install -y python3-pip # pip3
 # installing MongoDB for Ubuntu 20.04 LTS
 wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -   # add key
@@ -31,7 +29,6 @@ sudo apt-get update && sudo apt-get install yarn
 sudo npm install -g npm@latest
 # install pm2
 sudo npm install pm2 -g
-# update pm2  (optional)
 # import a file single file from github
 sudo pm2 update
 # git repo from user
@@ -41,12 +38,9 @@ git clone https://github.com/AnkanSaha/Portfolio.git
 git clone https://github.com/AnkanSaha/University-Result.git
 git clone https://github.com/AnkanSaha/Donation-Tracker.git
 # install dependencies & pm2 start with config file
-cd Video-Downloader && npm install && npm run start && cd ..
-cd Donation-Tracker && npm install && pm2 start donate.js && cd ..
-cd SaveNet && npm install && npm run start && cd ..
-cd Portfolio && npm install && npm run start && cd ..
-cd University-Result && npm install && npm run start && cd ..
-cd Node-Deployment-Configuration && pm2 start auto_Updater.py && cd ..
+cd ./Node-Deployment-Configuration
+mv ./ecosystem.config.js ..
+pm2 start ecosystem.config.js
 #ufw configuration
 sudo ufw enable
 sudo ufw allow 80/tcp
@@ -59,7 +53,6 @@ sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 'Nginx HTTPS'
 sudo pm2 startup
 sudo pm2 save
-pm2 link x8q42ci627h9p2d 3waim95awx342pa
 # certificate configuration
 sudo apt install certbot python3-certbot-nginx
 # create nginx configuration

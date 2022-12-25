@@ -1,4 +1,5 @@
 # Ubuntu 20.04 LTS (Focal Fossa)
+cd ..
 sudo apt install -y git # git
 sudo apt install -y nginx # nginx
 sudo apt install -y curl # curl
@@ -48,6 +49,9 @@ npm install && cd ..
 cd ./Donation-Tracker
 npm install && cd ..
 # pm2 configuration
+cd ./Node-Deployment-Configuration
+mv ./ecosystem.config.js ..
+cd ..
 pm2 start ecosystem.config.js
 #ufw configuration
 sudo ufw enable

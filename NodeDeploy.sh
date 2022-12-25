@@ -50,8 +50,6 @@ cd ./Donation-Tracker
 npm install && cd ..
 # pm2 configuration
 cd ./Node-Deployment-Configuration
-mv ./ecosystem.config.js ..
-cd ..
 pm2 start ecosystem.config.js
 #ufw configuration
 sudo ufw enable

@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name   : "Video Downloader",
-    script : "./Video-Downloader/downloader.js",
+    script : "../Video-Downloader/downloader.js",
     exec_mode : "fork",
     max_memory_restart: '200M',
     autorestart: true,
@@ -14,7 +14,7 @@ module.exports = {
   },
   {
     name   : "Portfolio",
-    script : "./Portfolio/portfolio.js",
+    script : "../Portfolio/portfolio.js",
     exec_mode : "fork",
     max_memory_restart: '900M',
     autorestart: true,
@@ -27,7 +27,7 @@ module.exports = {
   },
   {
     name   : "SaveNet",
-    script : "./SaveNet/data.js",
+    script : "../SaveNet/data.js",
     exec_mode : "fork",
     max_memory_restart: '900M',
     autorestart: true,
@@ -40,7 +40,7 @@ module.exports = {
 },
 {
   name   : "Donation Tracker",
-  script : "./Donation Tracker/donate.js",
+  script : "../Donation-Tracker/donate.js",
   exec_mode : "fork",
   max_memory_restart: '100M',
   autorestart: true,
@@ -53,7 +53,7 @@ module.exports = {
 },
 {
   name   : "University Result",
-  script : "./University-Result/Result.js",
+  script : "../University-Result/Result.js",
   exec_mode : "fork",
   max_memory_restart: '600M',
   autorestart: true,
@@ -66,7 +66,7 @@ module.exports = {
 },
 {
   name   : "Node Auto Update by Python",
-  script : "./auto_Updater.py",
+  script : "../auto_Updater.py",
   exec_mode : "fork",
   max_memory_restart: '100M',
   autorestart: true,

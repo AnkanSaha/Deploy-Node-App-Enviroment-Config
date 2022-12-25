@@ -1,5 +1,4 @@
 # Ubuntu 20.04 LTS (Focal Fossa)
-cd ..
 sudo apt install -y git # git
 sudo apt install -y nginx # nginx
 sudo apt install -y curl # curl
@@ -38,8 +37,17 @@ git clone https://github.com/AnkanSaha/Portfolio.git
 git clone https://github.com/AnkanSaha/University-Result.git
 git clone https://github.com/AnkanSaha/Donation-Tracker.git
 # install dependencies & pm2 start with config file
-cd ./Node-Deployment-Configuration
-mv ./ecosystem.config.js ..
+cd ./Video-Downloader
+npm install && cd ..
+cd ./SaveNet
+npm install && cd ..
+cd ./Portfolio
+npm install && cd ..
+cd ./University-Result
+npm install && cd ..
+cd ./Donation-Tracker
+npm install && cd ..
+# pm2 configuration
 pm2 start ecosystem.config.js
 #ufw configuration
 sudo ufw enable

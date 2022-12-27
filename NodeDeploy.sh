@@ -65,8 +65,8 @@ sudo apt install certbot python3-certbot-nginx
 # create nginx configuration
 cd Node-Deployment-Configuration
 pm2 start auto_Updater.py
-sudo cp ./nginx.conf /etc/nginx/nginx.conf
+sudo cp ./nginx.conf /etc/nginx/NginxProxyRouter
 sudo nginx -t
-sudo ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/NginxProxyRouter /etc/nginx/sites-enabled/
 sudo systemctl enable nginx
 sudo systemctl restart nginx

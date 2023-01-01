@@ -2,12 +2,12 @@ import os
 import time as timer
 
 # Path: auto_Updater.py
-time = 3600 # 24 hours
+time = 3600 # 1 hour
 def Node_update():
     os.system('sudo npm install -g pm2');
     os.system('sudo pm2 update');
     os.system('sudo npm install -g npm@latest');
-    os.system('sudo npm install -g express@@latest');
+    os.system('sudo npm install -g express');
     os.system('sudo npm install -g body-parser@latest');
     os.system('sudo npm install -g mongoose@latest');
     os.system('sudo npm install -g express-session@latest');
@@ -29,6 +29,6 @@ while True:
     time = time - 1
     if time == 0:
         Node_update()
-        time = 3600 # 24 hours
+        time = 3600 # 1 hour
     else:
         print('Waiting for Update in ' + str(time) + ' Seconds')

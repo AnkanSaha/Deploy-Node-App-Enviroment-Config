@@ -9,6 +9,7 @@ server{
         proxy_cache_bypass $http_upgrade;
     }
 }
+
 server{
         server_name ankansaha.in;
     location / {
@@ -20,6 +21,7 @@ server{
         proxy_cache_bypass $http_upgrade;
     }
 }
+
 server{
         server_name docs.theankan.live;
     location / {
@@ -31,6 +33,7 @@ server{
         proxy_cache_bypass $http_upgrade;
     }
 }
+
 server{
         server_name video.theankan.live;
     location / {
@@ -54,6 +57,7 @@ server{
         proxy_cache_bypass $http_upgrade;
     }
 }
+
 server{
         server_name donate.theankan.live;
     location / {

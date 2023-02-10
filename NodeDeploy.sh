@@ -28,26 +28,10 @@ sudo apt-get update && sudo apt-get install yarn
 # install npm
 sudo npm install -g npm@latest
 # install pm2
-sudo npm install pm2 -g
+sudo npm install -g pm2
 # import a file single file from github
 sudo pm2 update
-# git repo from user
-git clone https://github.com/AnkanSaha/Video-Downloader.git
-git clone https://github.com/AnkanSaha/SaveNet.git
-git clone https://github.com/AnkanSaha/Portfolio.git
-git clone https://github.com/AnkanSaha/University-Result.git
-git clone https://github.com/AnkanSaha/Donation-Tracker.git
-# install dependencies & pm2 start with config file
-cd ./Video-Downloader
-npm install && npm run start && cd ..
-cd ./SaveNet
-npm install && npm run start && cd ..
-cd ./Portfolio
-npm install && npm run start && cd ..
-cd ./University-Result
-npm install && npm run start && cd ..
-cd ./Donation-Tracker
-npm install && npm run start && cd ..
+
 #ufw configuration
 sudo ufw enable
 sudo ufw allow 80/tcp

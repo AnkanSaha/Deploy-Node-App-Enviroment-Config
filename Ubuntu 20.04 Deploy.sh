@@ -41,8 +41,6 @@ sudo ufw allow 21
 sudo ufw allow 'Nginx Full'
 sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 'Nginx HTTPS'
-sudo pm2 startup
-sudo pm2 save
 # certificate configuration
 sudo apt install certbot python3-certbot-nginx
 # create nginx configuration

@@ -20,7 +20,7 @@ cd ../ # Go to the parent folder
 git clone https://github.com/AnkanSaha/Store-Management-Backend.git
 
 # Let's Build our Production ready version of Backend App
-cd ../Store-Management-Backend # Go to Backend Folder
+cd Store-Management-Backend/ # Go to Backend Folder
 npm install # Install all the dependencies
 npm run build # Build the Backend App
 

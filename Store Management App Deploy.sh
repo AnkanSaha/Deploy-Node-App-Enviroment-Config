@@ -1,7 +1,7 @@
 # Let's Copy Nginx Config File to the Nginx Config Folder
-sudo cp Store Management App Nginx Router /etc/nginx/sites-available/
+sudo cp 'Store Management App Nginx Router' /etc/nginx/sites-available/
 # Let's Create a Symbolic Link to the Nginx Config Folder
-sudo ln -s /etc/nginx/sites-available/Store Management App Nginx Router /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/'Store Management App Nginx Router' /etc/nginx/sites-enabled/
 # Let's Test the Nginx Config File
 sudo nginx -t
 # Let's Restart the Nginx Service

@@ -48,7 +48,7 @@ sudo ufw allow 'Nginx HTTP'
 sudo ufw allow 'Nginx HTTPS'
 
 # install certbot for nginx and create ssl certificate
-sudo apt install certbot python3-certbot-nginx
+sudo apt install certbot python3-certbot-nginx -y
 
 # install nginx proxy router for nodejs
 sudo rm -r /etc/nginx/sites-available/default && sudo rm -r /etc/nginx/sites-enabled/default

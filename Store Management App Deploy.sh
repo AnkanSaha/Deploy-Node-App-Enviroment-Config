@@ -35,6 +35,9 @@ echo "STOREMANAGEMENTBACKENDPORT=$PORT" >> .env # Add the PORT to the .env file
 read -p "Enter the MongoDB Database URL (only value): " DB_URL # Ask the user to enter the DB_URL
 echo "STOREMANAGEMENTBACKENDMONGOURL=$DB_URL" >> .env # Add the DB_URL to the .env file
 
+read -p "Enter the LIVE URL for CORS: " LIVE_URL # Ask the user to enter the LIVE_URL
+echo "STORE_MANAGEMENT_LIVE_URL=$LIVE_URL" >> .env # Add the LIVE_URL to the .env file
+
 # Let's start the Backend App and serve the Frontend App
 cd ../Store-Management-Backend/Build # Go to Backend Folder
 npm run start # Start the Backend App

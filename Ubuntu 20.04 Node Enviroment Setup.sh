@@ -4,10 +4,8 @@
 sudo apt install -y git # git
 sudo apt install -y nginx # nginx
 sudo apt install -y curl # curl
-sudo apt install -y python3 # python3
-sudo apt install -y python # python2
-sudo apt install -y python3-pip # pip3
-sudo apt install -y python-pip # pip2
+sudo apt install -y wget # wget
+sudo apt install -y unzip # unzip
 
 # installing MongoDB for Ubuntu 20.04 LTS
 wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -   # add key
@@ -23,16 +21,18 @@ sudo service mongod restart # reload
 sudo systemctl enable mongod # enable mongodb
 sudo systemctl restart mongod # restart mongodb
 
-# installing NodeJS 19 for Ubuntu 20.04 LTS
-curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
+# installing NodeJS 20 for Ubuntu 20.04 LTS
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs # install nodejs
 
 # install npm
 sudo npm install -g npm@latest
 
-# installing yarn for Ubuntu 20.04 LTS
-npm install --global yarn # install yarn
-yarn --version # check version
+## install typescript & tslint & ts-node globally
+sudo npm install -g typescript@latest
+sudo npm install -g tslint
+sudo npm install -g ts-node
+
 
 # install pm2
 sudo npm install -g pm2

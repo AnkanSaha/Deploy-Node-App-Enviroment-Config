@@ -1,5 +1,5 @@
 # Let's Import the Frontend App from Github
-cd ../ # Go to the parent folder
+cd # Go to the parent folder
 git clone https://github.com/AnkanSaha/Store-Management-Frontend.git
 cd Store-Management-Frontend/ # Go to Frontend Folder
 
@@ -8,7 +8,7 @@ npm install # Install all the dependencies
 npm run build # Build the Frontend App
 
 # import the Backend App from Github
-cd ../ # Go to the parent folder
+cd # Go to the parent folder
 git clone https://github.com/AnkanSaha/Store-Management-Backend.git
 
 # Let's Build our Production ready version of Backend App

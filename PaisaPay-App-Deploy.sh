@@ -7,10 +7,11 @@ git clone https://github.com/AnkanSaha/PaisaPay-Frontend.git # PaisaPay Frontend
 cd PaisaPay-Frontend # Go to PaisaPay Frontend Project Directory
 npm install # Install all dependencies
 npm run build # Build Frontend
-mv static ../PaisaPay-Backend/ # Move static folder to PaisaPay Backend Project Directory
+sudo mv PaisaPay /var/www/html/ # Move static folder to /var/www/html/
 
 # Register All Environment Variables
-cd ../PaisaPay-Backend # Go to PaisaPay Backend Project Directory
+cd # Go to Home Directory
+cd ./PaisaPay-Backend # Go to PaisaPay Backend Project Directory
 read -p "Enter MongoDB URL: " MONGODB_URL # Get MongoDB URL
 read -p "Enter PORT Number: " PORT # Get PORT Number
 read -p "Enter Live URL: " CORS_ORIGIN # Get Live URL for CORS

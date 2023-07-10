@@ -7,6 +7,8 @@ git clone https://github.com/AnkanSaha/PaisaPay-Frontend.git # PaisaPay Frontend
 cd PaisaPay-Frontend # Go to PaisaPay Frontend Project Directory
 npm install # Install all dependencies
 npm run build # Build Frontend
+
+# Move Frontend to /var/www/html/PaisaPay
 sudo mkdir /var/www/html/PaisaPay # Create PaisaPay Folder in /var/www/html/
 sudo mv PaisaPay/* /var/www/html/PaisaPay # Move all files to /var/www/html/PaisaPay
 

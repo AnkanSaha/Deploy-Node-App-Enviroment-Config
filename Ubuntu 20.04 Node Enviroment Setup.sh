@@ -62,13 +62,7 @@ sudo ufw status # check ufw status
 sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
 
 # Transfer nginx config file project wise to /etc/nginx/sites-available/
-sudo cp 'Store Management App Nginx Router' /etc/nginx/sites-available/ # Store Management App Nginx Router for Store Management Project
-sudo cp 'Portfolio App Nginx Router' /etc/nginx/sites-available/ # Portfolio App Nginx Router for Portfolio Project
-sudo cp 'SaveNet App Nginx Router' /etc/nginx/sites-available/ # SaveNet App Nginx Router for SaveNet Project
-sudo cp 'Video Downloader App Nginx Router' /etc/nginx/sites-available/ # Video Downloader App Nginx Router for Video Downloader Project
-sudo cp 'University Result App Nginx Router' /etc/nginx/sites-available/ # University Result App Nginx Router for University Result Project
-sudo cp 'Donation Tracker App Nginx Router' /etc/nginx/sites-available/ # Donation Tracker App Nginx Router for Donation Tracker Project
-sudo cp 'PaisaPay Nginx Router' /etc/nginx/sites-available/ # PaisaPay Ngix Router for PaisaPay Project
+sudo cp Nginx/* /etc/nginx/sites-available/ # Transfer all nginx config file to /etc/nginx/sites-available/
 
 # Create Symbolic Link for nginx config file
 sudo ln -s /etc/nginx/sites-available/'Store Management App Nginx Router' /etc/nginx/sites-enabled/ # Symbolic Link for Store Management App Nginx Router

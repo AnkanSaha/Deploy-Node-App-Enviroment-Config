@@ -25,7 +25,6 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb
 sudo apt-get update # update
 sudo apt-get install -y mongodb-org # install mongodb
 sudo service mongod start # start mongodb
-sudo service mongod status # check status
 sudo service mongod restart # reload
 sudo systemctl enable mongod # enable mongodb
 sudo systemctl restart mongod # restart mongodb

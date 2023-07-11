@@ -1,5 +1,5 @@
 server{
-        server_name video.theankan.live;
+        server_name video.daluabari.in;
     location / {
         proxy_pass http://localhost:5500;
         proxy_http_version 1.1;

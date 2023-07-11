@@ -19,8 +19,9 @@ npm run build # Build the Backend App
 # Lets copy the build folder to the backend folder
 cd ../Store-Management-Frontend # Go to Frontend Folder
 
-# copy the build folder to the backend folder
-sudo mv ./dist ../Store-Management-Backend/Build/public
+# Move Frontend to /var/www/html/StoreManagement
+sudo mkdir /var/www/html/StoreManagement # Create PaisaPay Folder in /var/www/html/
+sudo mv ./dist/* /var/www/html/StoreManagement # Move all files to /var/www/html/PaisaPay
 
 
 # Create Enviromental variables File for the Backend App

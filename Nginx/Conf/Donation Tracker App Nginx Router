@@ -1,5 +1,5 @@
 server{
-        server_name donate.theankan.live;
+        server_name donate.daluabari.in;
     location / {
         proxy_pass http://localhost:4009;
         proxy_http_version 1.1;

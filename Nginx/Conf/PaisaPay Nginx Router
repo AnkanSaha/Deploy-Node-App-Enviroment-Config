@@ -1,5 +1,5 @@
 server{
-        server_name paisapay.theankan.live;
+        server_name paisapay.daluabari.in;
 
     location / {
         root /var/www/html/PaisaPay;

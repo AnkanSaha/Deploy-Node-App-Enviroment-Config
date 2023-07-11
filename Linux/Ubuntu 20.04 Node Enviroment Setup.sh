@@ -1,5 +1,5 @@
 # Ubuntu 20.04 LTS (Focal Fossa) Node Enviroment Setup
-
+cd # change directory to home
 # install all dependencies
 sudo apt install -y git # git
 sudo apt install -y nginx # nginx
@@ -61,36 +61,5 @@ sudo ufw status # check ufw status
 # install certbot for nginx and create ssl certificate
 sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
 
-# Transfer nginx config file project wise to /etc/nginx/sites-available/
-sudo cp Nginx/* /etc/nginx/sites-available/ # Transfer all nginx config file to /etc/nginx/sites-available/
-
-# Create Symbolic Link for nginx config file
-sudo ln -s /etc/nginx/sites-available/'Store Management App Nginx Router' /etc/nginx/sites-enabled/ # Symbolic Link for Store Management App Nginx Router
-sudo ln -s /etc/nginx/sites-available/'Portfolio App Nginx Router' /etc/nginx/sites-enabled/ # Symbolic Link for Portfolio App Nginx Router
-sudo ln -s /etc/nginx/sites-available/'SaveNet App Nginx Router' /etc/nginx/sites-enabled/ # Symbolic Link for SaveNet App Nginx Router
-sudo ln -s /etc/nginx/sites-available/'Video Downloader App Nginx Router' /etc/nginx/sites-enabled/ # Symbolic Link for Video Downloader App Nginx Router
-sudo ln -s /etc/nginx/sites-available/'University Result App Nginx Router' /etc/nginx/sites-enabled/ # Symbolic Link for University Result App Nginx Router
-sudo ln -s /etc/nginx/sites-available/'Donation Tracker App Nginx Router' /etc/nginx/sites-enabled/ # Symbolic Link for Donation Tracker App Nginx Router
-sudo ln -s /etc/nginx/sites-available/'PaisaPay Nginx Router' /etc/nginx/sites-enabled/ # Symbolic Link for PaisaPay Nginx Router
-
-# Start nginx
-sudo nginx -t # Test nginx config
-sudo systemctl enable nginx # Enable nginx
-sudo systemctl restart nginx # Restart nginx
-
-## issue ssl certificate
- #All Domain
-sudo certbot --nginx -d store.theankan.live # Store Management App
-sudo certbot --nginx -d theankan.live # Portfolio App
-sudo certbot --nginx -d docs.theankan.live # SaveNet App
-sudo certbot --nginx -d video.theankan.live # Video Downloader App
-sudo certbot --nginx -d result.theankan.live # University Result App
-sudo certbot --nginx -d donate.theankan.live # Donation Tracker App
-sudo certbot --nginx -d paisapay.theankan.live # PaisaPay App
-
-# Enable Certbot Auto Renewal
-sudo systemctl enable certbot.timer # Enable Certbot Auto Renewal
-sudo systemctl restart certbot.timer # Start Certbot Auto Renewal
-
 # End of Script
-echo "Server Ready 😄 Happy Deployment 🇮🇳 🛕 Jay Hind 🛕 🇮🇳" # End of Script
+echo "MERN Server Ready 😄 Happy Deployment 🇮🇳 🛕 Jay Hind 🛕 🇮🇳" # End of Script

@@ -7,6 +7,10 @@ sudo apt install -y curl # curl
 sudo apt install -y wget # wget
 sudo apt install -y unzip # unzip
 sudo apt install -y zip # zip
+sudo apt install -y nano # nano
+sudo apt install -y vim # vim
+sudo apt install -y ufw # ufw
+
 
 # install python & pip
 sudo apt install -y python3 # python3
@@ -16,18 +20,6 @@ sudo apt install -y python-pip # python-pip
 sudo apt install -y python2 # python2
 sudo apt install -y python2-pip # python2-pip
 
-# installing MongoDB for Ubuntu 20.04 LTS
-wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -   # add key
-sudo apt-get install gnupg # gnupg
-wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -  # add key
-sudo touch /etc/apt/sources.list.d/mongodb-org-6.0.list # create file
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list # add repo
-sudo apt-get update # update
-sudo apt-get install -y mongodb-org # install mongodb
-sudo service mongod start # start mongodb
-sudo service mongod restart # reload
-sudo systemctl enable mongod # enable mongodb
-sudo systemctl restart mongod # restart mongodb
 
 # installing NodeJS 20 for Ubuntu 20.04 LTS
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
@@ -56,6 +48,17 @@ sudo ufw allow 'Nginx HTTP' # allow nginx http
 sudo ufw allow 'Nginx HTTPS' # allow nginx https
 sudo ufw allow 'OpenSSH' # allow openssh
 sudo ufw status # check ufw status
+
+# installing MongoDB for Ubuntu 20.04 LTS
+wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -   # add key
+sudo apt-get install gnupg # gnupg
+wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -  # add key
+sudo touch /etc/apt/sources.list.d/mongodb-org-6.0.list # create file
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list # add repo
+sudo apt-get update # update
+sudo apt-get install -y mongodb-org # install mongodb
+sudo systemctl enable mongod # enable mongodb
+sudo systemctl start mongod # start mongodb
 
 # install certbot for nginx and create ssl certificate
 sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx

@@ -39,6 +39,9 @@ echo "STOREMANAGEMENTBACKENDMONGOURL=$DB_URL" >> .env # Add the DB_URL to the .e
 read -p "Enter the LIVE URL for CORS: " LIVE_URL # Ask the user to enter the LIVE_URL
 echo "STORE_MANAGEMENT_LIVE_URL=$LIVE_URL" >> .env # Add the LIVE_URL to the .env file
 
+read -p "Enter JWT Secret Key : " JWT_SECRET_KEY # Ask the user to enter the JWT_SECRET_KEY
+echo"STORE_MANAGEMENT_JWT_SECRET=$JWT_SECRET_KEY" >> .env # Add the JWT_SECRET_KEY to the .env file
+
 # Let's start the Backend App and serve the Frontend App
 cd ../Store-Management-Backend/Build # Go to Backend Folder
 npm run start # Start the Backend App

@@ -20,8 +20,23 @@ npm run build # Build the Backend App
 cd ../Store-Management-Frontend # Go to Frontend Folder
 
 # Move Frontend to /var/www/html/StoreManagement
-sudo mkdir /var/www/html/StoreManagement # Create PaisaPay Folder in /var/www/html/
-sudo mv ./dist/* /var/www/html/StoreManagement # Move all files to /var/www/html/PaisaPay
+DirectoryPATH="/var/www/html/StoreManagement" # Directory to check
+DirectoryName="StoreManagement" # Directory Name
+
+if [-d "$DirectoryPATH"] # Check if Directory Exists
+then
+    echo "Directory exists. Deleting..." # Directory Exists Message
+    sudo rm -rf $DirectoryPATH # Remove Directory
+    echo "Recreating Directory..." # Recreating Directory Message
+    sudo mkdir $DirectoryPATH # Create Directory
+    echo "Directory Recreated." # Directory Created Message
+else
+    echo "Directory does not exist. Creating..." # Directory Does Not Exist Message
+    sudo mkdir $DirectoryPATH # Create Directory
+    echo "Directory created." # Directory Created Message
+fi
+# Move Frontend to /var/www/html/StoreManagement
+sudo mv ./dist/* $DirectoryPATH # Move the Frontend App to the Directory
 
 
 # Create Enviromental variables File for the Backend App

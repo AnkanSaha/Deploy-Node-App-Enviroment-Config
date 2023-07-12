@@ -8,9 +8,24 @@ cd PaisaPay-Frontend # Go to PaisaPay Frontend Project Directory
 npm install # Install all dependencies
 npm run build # Build Frontend
 
+# If Directory Exists then Remove Directory else Create Directory
+DirectoryPATH="/var/www/html/PaisaPay" # Directory to check
+DirectoryName="PaisaPay" # Directory Name
+
+if [ -d "$DirectoryPATH" ] # Check if Directory Exists
+then
+    echo "Directory exists. Deleting..." # Directory Exists Message
+    sudo rm -rf $DirectoryPATH # Remove Directory
+    echo "Recreating Directory..." # Recreating Directory Message
+    sudo mkdir $DirectoryPATH # Create Directory
+    echo "Directory Recreated." # Directory Created Message
+else
+    echo "Directory does not exist. Creating..." # Directory Does Not Exist Message
+    sudo mkdir $DirectoryPATH # Create Directory
+    echo "Directory created." # Directory Created Message
+fi
 # Move Frontend to /var/www/html/PaisaPay
-sudo mkdir /var/www/html/PaisaPay # Create PaisaPay Folder in /var/www/html/
-sudo mv PaisaPay/* /var/www/html/PaisaPay # Move all files to /var/www/html/PaisaPay
+sudo mv $DirectoryName/* $DirectoryPATH # Move Frontend to /var/www/html/PaisaPay
 
 # Register All Environment Variables
 cd # Go to Home Directory

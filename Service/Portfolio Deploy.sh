@@ -6,4 +6,4 @@ npm install # Install dependencies
 npm run start # Start the server
 #PM2
 sudo  pm2 startup # Start PM2 on Boot
-sudo pm2 save # Save the PM2 Process
+sudo pm2 save --force # Save the PM2 Process

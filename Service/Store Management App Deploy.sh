@@ -64,3 +64,7 @@ npm run start # Start the Backend App
 
 # Let's Restart the Nginx Service
 sudo systemctl restart nginx
+
+#PM2
+sudo  pm2 startup # Start PM2 on Boot
+sudo pm2 save # Save the PM2 Process

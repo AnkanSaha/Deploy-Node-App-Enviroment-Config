@@ -20,9 +20,6 @@ sudo apt install -y python-pip # python-pip
 sudo apt install -y python2 # python2
 sudo apt install -y python2-pip # python2-pip
 
-# install certbot for nginx and create ssl certificate
-sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
-
 # installing NodeJS 20 for Ubuntu 20.04 LTS
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs # install nodejs
@@ -39,6 +36,8 @@ sudo npm install -g ts-node # install ts-node
 # install pm2
 sudo npm install -g pm2 # install pm2
 sudo pm2 update # update pm2
+sudo pm2 startup # pm2 startup
+sudo pm2 save # pm2 save
 
 #ufw configuration
 sudo ufw enable # enable ufw
@@ -61,6 +60,10 @@ sudo apt-get update # update
 sudo apt-get install -y mongodb-org # install mongodb
 sudo systemctl enable mongod # enable mongodb
 sudo systemctl start mongod # start mongodb
+
+
+# install certbot for nginx and create ssl certificate
+sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
 
 # install Docker
 sudo apt update # update apt

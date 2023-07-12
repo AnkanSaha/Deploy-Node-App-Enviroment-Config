@@ -1,11 +1,7 @@
-# Transfer nginx config file project wise to /etc/nginx/sites-available/
+# Delete all nginx config file from /etc/nginx/conf.d/
 sudo  rm -r /etc/nginx/conf.d/* # Remove all nginx config file from /etc/nginx/conf.d/
-#sudo  rm -r /etc/nginx/sites-available/* # Remove all nginx config file from /etc/nginx/sites-available/
-#sudo rm -r /etc/nginx/sites-enabled/* # Remove all nginx config file from /etc/nginx/sites-enabled/
 
 # Copy nginx config file project wise to /etc/nginx/sites-available/
-#sudo cp Conf/* /etc/nginx/sites-available/ # Copy nginx config file project wise to /etc/nginx/sites-available/
-#sudo ln -s /etc/nginx/sites-available/* /etc/nginx/sites-enabled/ # Create symbolic link for nginx config file from /etc/nginx/sites-available/ to /etc/nginx/sites-enabled/
 sudo cp Conf/* /etc/nginx/conf.d/ # Copy nginx config file project wise to /etc/nginx/conf.d/
 
 # Start nginx

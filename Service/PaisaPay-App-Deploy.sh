@@ -46,3 +46,6 @@ sudo chmod 777 .env # Give Permission to .env file
 npm install # Install all dependencies
 npm start # Start Backend
 pm2 ls # List all running processes
+#PM2
+sudo  pm2 startup # Start PM2 on Boot
+sudo pm2 save # Save the PM2 Process

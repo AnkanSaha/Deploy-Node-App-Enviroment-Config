@@ -4,7 +4,6 @@ sudo rm -r /etc/nginx/sites-enabled/* # Remove all nginx config file from /etc/n
 
 # Copy nginx config file project wise to /etc/nginx/sites-available/
 sudo cp Conf/* /etc/nginx/conf.d/ # Copy nginx config file project wise to /etc/nginx/conf.d/
-sudo ln -s /etc/nginx/conf.d/* /etc/nginx/sites-enabled/ # Create symbolic link for nginx config file
 
 # Start nginx
 sudo nginx -t # Test nginx config

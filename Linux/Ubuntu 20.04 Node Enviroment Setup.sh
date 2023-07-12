@@ -20,6 +20,8 @@ sudo apt install -y python-pip # python-pip
 sudo apt install -y python2 # python2
 sudo apt install -y python2-pip # python2-pip
 
+# install certbot for nginx and create ssl certificate
+sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
 
 # installing NodeJS 20 for Ubuntu 20.04 LTS
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
@@ -60,8 +62,17 @@ sudo apt-get install -y mongodb-org # install mongodb
 sudo systemctl enable mongod # enable mongodb
 sudo systemctl start mongod # start mongodb
 
-# install certbot for nginx and create ssl certificate
-sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
+# install Docker
+sudo apt update # update apt
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y # install dependencies for docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg # add key for docker
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null # add repo for docker
+sudo apt update # update apt again
+sudo apt install docker-ce docker-ce-cli containerd.io -y # install docker
+sudo usermod -aG docker $USER # add user to docker group for docker
+sudo systemctl enable docker # enable docker
+sudo systemctl start docker # start docker
+docker --version # check docker version
 
 # End of Script
 echo "MERN Server Ready 😄 Happy Deployment 🇮🇳 🛕 Jay Hind 🛕 🇮🇳" # End of Script

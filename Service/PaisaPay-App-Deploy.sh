@@ -12,20 +12,20 @@ npm run build # Build Frontend
 DirectoryPATH="/var/www/html/PaisaPay" # Directory to check
 DirectoryName="PaisaPay" # Directory Name
 
-if [ -d "$DirectoryPATH" ] # Check if Directory Exists
-then
+if [ -d "$DirectoryPATH" ]; then
     echo "Directory exists. Deleting..." # Directory Exists Message
-    sudo rm -rf $DirectoryPATH # Remove Directory
+    sudo rm -rf "$DirectoryPATH" # Remove Directory
     echo "Recreating Directory..." # Recreating Directory Message
-    sudo mkdir $DirectoryPATH # Create Directory
+    sudo mkdir "$DirectoryPATH" # Create Directory
     echo "Directory Recreated." # Directory Created Message
 else
     echo "Directory does not exist. Creating..." # Directory Does Not Exist Message
-    sudo mkdir $DirectoryPATH # Create Directory
+    sudo mkdir "$DirectoryPATH" # Create Directory
     echo "Directory created." # Directory Created Message
 fi
+
 # Move Frontend to /var/www/html/PaisaPay
-sudo mv $DirectoryName/* $DirectoryPATH # Move Frontend to /var/www/html/PaisaPay
+sudo mv "$DirectoryName"/* "$DirectoryPATH"/ # Move the Frontend App to the Directory
 
 # Register All Environment Variables
 cd # Go to Home Directory
@@ -48,4 +48,4 @@ npm start # Start Backend
 pm2 ls # List all running processes
 #PM2
 sudo  pm2 startup # Start PM2 on Boot
-sudo pm2 save # Save the PM2 Process
+sudo pm2 save --force# Save the PM2 Process

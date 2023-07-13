@@ -1,7 +1,33 @@
 # Let's Import the Frontend App from Github
-cd # Go to the parent folder
-git clone https://github.com/AnkanSaha/Store-Management-Frontend.git
-cd Store-Management-Frontend/ # Go to Frontend Folder
+# Go to Home Directory
+cd ~
+
+# Directory Variables
+GithubFrontendPATH="Store-Management-Frontend"
+GithubBackendPATH="Store-Management-Backend"
+StaticDirectoryPATH="/var/www/html/StoreManagement" # Directory to check
+StaticDirectoryName="StoreManagement" # Directory Name
+
+# Git Link Variables
+GithubFrontendLink="https://github.com/AnkanSaha/Store-Management-Frontend.git"
+GithubBackendLink="https://github.com/AnkanSaha/Store-Management-Backend.git"
+
+# Check if PaisaPay-Frontend directory exists
+if [ -d "$GithubFrontendPATH" ]; then
+  # Delete PaisaPay-Frontend directory
+  sudo rm -rf "$GithubFrontendPATH"
+  echo "$GithubFrontendPATH directory deleted."
+fi
+
+# Check if PaisaPay-Backend directory exists
+if [ -d "$GithubBackendPATH" ]; then
+  # Delete PaisaPay-Backend directory
+  rm -rf "$GithubBackendPATH"
+  echo "$GithubBackendPATH directory deleted."
+fi
+
+git clone $GithubFrontendLink # Import the Frontend App from Github
+cd "$GithubFrontendPATH"/ # Go to Frontend Folder
 
 # Let's build our Production ready version of the app
 npm install # Install all the dependencies
@@ -9,38 +35,37 @@ npm run build # Build the Frontend App
 
 # import the Backend App from Github
 cd # Go to the parent folder
-git clone https://github.com/AnkanSaha/Store-Management-Backend.git
+git clone $GithubBackendLink # Import the Backend App from Github
 
 # Let's Build our Production ready version of Backend App
-cd Store-Management-Backend/ # Go to Backend Folder
+cd "$GithubBackendPATH"/ # Go to Backend Folder
 npm install # Install all the dependencies
 npm run build # Build the Backend App
 
 # Lets copy the build folder to the backend folder
-cd ../Store-Management-Frontend # Go to Frontend Folder
+cd ../"$GithubFrontendPATH" # Go to Frontend Folder
 
 # Move Frontend to /var/www/html/StoreManagement
-DirectoryPATH="/var/www/html/StoreManagement" # Directory to check
-DirectoryName="StoreManagement" # Directory Name
 
-if [ -d "$DirectoryPATH" ]; then
+
+if [ -d "$StaticDirectoryPATH" ]; then
     echo "Directory exists. Deleting..." # Directory Exists Message
-    sudo rm -rf "$DirectoryPATH" # Remove Directory
+    sudo rm -rf "$StaticDirectoryPATH" # Remove Directory
     echo "Recreating Directory..." # Recreating Directory Message
-    sudo mkdir "$DirectoryPATH" # Create Directory
+    sudo mkdir "$StaticDirectoryPATH" # Create Directory
     echo "Directory Recreated." # Directory Created Message
 else
     echo "Directory does not exist. Creating..." # Directory Does Not Exist Message
-    sudo mkdir "$DirectoryPATH" # Create Directory
+    sudo mkdir "$StaticDirectoryPATH" # Create Directory
     echo "Directory created." # Directory Created Message
 fi
 
 # Move Frontend to /var/www/html/StoreManagement
-sudo mv "$DirectoryName"/* "$DirectoryPATH" # Move the Frontend App to the Directory
+sudo mv "$StaticDirectoryName"/* "$StaticDirectoryPATH" # Move the Frontend App to the Directory
 
 
 # Create Enviromental variables File for the Backend App
-cd ../Store-Management-Backend/Build # Go to Backend Folder
+cd ../"$GithubBackendPATH"/Build # Go to Backend Folder
 touch .env # Create the .env file
 sudo chmod +rwx .env # Give the .env file the permission to read and write
 
@@ -58,7 +83,7 @@ read -p "Enter JWT Secret Key : " JWT_SECRET_KEY # Ask the user to enter the JWT
 echo "STORE_MANAGEMENT_JWT_SECRET=$JWT_SECRET_KEY" >> .env # Add the JWT_SECRET_KEY to the .env file
 
 # Let's start the Backend App and serve the Frontend App
-cd ../Store-Management-Backend/Build # Go to Backend Folder
+cd ../"$GithubBackendPATH"/Build # Go to Backend Folder
 npm run start # Start the Backend App
 
 # Let's Restart the Nginx Service

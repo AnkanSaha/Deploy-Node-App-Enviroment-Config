@@ -11,7 +11,11 @@ sudo systemctl restart nginx # Restart nginx
 
 ## issue ssl certificate
  #All Domain Name for SSL Issue
-sudo certbot --nginx --redirect # Issue SSL Certificate for all domain name
+read -p "You need SSL Certificate? (y/n): " SSL # Get SSL Certificate
+
+if [ "$SSL" = "y" ]; then
+    sudo certbot --nginx --redirect # Issue SSL Certificate for all domain name
+fi
 
 # Enable Certbot Auto Renewal
 sudo systemctl enable certbot.timer # Enable Certbot Auto Renewal

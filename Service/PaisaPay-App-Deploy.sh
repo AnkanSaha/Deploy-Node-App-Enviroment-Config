@@ -1,22 +1,49 @@
-cd # Go to Home Directory
+#!/bin/bash
+
+# Go to Home Directory
+cd ~
+
+# Directory Variables
+GithubFrontendPATH="PaisaPay-Frontend" # Frontend Project Name
+GithubBackendPATH="PaisaPay-Backend" # Backend Project Name
+StaticDirectoryPATH="/var/www/html/PaisaPay" # Static Directory to check
+StaticDirectoryName="PaisaPay" # Directory Name to check
+
+# Git Link Variables
+GithubFrontendLink="https://github.com/AnkanSaha/PaisaPay-Frontend.git" # Frontend Git Link
+GithubBackendLink="https://github.com/AnkanSaha/PaisaPay-Backend.git" # Backend Git Link
+
+# Check if PaisaPay-Frontend directory exists
+if [ -d "$GithubFrontendPATH" ]; then
+  # Delete PaisaPay-Frontend directory
+  sudo rm -rf "$GithubFrontendPATH"
+  echo "$GithubFrontendPATH directory deleted."
+fi
+
+# Check if PaisaPay-Backend directory exists
+if [ -d "$GithubBackendPATH" ]; then
+  # Delete PaisaPay-Backend directory
+  rm -rf "$GithubBackendPATH"
+  echo "$GithubBackendPATH directory deleted."
+fi
+
+
 # # Import All Required Files form Github
-git clone https://github.com/AnkanSaha/PaisaPay-Backend.git # PaisaPay Backend Project
-git clone https://github.com/AnkanSaha/PaisaPay-Frontend.git # PaisaPay Frontend Project
+git clone $GithubBackendLink # PaisaPay Backend Project
+git clone $GithubFrontendLink # PaisaPay Frontend Project
 
 #Build Frontend
-cd PaisaPay-Frontend # Go to PaisaPay Frontend Project Directory
+cd $GithubFrontendPATH # Go to PaisaPay Frontend Project Directory
 npm install # Install all dependencies
 npm run build # Build Frontend
 
 # If Directory Exists then Remove Directory else Create Directory
-DirectoryPATH="/var/www/html/PaisaPay" # Directory to check
-DirectoryName="PaisaPay" # Directory Name
 
-if [ -d "$DirectoryPATH" ]; then
+if [ -d "$StaticDirectoryPATH" ]; then
     echo "Directory exists. Deleting..." # Directory Exists Message
-    sudo rm -rf "$DirectoryPATH" # Remove Directory
+    sudo rm -rf "$StaticDirectoryPATH" # Remove Directory
     echo "Recreating Directory..." # Recreating Directory Message
-    sudo mkdir "$DirectoryPATH" # Create Directory
+    sudo mkdir "$StaticDirectoryPATH" # Create Directory
     echo "Directory Recreated." # Directory Created Message
 else
     echo "Directory does not exist. Creating..." # Directory Does Not Exist Message
@@ -25,11 +52,11 @@ else
 fi
 
 # Move Frontend to /var/www/html/PaisaPay
-sudo mv "$DirectoryName"/* "$DirectoryPATH"/ # Move the Frontend App to the Directory
+sudo mv "$StaticDirectoryName"/* "$StaticDirectoryPATH"/ # Move the Frontend App to the Directory
 
 # Register All Environment Variables
 cd # Go to Home Directory
-cd ./PaisaPay-Backend # Go to PaisaPay Backend Project Directory
+cd ./"$GithubBackendPATH" # Go to PaisaPay Backend Project Directory
 read -p "Enter MongoDB URL: " MONGODB_URL # Get MongoDB URL
 read -p "Enter PORT Number: " PORT # Get PORT Number
 read -p "Enter Live URL: " CORS_ORIGIN # Get Live URL for CORS

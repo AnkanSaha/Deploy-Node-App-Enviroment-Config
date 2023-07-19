@@ -1,9 +1,13 @@
+# Global Variables
+GithubPATH="Video-Downloader" # Github Project Name
+GithubLink="https://github.com/AnkanSaha/Video-Downloader.git"
+
 # Import All Files
 cd # Go to Home Directory
 
-git clone https://github.com/AnkanSaha/Video-Downloader.git # Clone the Repository
+git clone $GithubLink # Clone the Repository
 
-cd Video-Downloader # Go to the Repository
+cd $GithubPATH # Go to the Repository
 
 # Install All Dependencies
 npm install

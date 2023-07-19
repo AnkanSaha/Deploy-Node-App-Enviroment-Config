@@ -1,9 +1,13 @@
+#Global Variables
+GithubPATH="SaveNet" # Github Project Name
+GithubLink="https://github.com/AnkanSaha/SaveNet.git"
+
 # Import All Files
 cd # Go to Home Directory
 
-git clone https://github.com/AnkanSaha/SaveNet.git # Clone the Repository
+git clone $GithubLink # Clone the Repository
 
-cd SaveNet # Go to the Repository
+cd $GithubPATH # Go to the Repository
 
 # Install All Dependencies
 npm install

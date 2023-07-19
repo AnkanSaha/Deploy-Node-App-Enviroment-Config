@@ -1,5 +1,6 @@
 #variables
 ProjectDir="Portfolio"
+GithubLink="https://github.com/AnkanSaha/Portfolio.git"
 
 # Import From Git
 cd # Go to root
@@ -12,7 +13,7 @@ if [ -d "$ProjectDir" ]; then
 fi
 
 
-git clone https://github.com/AnkanSaha/Portfolio.git # Clone the repo
+git clone $GithubLink # Clone the repo
 
 cd $ProjectDir # Go to the repo
 npm install # Install dependencies

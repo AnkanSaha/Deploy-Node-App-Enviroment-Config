@@ -1,5 +1,10 @@
 # Ubuntu 20.04 LTS (Focal Fossa) Node Enviroment Setup
 cd # change directory to home
+
+# Update APT
+sudo apt update # update apt
+sudo apt upgrade -y # upgrade apt
+
 # install all dependencies
 sudo apt install -y git # git
 sudo apt install -y nginx # nginx
@@ -76,6 +81,10 @@ sudo usermod -aG docker $USER # add user to docker group for docker
 sudo systemctl enable docker # enable docker
 sudo systemctl start docker # start docker
 docker --version # check docker version
+
+# install docker-compose
+sudo apt install docker-compose -y # install docker-compose
+docker-compose --version # check docker-compose version
 
 # End of Script
 echo "MERN Server Ready 😄 Happy Deployment 🇮🇳 🛕 Jay Hind 🛕 🇮🇳" # End of Script

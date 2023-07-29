@@ -4,8 +4,8 @@
 cd ~
 
 # Directory Variables
-FrontendPATH="Frontend" # Frontend Project Name
-BackendPATH="Backend" # Backend Project Name
+FrontendPATH="Client" # Frontend Project Name
+BackendPATH="Server" # Backend Project Name
 StaticDirectoryPATH="/var/www/html/PaisaPay" # Static Directory to check
 StaticDirectoryName="PaisaPay" # Directory Name to check
 

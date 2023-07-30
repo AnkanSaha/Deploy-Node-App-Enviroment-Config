@@ -36,6 +36,7 @@ sudo npm install -g npm@latest # install npm
 sudo npm install -g typescript@latest # install typescript
 sudo npm install -g tslint # install tslint
 sudo npm install -g ts-node # install ts-node
+sudo npm install -g eslint # install eslint
 
 
 # install pm2

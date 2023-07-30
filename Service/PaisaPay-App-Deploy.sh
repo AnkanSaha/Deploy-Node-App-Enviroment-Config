@@ -48,6 +48,7 @@ sudo mv "$StaticDirectoryName"/* "$StaticDirectoryPATH"/ # Move the Frontend App
 # Register All Environment Variables
 cd ~ # Go to Home Directory
 cd "$StaticDirectoryName/$BackendPATH" # Go to PaisaPay Frontend Project Directory
+npm install # Install all dependencies
 npm run build # Build Backend
 read -p "Enter MongoDB URL: " MONGODB_URL # Get MongoDB URL
 read -p "Enter PORT Number: " PORT # Get PORT Number

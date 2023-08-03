@@ -47,9 +47,6 @@ sudo pm2 save # pm2 save
 
 #ufw configuration
 sudo ufw enable # enable ufw
-sudo ufw allow 80/tcp # allow port 80
-sudo ufw allow 443/tcp # allow port 443
-sudo ufw allow 22/tcp # allow port 22
 sudo ufw allow 'Nginx Full' # allow nginx full
 sudo ufw allow 'Nginx HTTP' # allow nginx http
 sudo ufw allow 'Nginx HTTPS' # allow nginx https

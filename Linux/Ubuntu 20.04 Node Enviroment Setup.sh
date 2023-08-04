@@ -38,7 +38,6 @@ sudo npm install -g tslint # install tslint
 sudo npm install -g ts-node # install ts-node
 sudo npm install -g eslint # install eslint
 
-
 # install pm2
 sudo npm install -g pm2 # install pm2
 sudo pm2 update # update pm2

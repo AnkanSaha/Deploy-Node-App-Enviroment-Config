@@ -4,8 +4,8 @@
 cd ~
 
 # Directory Variables
-FrontendPATH="Client" # Frontend Project Name
-BackendPATH="Server" # Backend Project Name
+ClientFolder="Client" # Frontend Project Name
+ServerFolder="Server" # Backend Project Name
 StaticDirectoryPATH="/var/www/html/PaisaPay" # Static Directory to check
 StaticDirectoryName="PaisaPay" # Directory Name to check
 
@@ -24,7 +24,7 @@ fi
 git clone $GithubLink # Clone PaisaPay Project from Github
 
 #Build Frontend
-cd "$StaticDirectoryName/$FrontendPATH" # Go to PaisaPay Frontend Project Directory
+cd "$StaticDirectoryName/$ClientFolder" # Go to PaisaPay Frontend Project Directory
 npm install # Install all dependencies
 npm run build # Build Frontend
 
@@ -47,7 +47,7 @@ sudo mv "$StaticDirectoryName"/* "$StaticDirectoryPATH"/ # Move the Frontend App
 
 # Register All Environment Variables
 cd ~ # Go to Home Directory
-cd "$StaticDirectoryName/$BackendPATH" # Go to PaisaPay Frontend Project Directory
+cd "$StaticDirectoryName/$ServerFolder" # Go to PaisaPay Frontend Project Directory
 npm install # Install all dependencies
 npm run build # Build Backend
 read -p "Enter MongoDB URL: " MONGODB_URL # Get MongoDB URL

@@ -2,11 +2,11 @@
 cd ~ # Go to Home Directory
 
 # Global Variables
-GithubPATH="Donation-Tracker" # Github Project Name
+ServiceFolder="Donation-Tracker" # Github Project Name
 GithubLink="https://github.com/AnkanSaha/Donation-Tracker.git"
 
 git clone  $GithubLink # Clone the Repository
-cd $GithubPATH # Go to the Repository
+cd $ServiceFolder # Go to the Repository
 
 # Install All Dependencies
 npm install

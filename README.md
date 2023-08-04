@@ -22,15 +22,26 @@ To run this script use this steps
 ```bash
   copy the content script from this repo file
 ```
-```bash
-    make a .sh file in your vps
-```
-```bash
-    run "chmod +x your file name"
-```
-```bash
-    then just ./your file name
-```
+    
+    ```bash
+    paste the content in your linux server
+    ```
+    
+    ```bash
+    run the script
+    ```
+    
+    ```bash
+    enter the required details
+    ```
+    
+    ```bash
+    wait for the script to complete
+    ```
+    
+    ```bash
+    your nodejs app is deployed
+    ```
 
 ## Features
 

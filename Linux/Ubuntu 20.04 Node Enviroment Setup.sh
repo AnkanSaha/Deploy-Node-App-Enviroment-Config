@@ -1,5 +1,5 @@
 # Ubuntu 20.04 LTS (Focal Fossa) Node Enviroment Setup
-cd # change directory to home
+cd ~ # change directory to home
 
 # Update APT
 sudo apt update # update apt

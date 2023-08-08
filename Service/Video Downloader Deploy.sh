@@ -5,6 +5,13 @@ GithubLink="https://github.com/AnkanSaha/Video-Downloader.git"
 # Import All Files
 cd # Go to Home Directory
 
+# Check if the Service Folder Exists
+if [ -d "$ServiceFolder" ]; then
+  # Delete the Service Folder
+  sudo rm -rf "$ServiceFolder"
+  echo "$ServiceFolder directory deleted."
+fi
+
 git clone $GithubLink # Clone the Repository
 
 cd $ServiceFolder # Go to the Repository

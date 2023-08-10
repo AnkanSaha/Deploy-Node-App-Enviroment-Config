@@ -50,11 +50,14 @@ cd ~ # Go to Home Directory
 cd "$StaticDirectoryName/$ServerFolder" # Go to PaisaPay Frontend Project Directory
 npm install # Install all dependencies
 npm run build # Build Backend
+
+# Get Environment Variables
 read -p "Enter MongoDB URL: " MONGODB_URL # Get MongoDB URL
 read -p "Enter PORT Number: " PORT # Get PORT Number
 read -p "Enter Live URL: " CORS_ORIGIN # Get Live URL for CORS
 
 # Create .env file
+cd Build # Go to Build Directory
 echo "MONGODB_URL=$MONGODB_URL" >> .env # Write MongoDB URL to .env file
 echo "PORT=$PORT" >> .env # Write PORT Number to .env file
 echo "CORS_ORIGIN=$CORS_ORIGIN" >> .env # Write Live URL to .env file

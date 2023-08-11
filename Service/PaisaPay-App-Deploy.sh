@@ -51,24 +51,31 @@ cd "$StaticDirectoryName/$ServerFolder" # Go to PaisaPay Frontend Project Direct
 npm install # Install all dependencies
 npm run build # Build Backend
 
+cd Build # Go to Build Directory
+
+# Create .env file
+touch .env # Create .env File
+
+sudo chmod +w .env # Add Write Permission to .env file
+
 # Get Environment Variables
 read -p "Enter MongoDB URL: " MONGODB_URL # Get MongoDB URL
 read -p "Enter PORT Number: " PORT # Get PORT Number
 read -p "Enter Live URL: " CORS_ORIGIN # Get Live URL for CORS
 
-# Create .env file
-cd Build # Go to Build Directory
+# Insert Environment Variables to .env file
 echo "MONGODB_URL=$MONGODB_URL" >> .env # Write MongoDB URL to .env file
 echo "PORT=$PORT" >> .env # Write PORT Number to .env file
 echo "CORS_ORIGIN=$CORS_ORIGIN" >> .env # Write Live URL to .env file
 
 # Permission to env file
-sudo chmod 777 .env # Give Permission to .env file
+sudo chmod -w .env # Remove Write Permission from .env file
 
 # Start Backend
 npm install # Install all dependencies
 npm start # Start Backend
 pm2 ls # List all running processes
+
 #PM2
 sudo  pm2 startup # Start PM2 on Boot
 sudo pm2 save --force # Save the PM2 Process

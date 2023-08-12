@@ -56,8 +56,6 @@ cd Build # Go to Build Directory
 # Create .env file
 touch .env # Create .env File
 
-sudo chmod +w .env # Add Write Permission to .env file
-
 # Get Environment Variables
 read -p "Enter MongoDB URL: " MONGODB_URL # Get MongoDB URL
 read -p "Enter PORT Number: " PORT # Get PORT Number

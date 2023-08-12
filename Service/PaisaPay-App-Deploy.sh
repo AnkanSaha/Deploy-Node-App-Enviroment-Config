@@ -71,6 +71,9 @@ sudo chmod -w .env # Remove Write Permission from .env file
 
 # Start Backend
 npm install # Install all dependencies
+
+# Back to Backend Directory
+cd .. # Go to Backend Directory
 npm start # Start Backend
 pm2 ls # List all running processes
 

@@ -63,11 +63,11 @@ fi
 # Move Frontend to /var/www/html/StoreManagement
 sudo mv "$StaticDirectoryName"/* "$StaticDirectoryPATH" # Move the Frontend App to the Directory
 
+# Let's start the Backend App and serve the Frontend App
+cd ../"$GithubBackendPATH"/Build # Go to Backend Folder
 
 # Create Enviromental variables File for the Backend App
-cd ../"$GithubBackendPATH"/Build # Go to Backend Folder
 touch .env # Create the .env file
-sudo chmod +rwx .env # Give the .env file the permission to read and write
 
 # Add the enviromental variables to the .env file
 read -p "Enter PORT Number (only value) To Run Backend APP: " PORT # Ask the user to enter the PORT
@@ -81,6 +81,9 @@ echo "STORE_MANAGEMENT_LIVE_URL=$LIVE_URL" >> .env # Add the LIVE_URL to the .en
 
 read -p "Enter JWT Secret Key : " JWT_SECRET_KEY # Ask the user to enter the JWT_SECRET_KEY
 echo "STORE_MANAGEMENT_JWT_SECRET=$JWT_SECRET_KEY" >> .env # Add the JWT_SECRET_KEY to the .env file
+
+# Permission to env file
+sudo chmod -w .env # Remove Write Permission from .env file
 
 # Let's start the Backend App and serve the Frontend App
 cd ../"$GithubBackendPATH"/Build # Go to Backend Folder

@@ -94,10 +94,10 @@ if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
     sudo apt install golang-go -y # golang-go for Go
 
     # Ruby
-    sudo apt install ruby-full -y # ruby-full for Ruby
+    sudo apt install ruby-full -y # ruby-full for Rubyv
 
     # TypeScript
-    sudo apt install -g typescript@latest # typescript@latest for TypeScript
+    sudo npm install -g typescript@latest # typescript@latest for TypeScript
 
     # Swift
     sudo apt install swift -y # swift for Swift
@@ -110,9 +110,18 @@ if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
 
     # C#
     sudo apt install mono-complete -y # mono-complete for C#
+    sudo apt install mono-runtime -y # mono-runtime for C#
 
     # R
     sudo apt install r-base -y # r-base for R
+
+    # Dart
+    sudo apt-get update # update apt
+    sudo apt-get install apt-transport-https # apt-transport-https
+    wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg # add key for dart
+    echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list # add repo for dart
+    sudo apt-get update # update apt again
+    sudo apt-get install dart -y # install dart
 
 else
     echo "Skipping other compilers installation."
@@ -184,10 +193,10 @@ read choice
 
 if [ "$choice" == "1" ]; then
     # Perform tasks for GUI installation
-    sudo apt update
-    sudo apt install tasksel
+    sudo apt update # update apt
+    sudo apt install tasksel -y # install tasksel
     sudo tasksel # Select the GUI you want to install
-    sudo reboot
+    sudo reboot # reboot
 elif [ "$choice" == "2" ]; then
 echo "Choose an option:"
 echo "1. Install GUI"

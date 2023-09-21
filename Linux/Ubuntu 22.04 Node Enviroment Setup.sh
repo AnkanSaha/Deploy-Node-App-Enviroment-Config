@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Ubuntu 20.04 LTS (Focal Fossa) Node Enviroment Setup
+# Ubuntu 22.04 LTS (Jammy Jellyfish) Node Enviroment Setup
 cd ~ # change directory to home
 
 # Update APT
@@ -28,7 +28,7 @@ sudo apt install -y python2 # python2
 sudo apt install -y python2-pip # python2-pip
 
 
-# installing NodeJS 20 for Ubuntu 20.04 LTS
+# installing NodeJS 20 for Ubuntu 22.04 LTS
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg
 sudo mkdir -p /etc/apt/keyrings

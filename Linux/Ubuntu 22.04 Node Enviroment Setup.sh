@@ -40,7 +40,6 @@ sudo apt-get install nodejs -y # install nodejs latest version
 
 # install npm
 sudo npm install -g npm@latest # install npm
-sudo apt install npm -y        # install npm
 
 # Ask User is user want to install other compilers or not
 read -p "Do you want to install other compilers? (y/n): " choice

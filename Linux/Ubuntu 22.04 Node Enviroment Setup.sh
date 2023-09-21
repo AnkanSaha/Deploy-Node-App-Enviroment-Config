@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Ubuntu 20.04 LTS (Focal Fossa) Node Enviroment Setup
+# Ubuntu 22.04 LTS (Jammy Jellyfish) Node Enviroment Setup
 cd ~ # change directory to home
 
 # Update APT
@@ -28,7 +28,7 @@ sudo apt install -y python2 # python2
 sudo apt install -y python2-pip # python2-pip
 
 
-# installing NodeJS 20 for Ubuntu 20.04 LTS
+# installing NodeJS 20 for Ubuntu 22.04 LTS
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg
 sudo mkdir -p /etc/apt/keyrings
@@ -133,11 +133,6 @@ sudo npm install -g tslint # install tslint
 sudo npm install -g ts-node # install ts-node
 sudo npm install -g eslint # install eslint
 
-# install pm2
-sudo npm install -g pm2 # install pm2
-sudo pm2 update # update pm2
-sudo pm2 startup # pm2 startup
-sudo pm2 save # pm2 save
 
 #ufw configuration
 sudo ufw enable # enable ufw
@@ -149,11 +144,12 @@ sudo apt allow '3389' # allow rdp
 sudo ufw status # check ufw status
 
 # installing MongoDB for Ubuntu 20.04 LTS
-wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -   # add key
-sudo apt-get install gnupg # gnupg
-wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -  # add key
-sudo touch /etc/apt/sources.list.d/mongodb-org-6.0.list # create file
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list # add repo
+sudo apt-get install gnupg curl -y # gnupg & curl
+curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+   --dearmor - # add key for mongodb
+sudo touch /etc/apt/sources.list.d/mongodb-org-7.0.list # create file
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list # add repo
 sudo apt-get update # update
 sudo apt-get install -y mongodb-org # install mongodb
 sudo systemctl enable mongod # enable mongodb
@@ -179,6 +175,11 @@ docker --version # check docker version
 sudo apt install docker-compose -y # install docker-compose
 docker-compose --version # check docker-compose version
 
+# install pm2
+sudo npm install -g pm2 # install pm2
+sudo pm2 update # update pm2
+sudo pm2 startup # pm2 startup
+sudo pm2 save # pm2 save
 
 # Install GUI (Optional)
 read -p "Do you want to install a GUI? (y/n): " choice

@@ -141,7 +141,7 @@ sudo ufw allow 'Nginx HTTP'  # allow nginx http
 sudo ufw allow 'Nginx HTTPS' # allow nginx https
 sudo ufw allow 'OpenSSH'     # allow openssh
 sudo ufw allow '3389'        # allow rdp
-sudo ufw allow '27017'       # allow mongodb
+sudo ufw allow '4442'       # allow custom port for mongodb
 sudo ufw status              # check ufw status
 
 # installing MongoDB for Ubuntu 20.04 LTS
@@ -236,4 +236,5 @@ fi
 
 # Continue with the rest of your script
 # End of Script
+echo " Please Edit MongoDB Config File  with sudo nano /etc/mongod.conf command & set Bind IP to 0.0.0.0 with PORT 4442"
 echo "MERN Server Ready 😄 Happy Deployment 🇮🇳 🛕 Jay Hind 🛕 🇮🇳" # End of Script

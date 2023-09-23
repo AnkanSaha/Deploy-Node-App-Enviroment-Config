@@ -236,4 +236,5 @@ fi
 
 # Continue with the rest of your script
 # End of Script
+echo " Please Edit MongoDB Config File  with sudo nano /etc/mongod.conf command & set Bind IP to 0.0.0.0 with PORT 4442"
 echo "MERN Server Ready 😄 Happy Deployment 🇮🇳 🛕 Jay Hind 🛕 🇮🇳" # End of Script

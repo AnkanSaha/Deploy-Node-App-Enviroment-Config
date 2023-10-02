@@ -60,14 +60,15 @@ touch .env # Create .env File
 read -p "Enter MongoDB URL: " MONGODB_URL # Get MongoDB URL
 read -p "Enter PORT Number: " PORT # Get PORT Number
 read -p "Enter Live URL: " CORS_ORIGIN # Get Live URL for CORS
+read -p "Enter JWT Secret : " JWT_SECRET # Get JWT Secret
+read -p "Enter JWT Expiry Time (ex: 1d, 1h, 1m, 1s): " JWT_EXPIRY_TIME # Get JWT Expiry Time
 
 # Insert Environment Variables to .env file
 echo "MONGODB_URL=$MONGODB_URL" >> .env # Write MongoDB URL to .env file
 echo "PORT=$PORT" >> .env # Write PORT Number to .env file
 echo "CORS_ORIGIN=$CORS_ORIGIN" >> .env # Write Live URL to .env file
-
-# Permission to env file
-sudo chmod -w .env # Remove Write Permission from .env file
+echo "JWT_SECRET=$JWT_SECRET" >> .env # Write JWT Secret to .env file
+echo "JWT_EXPIRES_IN=$JWT_EXPIRY_TIME" >> .env # Write JWT Expiry Time to .env file
 
 # Start Backend
 npm install # Install all dependencies

@@ -82,9 +82,6 @@ echo "STORE_MANAGEMENT_LIVE_URL=$LIVE_URL" >> .env # Add the LIVE_URL to the .en
 read -p "Enter JWT Secret Key : " JWT_SECRET_KEY # Ask the user to enter the JWT_SECRET_KEY
 echo "STORE_MANAGEMENT_JWT_SECRET=$JWT_SECRET_KEY" >> .env # Add the JWT_SECRET_KEY to the .env file
 
-# Permission to env file
-sudo chmod -w .env # Remove Write Permission from .env file
-
 # Let's start the Backend App and serve the Frontend App
 cd ../"$GithubBackendPATH"/Build # Go to Backend Folder
 npm run start # Start the Backend App

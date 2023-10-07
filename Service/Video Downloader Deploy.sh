@@ -34,9 +34,6 @@ echo "RAPIDAPIKEY=$RAPID_API_KEY" >> .env # Add RAPID_API_KEY to .env File
 echo "YTMUSICURL=$YT_MUSIC_URL" >> .env # Add YT_MUSIC_URL to .env File
 echo "YTVIDEOURL=$YT_VIDEO_URL" >> .env # Add YT_MUSIC_URL to .env File
 
-# Permission to env file
-sudo chmod -w .env # Remove Write Permission from .env file
-
 # Start the Server
 npm start # Start the Server
 

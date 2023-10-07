@@ -30,9 +30,6 @@ echo "CORS_ORIGIN=$LIVE_URL" >> .env # Add LIVE_URL to .env File
 echo "MONGO_URI=$MONGODB_URL" >> .env # Add MONGODB_URL to .env File
 echo "PORT=$PORT" >> .env # Add PORT to .env File
 
-# Permission to env file
-sudo chmod -w .env # Remove Write Permission from .env file
-
 # Start the Server
 npm start # Start the Server
 

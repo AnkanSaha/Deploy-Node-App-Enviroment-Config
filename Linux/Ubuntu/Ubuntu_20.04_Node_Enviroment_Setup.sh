@@ -6,8 +6,8 @@ source ./Compiler/install.sh # Import the script file
 # Import GUI Installation Script
 source ./GUI/install.sh # Import the script file
 
-Ubuntu22.04NodeEnviromentSetup() {
-    # Ubuntu 22.04 LTS (Jammy Jellyfish) Node Enviroment Setup
+Ubuntu20.04NodeEnviromentSetup() {
+    # Ubuntu 20.04 LTS (Focal) Node Enviroment Setup
     cd ~ # change directory to home
 
     # Update APT
@@ -52,8 +52,7 @@ Ubuntu22.04NodeEnviromentSetup() {
     sudo apt install -y python2     # python2
     sudo apt install -y python2-pip # python2-pip
 
-    # installing NodeJS 19 for Ubuntu 22.04 LTS
-    sudo apt-get update                                  # update apt
+    # installing NodeJS 19 for Ubuntu 20.04 LTS
     sudo apt-get update                                  # update apt
     sudo snap install node --channel=19/stable --classic # install node 19 for NodeJS
 
@@ -82,13 +81,15 @@ Ubuntu22.04NodeEnviromentSetup() {
     sudo ufw allow '4442'        # allow custom port for mongodb
     sudo ufw status              # check ufw status
 
-    # installing MongoDB for Ubuntu 22.04 LTS
-    sudo apt-get install gnupg curl -y # gnupg & curl
-    curl -fsSL https://pgp.mongodb.com/server-7.0.asc |
-        sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
-            --dearmor -                                                                                                                                                                                               # add key for mongodb
+    # installing MongoDB for Ubuntu 20.04 LTS
+    sudo apt-get install gnupg curl -y
+    # install gnupg & curl
+    curl -fsSL https://pgp.mongodb.com/server-6.0.asc |
+        sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg \
+            --dearmor
+    # add key for mongodb
     sudo touch /etc/apt/sources.list.d/mongodb-org-7.0.list                                                                                                                                                           # create file
-    echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list # add repo
+    echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list # add repo
     sudo apt-get update                                                                                                                                                                                               # update
     sudo apt-get install -y mongodb-org                                                                                                                                                                               # install mongodb
     sudo systemctl enable mongod                                                                                                                                                                                      # enable mongodb

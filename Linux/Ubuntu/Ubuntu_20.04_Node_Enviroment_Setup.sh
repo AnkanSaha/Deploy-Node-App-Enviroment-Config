@@ -127,7 +127,7 @@ Ubuntu20.04NodeEnviromentSetup() {
     read -p "Do you want to setup Nginx? (y/n): " choice # Ask the user if they want to install Nginx
 
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-        NginxSetup # Install Nginx
+        NginxSetup "../Nginx/bin/Conf" # If the user chooses to install Nginx, then run
     else
         echo "Skipping Nginx installation."
     fi

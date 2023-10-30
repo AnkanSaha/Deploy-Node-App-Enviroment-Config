@@ -1,6 +1,8 @@
 #!/bin/bash
 
 NginxSetup() {
+    # Argument 1 is the Config File Directory PARH 
+    local DIRECTORY_PATH=$1
     # Define the directory path
     DIRECTORY_PATH="/etc/nginx/conf.d/"
 
@@ -16,7 +18,7 @@ NginxSetup() {
     fi
 
     # Copy nginx config file project wise to /etc/nginx/sites-available/
-    sudo cp Conf/* /etc/nginx/conf.d/ # Copy nginx config file project wise to /etc/nginx/conf.d/
+    sudo cp DIRECTORY_PATH* /etc/nginx/conf.d/ # Copy nginx config file project wise to /etc/nginx/conf.d/
 
     # Start nginx
     sudo nginx -t                # Test nginx config

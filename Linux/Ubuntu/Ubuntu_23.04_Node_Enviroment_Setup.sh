@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Import Compiler Installation Script
-source ./Ubuntu/Compiler/install.sh # Import the script file
-
-# Import GUI Installation Script
-source ./Ubuntu/GUI/install.sh # Import the script file
-
 Ubuntu23.04NodeEnviromentSetup() {
     # Ubuntu 23.04 LTS (Luner Lemur) Node Enviroment Setup
     cd ~ # change directory to home
@@ -53,7 +47,6 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo apt install -y python2-pip # python2-pip
 
     # installing NodeJS 19 for Ubuntu 23.04 LTS
-    sudo apt-get update                                  # update apt
     sudo apt-get update                                  # update apt
     sudo snap install node --channel=19/stable --classic # install node 19 for NodeJS
 
@@ -126,6 +119,15 @@ Ubuntu23.04NodeEnviromentSetup() {
         InstallGUI # Install GUI
     else
         echo "Skipping GUI installation."
+    fi
+
+    # Install Nginx (Optional)
+    read -p "Do you want to setup Nginx? (y/n): " choice # Ask the user if they want to install Nginx
+
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+        NginxSetup # Install Nginx
+    else
+        echo "Skipping Nginx installation."
     fi
 
     # Continue with the rest of your script

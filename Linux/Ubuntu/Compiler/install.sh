@@ -2,7 +2,7 @@
 
 # Install all compilers
 InstallCompiler() {
-           # Perform GUI-related tasks here
+        # Perform GUI-related tasks here
         echo "Installing other compilers..."
         sudo apt install -y build-essential      # build-essential
         sudo apt install -y gcc                  # gcc for C

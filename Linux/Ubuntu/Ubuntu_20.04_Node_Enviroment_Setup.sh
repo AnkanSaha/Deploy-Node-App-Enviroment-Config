@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Import Compiler Installation Script
-source ./Compiler/install.sh # Import the script file
+source ./Ubuntu/Compiler/install.sh # Import the script file
 
 # Import GUI Installation Script
-source ./GUI/install.sh # Import the script file
+source ./Ubuntu/GUI/install.sh # Import the script file
 
 Ubuntu20.04NodeEnviromentSetup() {
     # Ubuntu 20.04 LTS (Focal) Node Enviroment Setup

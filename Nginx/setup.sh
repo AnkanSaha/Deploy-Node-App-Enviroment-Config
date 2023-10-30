@@ -14,6 +14,7 @@ NginxSetup() {
         # Check if user want to overwrite all nginx config file from /etc/nginx/conf.d/ or not
         if [ "$OVERWRITE" == "y" ] || [ "$OVERWRITE" == "Y" ]; then
             echo "Removing all nginx config file from /etc/nginx/conf.d/"
+           
             # Delete all nginx config file from /etc/nginx/conf.d/
             sudo rm -r /etc/nginx/conf.d/* # Remove all nginx config file from /etc/nginx/conf.d/
             echo "All nginx config file from /etc/nginx/conf.d/ is removed."

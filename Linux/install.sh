@@ -5,9 +5,6 @@ source ./Ubuntu/Ubuntu_22.04_Node_Enviroment_Setup.sh # Import the script file
 source ./Ubuntu/Ubuntu_20.04_Node_Enviroment_Setup.sh # Import the script file
 source ./Ubuntu/Ubuntu_23.04_Node_Enviroment_Setup.sh # Import the script file
 
-# Import Nginx Dependencies Script
-source ../Nginx/bin/NginxSetup.sh # Import the script file
-
 # Import Compiler Installation Script
 source ./Ubuntu/Compiler/install.sh # Import the script file
 

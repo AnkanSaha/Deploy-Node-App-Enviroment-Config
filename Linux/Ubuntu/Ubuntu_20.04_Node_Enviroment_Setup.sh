@@ -123,15 +123,6 @@ Ubuntu20.04NodeEnviromentSetup() {
         echo "Skipping GUI installation."
     fi
 
-    # Install Nginx (Optional)
-    read -p "Do you want to setup Nginx? (y/n): " choice # Ask the user if they want to install Nginx
-
-    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-        NginxSetup "../Nginx/bin/Conf" # If the user chooses to install Nginx, then run
-    else
-        echo "Skipping Nginx installation."
-    fi
-
     # Continue with the rest of your script
     # End of Script
     echo " Please Edit MongoDB Config File  with sudo nano /etc/mongod.conf command & set Bind IP to 0.0.0.0 with PORT 4442"

@@ -11,7 +11,6 @@ InstallGUI() {
         sudo apt update             # update apt
         sudo apt install tasksel -y # install tasksel
         sudo tasksel                # Select the GUI you want to install
-        sudo reboot                 # reboot
     elif [ "$choice" == "2" ]; then
         echo "Choose an option:"
         echo "1. Install GNOME"

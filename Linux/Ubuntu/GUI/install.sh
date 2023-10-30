@@ -1,4 +1,4 @@
-InstallGUI () {
+InstallGUI() {
         # Perform GUI-related tasks here
         echo "Installing GUI..."
         echo "Choose an option:"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install all compilers
-InstallCompiler () {
+InstallCompiler() {
            # Perform GUI-related tasks here
         echo "Installing other compilers..."
         sudo apt install -y build-essential      # build-essential

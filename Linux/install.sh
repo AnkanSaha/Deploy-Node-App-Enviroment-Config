@@ -5,6 +5,15 @@ source ./Ubuntu/Ubuntu_22.04_Node_Enviroment_Setup.sh # Import the script file
 source ./Ubuntu/Ubuntu_20.04_Node_Enviroment_Setup.sh # Import the script file
 source ./Ubuntu/Ubuntu_23.04_Node_Enviroment_Setup.sh # Import the script file
 
+# Import Nginx Dependencies Script
+source ../Nginx/bin/NginxSetup.sh # Import the script file
+
+# Import Compiler Installation Script
+source ./Ubuntu/Compiler/install.sh # Import the script file
+
+# Import GUI Installation Script
+source ./Ubuntu/GUI/install.sh # Import the script file
+
 read -p "Which OS you are using? (1) Ubuntu (2) CentOS (3) Debian (4) Other OS: " os # Ask the user which OS they are using
 
 if [ "$os" == "1" ]; then

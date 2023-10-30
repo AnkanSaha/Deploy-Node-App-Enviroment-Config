@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Import Compiler Installation Script
-source ./Ubuntu/Compiler/install.sh # Import the script file
-
-# Import GUI Installation Script
-source ./Ubuntu/GUI/install.sh # Import the script file
-
 Ubuntu20.04NodeEnviromentSetup() {
     # Ubuntu 20.04 LTS (Focal) Node Enviroment Setup
     cd ~ # change directory to home
@@ -30,7 +24,7 @@ Ubuntu20.04NodeEnviromentSetup() {
     SNAP_DIRECTORY_PATH="/etc/apt/preferences.d/nosnap.pref" # nosnap.pref file path
 
     # Check if the directory is empty or not
-    if [ -n "$(ls -A $SNAP_DIRECTORY_PATH)" ]; then
+    if [ -n "$(sudo ls -A $SNAP_DIRECTORY_PATH)" ]; then
         echo "Directory is not empty."
         # Delete all nginx config file from /etc/nginx/conf.d/
         sudo rm -r $SNAP_DIRECTORY_PATH # Remove nosnap.pref file
@@ -127,6 +121,15 @@ Ubuntu20.04NodeEnviromentSetup() {
         InstallGUI # Install GUI
     else
         echo "Skipping GUI installation."
+    fi
+
+    # Install Nginx (Optional)
+    read -p "Do you want to setup Nginx? (y/n): " choice # Ask the user if they want to install Nginx
+
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+        NginxSetup # Install Nginx
+    else
+        echo "Skipping Nginx installation."
     fi
 
     # Continue with the rest of your script

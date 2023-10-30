@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Import Compiler Installation Script
-source ./Ubuntu/Compiler/install.sh # Import the script file
-
-# Import GUI Installation Script
-source ./Ubuntu/GUI/install.sh # Import the script file
-
 Ubuntu22.04NodeEnviromentSetup() {
     # Ubuntu 22.04 LTS (Jammy Jellyfish) Node Enviroment Setup
     cd ~ # change directory to home
@@ -30,7 +24,7 @@ Ubuntu22.04NodeEnviromentSetup() {
     SNAP_DIRECTORY_PATH="/etc/apt/preferences.d/nosnap.pref" # nosnap.pref file path
 
     # Check if the directory is empty or not
-    if [ -n "$(ls -A $SNAP_DIRECTORY_PATH)" ]; then
+    if [ -n "$(sudo ls -A $SNAP_DIRECTORY_PATH)" ]; then
         echo "Directory is not empty."
         # Delete all nginx config file from /etc/nginx/conf.d/
         sudo rm -r $SNAP_DIRECTORY_PATH # Remove nosnap.pref file
@@ -53,7 +47,6 @@ Ubuntu22.04NodeEnviromentSetup() {
     sudo apt install -y python2-pip # python2-pip
 
     # installing NodeJS 19 for Ubuntu 22.04 LTS
-    sudo apt-get update                                  # update apt
     sudo apt-get update                                  # update apt
     sudo snap install node --channel=19/stable --classic # install node 19 for NodeJS
 
@@ -126,6 +119,15 @@ Ubuntu22.04NodeEnviromentSetup() {
         InstallGUI # Install GUI
     else
         echo "Skipping GUI installation."
+    fi
+
+    # Install Nginx (Optional)
+    read -p "Do you want to setup Nginx? (y/n): " choice # Ask the user if they want to install Nginx
+
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+        NginxSetup # Install Nginx
+    else
+        echo "Skipping Nginx installation."
     fi
 
     # Continue with the rest of your script

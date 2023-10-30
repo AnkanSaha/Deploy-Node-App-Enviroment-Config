@@ -64,6 +64,9 @@ Ubuntu20.04NodeEnviromentSetup() {
     sudo npm install -g tslint            # install tslint
     sudo npm install -g ts-node           # install ts-node
     sudo npm install -g eslint            # install eslint
+    sudo npm install -g @types/node        # install @types/node
+    sudo npm install -g pm2               # install pm2
+    sudo npm install -g nodemon           # install nodemon
 
     #ufw configuration
     sudo ufw enable              # enable ufw

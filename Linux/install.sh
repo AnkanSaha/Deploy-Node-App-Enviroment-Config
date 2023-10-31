@@ -28,8 +28,7 @@ source ./Ubuntu/Ubuntu_22.04_Node_Enviroment_Setup.sh # Import the script file
 source ./Ubuntu/Ubuntu_20.04_Node_Enviroment_Setup.sh # Import the script file
 source ./Ubuntu/Ubuntu_23.04_Node_Enviroment_Setup.sh # Import the script file
 
-# Import CentOS Dependencies Script
-source ./CentOS/CentOS_9_Stram_Node_Enviroment_Setup.sh # Import the script file
+# Import Debian Dependencies Script
 
 # Import Compiler Installation Script
 source ./Ubuntu/Compiler/install.sh # Import the script file
@@ -37,7 +36,7 @@ source ./Ubuntu/Compiler/install.sh # Import the script file
 # Import GUI Installation Script
 source ./Ubuntu/GUI/install.sh # Import the script file
 
-read -p "$BOLD Which OS you are using? (1) Ubuntu (2) CentOS (3) Debian (4) Other OS: " os # Ask the user which OS they are using
+read -p "$BOLD Which OS you are using? (1) Ubuntu (2) Debian (3) Other OS: " os # Ask the user which OS they are using
 
 if [ "$os" == "1" ]; then
     read -p "$GREEN Which Ubuntu Version are you using? (1) 23.04 (2) 22.04 (3) 20.04: " ubuntu_version # Ask the user which Ubuntu Version they are using
@@ -56,22 +55,8 @@ if [ "$os" == "1" ]; then
         exit 1                                 # Exit with error code 1
     fi
 elif [ "$os" == "2" ]; then
-    echo "$GREEN Which CentOS Version are you using? (1) 9 Stream (2) 8 Stream: " centos_version # Ask the user which CentOS Version they are using
-
-    if [ "$centos_version" == "1" ]; then
-        echo "$YELLOW Installing CentOS 9 Stream Dependencies" # If the user chooses CentOS 9 Stream, then run
-        CentOS9NodeEnviromentSetup
-    elif [ "$centos_version" == "2" ]; then
-        echo "$YELLOW Installing CentOS 8 Stream Dependencies" # If the user chooses CentOS 8 Stream, then run
-        CentOS8StreamNodeEnviromentSetup
-    else
-        echo "$RED No CentOS Version Selected" # If the user chooses another CentOS Version, then run
-        exit 1                                 # Exit with error code 1
-    fi
-elif [ "$os" == "3" ]; then
-    echo "$GREEN Which Debian Version are you using? (1) 10: " debian_version # Ask the user which Debian Version they are using
-    Debian_10_Node_Enviroment_Setup
+    echo "$YELLOW You can use Ubuntu Script for Debian as ubuntu is based on Debian" # If the user chooses Debian, then run
 else
-    echo "$RED No OS Selected"
-    exit 1 # Exit with error code 1
+    echo "$RED Currently not supported" # If the user chooses another OS, then run
+    exit 1                              # Exit with error code 1
 fi

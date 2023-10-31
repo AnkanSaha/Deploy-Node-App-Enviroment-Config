@@ -172,6 +172,12 @@ Ubuntu20.04NodeEnviromentSetup() {
     sudo apt install docker-compose -y # install docker-compose
     docker-compose --version           # check docker-compose version
 
+    # Install Redis
+    sudo apt install redis-server -y # install redis-server
+    sudo systemctl enable redis      # enable redis
+    sudo systemctl start redis       # start redis
+    sudo systemctl status redis      # check redis status
+
     # install pm2
     sudo npm install -g pm2 # install pm2
     sudo pm2 update         # update pm2

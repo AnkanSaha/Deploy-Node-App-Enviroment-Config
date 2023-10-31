@@ -169,6 +169,12 @@ Ubuntu22.04NodeEnviromentSetup() {
     sudo apt install docker-compose -y # install docker-compose
     docker-compose --version           # check docker-compose version
 
+    # Install Redis
+    sudo apt install redis-server -y # install redis-server
+    sudo systemctl enable redis      # enable redis
+    sudo systemctl start redis       # start redis
+    sudo systemctl status redis      # check redis status
+
     # install pm2
     sudo npm install -g pm2 # install pm2
     sudo pm2 update         # update pm2
@@ -186,6 +192,6 @@ Ubuntu22.04NodeEnviromentSetup() {
 
     # Continue with the rest of your script
     # End of Script
-    echo " Please Edit MongoDB Config File  with sudo nano /etc/mongod.conf command & set Bind IP to 0.0.0.0 with PORT 4442"
+    echo " Please Edit MongoDB Config File  with sudo nano /etc/mongod.conf command & set Bind IP to 0.0.0.0 with PORT 4442 if you don't update it on prompt"
     echo "MERN Server Ready 😄 Happy Deployment 🇮🇳 🛕 Jay Hind 🛕 🇮🇳" # End of Script
 }

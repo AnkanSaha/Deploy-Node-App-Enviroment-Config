@@ -2,8 +2,31 @@
 
 # Install all compilers
 InstallCompiler() {
+        # Define the colors which will be used in the script
+        if [ -t 1 ]; then
+                RED=$(tput setaf 1)
+                GREEN=$(tput setaf 2)
+                YELLOW=$(tput setaf 3)
+                BLUE=$(tput setaf 4)
+                GRAY=$(tput setaf 8)
+                SAFERED=$(tput setaf 9)
+                MAGENTA=$(tput setaf 5)
+                BOLD=$(tput bold)
+                NORMAL=$(tput sgr0)
+        else
+                RED=""
+                GREEN=""
+                YELLOW=""
+                BLUE=""
+                GRAY=""
+                SAFERED=""
+                MAGENTA=""
+                BOLD=""
+                NORMAL=""
+        fi
+
         # Perform GUI-related tasks here
-        echo "Installing other compilers..."
+        echo "$BLUE Installing other compilers..."
         sudo apt install -y build-essential      # build-essential
         sudo apt install -y gcc                  # gcc for C
         sudo apt install -y g++                  # g++ for C++

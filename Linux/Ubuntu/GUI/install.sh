@@ -1,9 +1,32 @@
 InstallGUI() {
+    # Define the colors which will be used in the script
+    if [ -t 1 ]; then
+        RED=$(tput setaf 1)
+        GREEN=$(tput setaf 2)
+        YELLOW=$(tput setaf 3)
+        BLUE=$(tput setaf 4)
+        GRAY=$(tput setaf 8)
+        SAFERED=$(tput setaf 9)
+        MAGENTA=$(tput setaf 5)
+        BOLD=$(tput bold)
+        NORMAL=$(tput sgr0)
+    else
+        RED=""
+        GREEN=""
+        YELLOW=""
+        BLUE=""
+        GRAY=""
+        SAFERED=""
+        MAGENTA=""
+        BOLD=""
+        NORMAL=""
+    fi
+
     # Perform GUI-related tasks here
-    echo "Installing GUI..."
-    echo "Choose an option:"
-    echo "1. Install GUI via Tasksel"
-    echo "2. Install GUI via apt"
+    echo "$YELLOW Installing GUI..."
+    echo "$GREEN Choose an option:"
+    echo "$BLOD 1. Install GUI via Tasksel"
+    echo "$BOLD 2. Install GUI via apt"
     read choice
 
     if [ "$choice" == "1" ]; then
@@ -12,9 +35,9 @@ InstallGUI() {
         sudo apt install tasksel -y # install tasksel
         sudo tasksel                # Select the GUI you want to install
     elif [ "$choice" == "2" ]; then
-        echo "Choose an option:"
-        echo "1. Install GNOME"
-        echo "2. Install Xfce"
+        echo "$YELLOW Choose an option:"
+        echo "$BOLD 1. Install GNOME"
+        echo "$BOLD 2. Install Xfce"
         read choice
 
         if [ "$choice" == "1" ]; then
@@ -32,11 +55,11 @@ InstallGUI() {
             sudo /usr/lib/lightdm/lightdm-set-defaults -s xfce # set default desktop to xfce
 
         else
-            echo "Invalid choice."
+            echo "$RED Invalid choice."
         fi
 
     else
-        echo "Invalid choice."
+        echo "$RED Invalid choice."
     fi
 
     # Install XRDP

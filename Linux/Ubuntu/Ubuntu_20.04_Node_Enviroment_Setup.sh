@@ -115,26 +115,28 @@ Ubuntu20.04NodeEnviromentSetup() {
 
     # Change MongoDB Config File Port & Bind IP
     # Define the directory path
-    MONGODB_CONFIG_FILE_PATH="/etc/mongod.conf"                              # mongod.conf file path
-    read "$YELLOW Do you want to Change MongoDB Port? (y/n): " mongoPORTchoice # ask user to change mongodb port or not
-    # Ask user To Enter MongoDB Port
-    read -p "$BOLD Enter MongoDB Port: " mongoPORT # ask user to enter mongodb port
+    MONGODB_CONFIG_FILE_PATH="/etc/mongod.conf"                                 # mongod.conf file path
+    read -p "$BOLD Do you want to Change MongoDB Port? (y/n): " mongoPORTchoice # ask user to change mongodb port or not
 
     if [ "$mongoPORTchoice" == "y" ] || [ "$mongoPORTchoice" == "Y" ]; then
+        # Ask user To Enter MongoDB Port
+        read -p "$BOLD Enter MongoDB Port: " mongoPORT                                   # ask user to enter mongodb port
         Port_line_number=$(grep -n "port:" $MONGODB_CONFIG_FILE_PATH | cut -d: -f1)      # get line number of port
         sudo sed -i "${Port_line_number}s/.*/port:$mongoPORT/" $MONGODB_CONFIG_FILE_PATH # change port
-        read "$YELLOW Do you want to Change MongoDB Bind IP? (y/n): " mongoBINDIPchoice    # ask user to change mongodb bind ip or not
+       
+        read -p "$BOLD Do you want to Change MongoDB Bind IP? (y/n): " mongoBINDIPchoice    # ask user to change mongodb bind ip or not
         # Ask user To Enter MongoDB Bind IP
         read -p "$BOLD Enter MongoDB Bind IP: " mongoBINDIP # ask user to enter mongodb bind ip
         if [ "$mongoBINDIPchoice" == "y" ] || [ "$mongoBINDIPchoice" == "Y" ]; then
             BindIP_line_number=$(grep -n "bindIp:" $MONGODB_CONFIG_FILE_PATH | cut -d: -f1)        # get line number of bindIp
             sudo sed -i "${BindIP_line_number}s/.*/bindIp:$mongoBINDIP/" $MONGODB_CONFIG_FILE_PATH # change bindIp
         else
-            echo "$MAGENTA Skipping MongoDB Bind IP Change."
+            echo "Skipping MongoDB Bind IP Change."
         fi
     else
-        echo "$MAGENTA Skipping MongoDB Port Change."
+        echo "Skipping MongoDB Port Change."
     fi
+    
     # Tell User that MongoDB Config File is changed
     echo "$YELLOW Your New MongoDB IP is: $NORMAL $mongoBINDIP & $BOLD Your New MongoDB Port is: $NORMAL $mongoPORT"
 

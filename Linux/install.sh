@@ -28,6 +28,9 @@ source ./Ubuntu/Ubuntu_22.04_Node_Enviroment_Setup.sh # Import the script file
 source ./Ubuntu/Ubuntu_20.04_Node_Enviroment_Setup.sh # Import the script file
 source ./Ubuntu/Ubuntu_23.04_Node_Enviroment_Setup.sh # Import the script file
 
+# Import CentOS Dependencies Script
+source ./CentOS/CentOS_9_Stram_Node_Enviroment_Setup.sh # Import the script file
+
 # Import Compiler Installation Script
 source ./Ubuntu/Compiler/install.sh # Import the script file
 
@@ -50,11 +53,21 @@ if [ "$os" == "1" ]; then
         Ubuntu20.04NodeEnviromentSetup
     else
         echo "$RED No Ubuntu Version Selected" # If the user chooses another Ubuntu Version, then run
-        exit 1                            # Exit with error code 1
+        exit 1                                 # Exit with error code 1
     fi
 elif [ "$os" == "2" ]; then
-    echo "$GREEN Which CentOS Version are you using? (1) 8: " centos_version # Ask the user which CentOS Version they are using
-    CentOS_8_Node_Enviroment_Setup
+    echo "$GREEN Which CentOS Version are you using? (1) 9 Stream (2) 8 Stream: " centos_version # Ask the user which CentOS Version they are using
+
+    if [ "$centos_version" == "1" ]; then
+        echo "$YELLOW Installing CentOS 9 Stream Dependencies" # If the user chooses CentOS 9 Stream, then run
+        CentOS9NodeEnviromentSetup
+    elif [ "$centos_version" == "2" ]; then
+        echo "$YELLOW Installing CentOS 8 Stream Dependencies" # If the user chooses CentOS 8 Stream, then run
+        CentOS8StreamNodeEnviromentSetup
+    else
+        echo "$RED No CentOS Version Selected" # If the user chooses another CentOS Version, then run
+        exit 1                                 # Exit with error code 1
+    fi
 elif [ "$os" == "3" ]; then
     echo "$GREEN Which Debian Version are you using? (1) 10: " debian_version # Ask the user which Debian Version they are using
     Debian_10_Node_Enviroment_Setup

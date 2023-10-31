@@ -158,6 +158,12 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo systemctl start docker                                                                                                                                                                                   # start docker
     docker --version                                                                                                                                                                                              # check docker version
 
+    # Install Redis
+    sudo apt install redis-server -y # install redis-server
+    sudo systemctl enable redis      # enable redis
+    sudo systemctl start redis       # start redis
+    sudo systemctl status redis      # check redis status
+
     # install docker-compose
     sudo apt install docker-compose -y # install docker-compose
     docker-compose --version           # check docker-compose version

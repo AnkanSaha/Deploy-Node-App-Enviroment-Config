@@ -58,6 +58,7 @@ touch .env # Create .env File
 
 # Get Environment Variables
 read -p "Enter MongoDB URL: " MONGODB_URL # Get MongoDB URL
+read -p "Enter MongoDB Database Name: " MONGODB_DB_NAME # Get MongoDB Database Name
 read -p "Enter PORT Number: " PORT # Get PORT Number
 read -p "Enter Live URL: " CORS_ORIGIN # Get Live URL for CORS
 read -p "Enter JWT Secret : " JWT_SECRET # Get JWT Secret
@@ -66,6 +67,7 @@ read -p "Enter Razorpay Merchant ID: " RAZORPAY_MERCHANT_ID # Get Razorpay Merch
 
 # Insert Environment Variables to .env file
 echo "MONGODB_URL=$MONGODB_URL" >> .env # Write MongoDB URL to .env file
+echo "DB_NAME=$MONGODB_DB_NAME" >> .env # Write MongoDB Database Name to .env file
 echo "PORT=$PORT" >> .env # Write PORT Number to .env file
 echo "CORS_ORIGIN=$CORS_ORIGIN" >> .env # Write Live URL to .env file
 echo "JWT_SECRET=$JWT_SECRET" >> .env # Write JWT Secret to .env file

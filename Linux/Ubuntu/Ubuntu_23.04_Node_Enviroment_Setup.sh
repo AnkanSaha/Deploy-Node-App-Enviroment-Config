@@ -113,6 +113,7 @@ Ubuntu23.04NodeEnviromentSetup() {
         read -p "$BOLD Enter MongoDB Port: " mongoPORT                                   # ask user to enter mongodb port
         Port_line_number=$(grep -n "port:" $MONGODB_CONFIG_FILE_PATH | cut -d: -f1)      # get line number of port
         sudo sed -i "${Port_line_number}s/.*/port:$mongoPORT/" $MONGODB_CONFIG_FILE_PATH # change port
+        sudo ufw allow $mongoPORT    # allow mongodb port
 
         read -p "$BOLD Do you want to Change MongoDB Bind IP? (y/n): " mongoBINDIPchoice # ask user to change mongodb bind ip or not
         # Ask user To Enter MongoDB Bind IP
@@ -140,7 +141,6 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo ufw allow 'Nginx HTTPS' # allow nginx https
     sudo ufw allow 'OpenSSH'     # allow openssh
     sudo ufw allow '3389'        # allow rdp
-    sudo ufw allow $mongoPORT    # allow mongodb port
     sudo ufw status              # check ufw status
 
     # install certbot for nginx and create ssl certificate
@@ -163,6 +163,18 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo systemctl enable redis      # enable redis
     sudo systemctl start redis       # start redis
     sudo systemctl status redis      # check redis status
+
+    # Install PostgreSQL
+    sudo apt install postgresql postgresql-contrib -y # install postgresql
+    sudo systemctl enable postgresql                 # enable postgresql
+    sudo systemctl start postgresql                  # start postgresql
+    sudo systemctl status postgresql                 # check postgresql status
+
+    # Install MySQL
+    sudo apt install mysql-server -y # install mysql-server
+    sudo systemctl enable mysql      # enable mysql
+    sudo systemctl start mysql       # start mysql
+    sudo systemctl status mysql      # check mysql status
 
     # install docker-compose
     sudo apt install docker-compose -y # install docker-compose

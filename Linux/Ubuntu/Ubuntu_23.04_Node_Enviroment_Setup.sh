@@ -90,6 +90,7 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo npm install -g @types/node       # install @types/node
     sudo npm install -g pm2               # install pm2
     sudo npm install -g nodemon           # install nodemon
+        sudo npm install -g yarn              # install yarn
 
     # installing MongoDB for Ubuntu 23.04 LTS
     sudo apt-get install gnupg curl -y # gnupg & curl

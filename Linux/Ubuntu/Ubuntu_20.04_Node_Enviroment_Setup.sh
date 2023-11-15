@@ -162,10 +162,28 @@ Ubuntu20.04NodeEnviromentSetup() {
     sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
 
     # Install Some Softwares
-    sudo apt install -y gparted # gparted
+    sudo apt install -y gparted  # gparted
     sudo apt install -y neofetch # neofetch
-    sudo apt install -y htop    # htop
-    sudo apt install -y wget       # wget
+    sudo apt install -y htop     # htop
+    sudo apt install -y wget     # wget
+
+    # Setup Ngrok
+    sudo apt install -y unzip         # unzip
+    sudo apt install -y zip           # zip
+    sudo apt install install -y snapd # snapd
+    sudo snap install ngrok           # ngrok
+
+    # inject ngrok authtoken in ngrok.yml file
+    read -p "$BOLD Do you want to inject ngrok authtoken in ngrok.yml file? (y/n): " choice
+
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+        read -p " Enter Ngrok authtoken : " ngrokauthtoken # ask user to enter ngrok authtoken
+        ngrok config add-authtoken "$ngrokauthtoken"       # inject ngrok authtoken in ngrok.yml file
+
+        echo "$BOLD $GREEN Ngrok authtoken is injected in ngrok.yml file."
+    else
+        echo "Skipping ngrok authtoken injection."
+    fi
 
     # install Docker
     sudo apt update                                                                                                                                                                                               # update apt
@@ -191,9 +209,9 @@ Ubuntu20.04NodeEnviromentSetup() {
 
     # Install PostgreSQL
     sudo apt install postgresql postgresql-contrib -y # install postgresql
-    sudo systemctl enable postgresql                 # enable postgresql
-    sudo systemctl start postgresql                  # start postgresql
-    sudo systemctl status postgresql                 # check postgresql status
+    sudo systemctl enable postgresql                  # enable postgresql
+    sudo systemctl start postgresql                   # start postgresql
+    sudo systemctl status postgresql                  # check postgresql status
 
     # Install MySQL
     sudo apt install mysql-server -y # install mysql-server

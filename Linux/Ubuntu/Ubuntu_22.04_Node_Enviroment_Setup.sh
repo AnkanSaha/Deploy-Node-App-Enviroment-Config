@@ -98,7 +98,7 @@ Ubuntu22.04NodeEnviromentSetup() {
     sudo npm install -g @types/node       # install @types/node
     sudo npm install -g pm2               # install pm2
     sudo npm install -g nodemon           # install nodemon
-        sudo npm install -g yarn              # install yarn
+    sudo npm install -g yarn              # install yarn
 
     # installing MongoDB for Ubuntu 22.04 LTS
     sudo apt-get install gnupg curl -y # gnupg & curl
@@ -119,14 +119,14 @@ Ubuntu22.04NodeEnviromentSetup() {
 
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
         read -p "$BOLD Do you want to Change MongoDB Port? (y/n): " mongoPORTchoice # ask user to change mongodb port or not
-        
-            # Check if user Consent to change MongoDB Port or not if yes then change port                         
+
+        # Check if user Consent to change MongoDB Port or not if yes then change port
         if [ "$mongoPORTchoice" == "y" ] || [ "$mongoPORTchoice" == "Y" ]; then
             # Ask user To Enter MongoDB Port
-            read -p "$BOLD Enter MongoDB Port: " mongoPORT         
+            read -p "$BOLD Enter MongoDB Port: " mongoPORT
             Port_line_number=$(grep -n "port:" $MONGODB_CONFIG_FILE_PATH | cut -d: -f1)       # get line number of port
             sudo sed -i "${Port_line_number}s/.*/port: $mongoPORT/" $MONGODB_CONFIG_FILE_PATH # change port                                                      # allow mongodb port
-            sudo ufw allow $mongoPORT    # Allow MongoDB Port                                                      # allow mongodb port
+            sudo ufw allow $mongoPORT                                                         # Allow MongoDB Port                                                      # allow mongodb port
 
             read -p "$BOLD Do you want to Change MongoDB Bind IP? (y/n): " mongoBINDIPchoice # ask user to change mongodb bind ip or not
             # Ask user To Enter MongoDB Bind IP
@@ -160,13 +160,29 @@ Ubuntu22.04NodeEnviromentSetup() {
     # install certbot for nginx and create ssl certificate
     sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
 
-
     # Install Some Softwares
-    sudo apt install -y gparted # gparted
+    sudo apt install -y gparted  # gparted
     sudo apt install -y neofetch # neofetch
-    sudo apt install -y htop    # htop
-    sudo apt install -y wget       # wget
+    sudo apt install -y htop     # htop
+    sudo apt install -y wget     # wget
 
+    # Setup Ngrok
+    sudo apt install -y unzip         # unzip
+    sudo apt install -y zip           # zip
+    sudo apt install install -y snapd # snapd
+    sudo snap install ngrok           # ngrok
+
+    # inject ngrok authtoken in ngrok.yml file
+    read -p "$BOLD Do you want to inject ngrok authtoken in ngrok.yml file? (y/n): " choice
+
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+        read -p " Enter Ngrok authtoken : " ngrokauthtoken # ask user to enter ngrok authtoken
+        ngrok config add-authtoken "$ngrokauthtoken"       # inject ngrok authtoken in ngrok.yml file
+
+        echo "$BOLD $GREEN Ngrok authtoken is injected in ngrok.yml file."
+    else
+        echo "Skipping ngrok authtoken injection."
+    fi
 
     # install Docker
     sudo apt update                                                                                                                                                                                               # update apt

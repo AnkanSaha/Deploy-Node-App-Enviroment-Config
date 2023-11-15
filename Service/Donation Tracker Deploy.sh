@@ -22,12 +22,14 @@ npm install
 read -p "Enter the LIVE URL: " LIVE_URL # Get the LIVE URL
 read -p "Enter MongoDB URL: " MONGODB_URL # Get the MongoDB URL
 read -p "Enter PORT Number: " PORT # Get the PORT Number
+read =p "Enter Database Name: " DATABASE_NAME # Get the Database Name
 
 # Create .env File
 touch .env # Create .env File
 echo "CORS_ORIGIN=$LIVE_URL" >> .env # Add LIVE_URL to .env File
 echo "MONGO_URL=$MONGODB_URL" >> .env # Add MONGODB_URL to .env File
 echo "PORT=$PORT" >> .env # Add PORT to .env File
+echo "DATABASE_NAME=$DATABASE_NAME" >> .env # Add DATABASE_NAME to .env File
 
 # Start the Server
 npm start # Start the Server

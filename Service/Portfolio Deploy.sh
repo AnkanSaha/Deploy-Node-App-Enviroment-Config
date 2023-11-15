@@ -15,9 +15,21 @@ fi
 
 git clone $GithubLink # Clone the repo
 
+
 cd $ProjectDir # Go to the repo
 npm install # Install dependencies
 npm run start # Start the server
+
+# Write the .env file
+touch .env # Create the .env file
+
+# Insert the .env variables
+read -p "Enter the value of PORT: " PORT # PORT
+echo "PORT=$PORT" >> .env
+read -p "Enter the value of MONGODB_URI: " MONGODB_URI # MONGODB_URI
+echo "MONGODB_URI=$MONGODB_URI" >> .env
+read -p "Enter Database Name: " DB_NAME # DB_NAME
+echo "DB_NAME=$DB_NAME" >> .env
 
 #PM2
 sudo  pm2 startup # Start PM2 on Boot

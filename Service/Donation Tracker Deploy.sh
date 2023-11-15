@@ -22,7 +22,7 @@ npm install
 read -p "Enter the LIVE URL: " LIVE_URL # Get the LIVE URL
 read -p "Enter MongoDB URL: " MONGODB_URL # Get the MongoDB URL
 read -p "Enter PORT Number: " PORT # Get the PORT Number
-read =p "Enter Database Name: " DATABASE_NAME # Get the Database Name
+read -p "Enter Database Name: " DATABASE_NAME # Get the Database Name
 
 # Create .env File
 touch .env # Create .env File

@@ -148,6 +148,13 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo ufw allow '3389'        # allow rdp
     sudo ufw status              # check ufw status
 
+    # Install Some Softwares
+    sudo apt install -y gparted # gparted
+    sudo apt install -y neofetch # neofetch
+    sudo apt install -y htop    # htop
+    sudo apt install -y wget       # wget
+
+
     # install certbot for nginx and create ssl certificate
     sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
 

@@ -119,13 +119,14 @@ Ubuntu22.04NodeEnviromentSetup() {
 
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
         read -p "$BOLD Do you want to Change MongoDB Port? (y/n): " mongoPORTchoice # ask user to change mongodb port or not
-
+        
+            # Check if user Consent to change MongoDB Port or not if yes then change port                         
         if [ "$mongoPORTchoice" == "y" ] || [ "$mongoPORTchoice" == "Y" ]; then
             # Ask user To Enter MongoDB Port
-            read -p "$BOLD Enter MongoDB Port: " mongoPORT                                    # ask user to enter mongodb port
+            read -p "$BOLD Enter MongoDB Port: " mongoPORT         
             Port_line_number=$(grep -n "port:" $MONGODB_CONFIG_FILE_PATH | cut -d: -f1)       # get line number of port
-            sudo sed -i "${Port_line_number}s/.*/port: $mongoPORT/" $MONGODB_CONFIG_FILE_PATH # change port
-            sudo ufw allow $mongoPORT                                                         # allow mongodb port
+            sudo sed -i "${Port_line_number}s/.*/port: $mongoPORT/" $MONGODB_CONFIG_FILE_PATH # change port                                                      # allow mongodb port
+            sudo ufw allow $mongoPORT    # Allow MongoDB Port                                                      # allow mongodb port
 
             read -p "$BOLD Do you want to Change MongoDB Bind IP? (y/n): " mongoBINDIPchoice # ask user to change mongodb bind ip or not
             # Ask user To Enter MongoDB Bind IP
@@ -158,6 +159,14 @@ Ubuntu22.04NodeEnviromentSetup() {
 
     # install certbot for nginx and create ssl certificate
     sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
+
+
+    # Install Some Softwares
+    sudo apt install -y gparted # gparted
+    sudo apt install -y neofetch # neofetch
+    sudo apt install -y htop    # htop
+    sudo apt install -y wget       # wget
+
 
     # install Docker
     sudo apt update                                                                                                                                                                                               # update apt

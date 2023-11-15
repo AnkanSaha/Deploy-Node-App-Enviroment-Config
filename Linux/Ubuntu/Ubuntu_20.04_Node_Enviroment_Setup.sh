@@ -161,6 +161,12 @@ Ubuntu20.04NodeEnviromentSetup() {
     # install certbot for nginx and create ssl certificate
     sudo apt install certbot python3-certbot-nginx -y # install certbot for nginx
 
+    # Install Some Softwares
+    sudo apt install -y gparted # gparted
+    sudo apt install -y neofetch # neofetch
+    sudo apt install -y htop    # htop
+    sudo apt install -y wget       # wget
+
     # install Docker
     sudo apt update                                                                                                                                                                                               # update apt
     sudo apt install apt-transport-https ca-certificates curl software-properties-common -y                                                                                                                       # install dependencies for docker

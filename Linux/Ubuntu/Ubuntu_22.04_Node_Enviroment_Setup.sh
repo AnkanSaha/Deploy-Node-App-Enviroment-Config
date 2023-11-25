@@ -112,39 +112,6 @@ Ubuntu22.04NodeEnviromentSetup() {
     sudo systemctl enable mongod                                                                                                                                                                                      # enable mongodb
     sudo systemctl start mongod                                                                                                                                                                                       # start mongodb
 
-    # Change MongoDB Config File Port & Bind IP
-    # Define the directory path
-    MONGODB_CONFIG_FILE_PATH="/etc/mongod.conf" # mongod.conf file path
-    read -p "$BOLD Do you want to change MongoDB Config File Port & Bind IP? (y/n): " choice
-
-    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-        read -p "$BOLD Do you want to Change MongoDB Port? (y/n): " mongoPORTchoice # ask user to change mongodb port or not
-
-        # Check if user Consent to change MongoDB Port or not if yes then change port
-        if [ "$mongoPORTchoice" == "y" ] || [ "$mongoPORTchoice" == "Y" ]; then
-            # Ask user To Enter MongoDB Port
-            read -p "$BOLD Enter MongoDB Port: " mongoPORT
-            Port_line_number=$(grep -n "port:" $MONGODB_CONFIG_FILE_PATH | cut -d: -f1)       # get line number of port
-            sudo sed -i "${Port_line_number}s/.*/port: $mongoPORT/" $MONGODB_CONFIG_FILE_PATH # change port                                                      # allow mongodb port
-            sudo ufw allow $mongoPORT                                                         # Allow MongoDB Port                                                      # allow mongodb port
-
-            read -p "$BOLD Do you want to Change MongoDB Bind IP? (y/n): " mongoBINDIPchoice # ask user to change mongodb bind ip or not
-            # Ask user To Enter MongoDB Bind IP
-            read -p "$BOLD Enter MongoDB Bind IP: " mongoBINDIP # ask user to enter mongodb bind ip
-            if [ "$mongoBINDIPchoice" == "y" ] || [ "$mongoBINDIPchoice" == "Y" ]; then
-                BindIP_line_number=$(grep -n "bindIp:" $MONGODB_CONFIG_FILE_PATH | cut -d: -f1)         # get line number of bindIp
-                sudo sed -i "${BindIP_line_number}s/.*/bindIp: $mongoBINDIP/" $MONGODB_CONFIG_FILE_PATH # change bindIp
-            else
-                echo "Skipping MongoDB Bind IP Change."
-            fi
-        else
-            echo "Skipping MongoDB Port Change."
-        fi
-        # Tell User that MongoDB Config File is changed
-        echo "$BOLD Your New MongoDB IP is: $NORMAL $mongoBINDIP & $BOLD Your New MongoDB Port is: $NORMAL $mongoPORT"
-    else
-        echo "Skipping MongoDB Config File Change."
-    fi
     # Restart MongoDB
     sudo systemctl restart mongod # restart mongodb
 
@@ -205,6 +172,21 @@ Ubuntu22.04NodeEnviromentSetup() {
     sudo systemctl enable redis      # enable redis
     sudo systemctl start redis       # start redis
     sudo systemctl status redis      # check redis status
+
+    # Apache Cassandra Installation
+    sudo apt install apt-transport-https -y # install apt-transport-https
+    sudo apt install dirmngr -y             # install dirmngr
+    sudo apt install gnupg -y               # install gnupg
+    sudo apt install software-properties-common -y # install software-properties-common
+    sudo apt install curl -y                      # install curl
+    curl -fsSL https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add - # add key for cassandra
+    sudo apt-key adv --keyserver pool.sks-keyservers.net --recv-key A278B781FE4B2BDA # add key for cassandra
+    echo "deb https://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list # add repo for cassandra
+    sudo apt update # update apt
+    sudo apt install cassandra -y # install cassandra
+    sudo systemctl enable cassandra # enable cassandra
+    sudo systemctl start cassandra # start cassandra
+    sudo systemctl status cassandra # check cassandra status
 
     # Install PostgreSQL
     sudo apt install postgresql postgresql-contrib -y # install postgresql

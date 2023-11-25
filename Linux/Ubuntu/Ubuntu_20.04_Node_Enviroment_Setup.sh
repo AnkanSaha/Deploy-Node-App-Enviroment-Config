@@ -176,25 +176,23 @@ Ubuntu20.04NodeEnviromentSetup() {
     sudo systemctl status redis      # check redis status
 
     # Apache Cassandra Installation
-    sudo apt install apt-transport-https -y # install apt-transport-https
-    sudo apt install dirmngr -y             # install dirmngr
-    sudo apt install gnupg -y               # install gnupg
-    sudo apt install software-properties-common -y # install software-properties-common
-    sudo apt install curl -y                      # install curl
-    curl -fsSL https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add - # add key for cassandra
-    sudo apt-key adv --keyserver pool.sks-keyservers.net --recv-key A278B781FE4B2BDA # add key for cassandra
-    echo "deb https://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list # add repo for cassandra
-    sudo apt update # update apt
-    sudo apt install cassandra -y # install cassandra
-    sudo systemctl enable cassandra # enable cassandra
-    sudo systemctl start cassandra # start cassandra
-    sudo systemctl status cassandra # check cassandra status
+    echo "deb https://debian.cassandra.apache.org 41x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list # add repo for cassandra
+    deb https://debian.cassandra.apache.org 41x main                                                                     # add repo for cassandra
+    curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -                                                # add key for cassandra
+    sudo apt-get update                                                                                                  # update apt
+    sudo apt-get install cassandra -y                                                                                    # install cassandra
+    sudo systemctl enable cassandra                                                                                      # enable cassandra
+    sudo systemctl start cassandra                                                                                       # start cassandra
+    sudo systemctl status cassandra                                                                                      # check cassandra status
 
     # Install PostgreSQL
-    sudo apt install postgresql postgresql-contrib -y # install postgresql
-    sudo systemctl enable postgresql                  # enable postgresql
-    sudo systemctl start postgresql                   # start postgresql
-    sudo systemctl status postgresql                  # check postgresql status
+    sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' # add repo for postgresql
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -                                         # add key for postgresql
+    sudo apt-get update                                                                                                               # update apt
+    sudo apt-get -y install postgresql                                                                                                # install postgresql
+    sudo systemctl enable postgresql                                                                                                  # enable postgresql
+    sudo systemctl start postgresql                                                                                                   # start postgresql
+    sudo systemctl status postgresql                                                                                                  # check postgresql status
 
     # Install MySQL
     sudo apt install mysql-server -y # install mysql-server

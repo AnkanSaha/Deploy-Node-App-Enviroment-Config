@@ -64,6 +64,7 @@ read -p "Enter Live URL: " CORS_ORIGIN # Get Live URL for CORS
 read -p "Enter JWT Secret : " JWT_SECRET # Get JWT Secret
 read -p "Enter JWT Expiry Time (ex: 1d, 1h, 1m, 1s): " JWT_EXPIRY_TIME # Get JWT Expiry Time
 read -p "Enter Razorpay Merchant ID: " RAZORPAY_MERCHANT_ID # Get Razorpay Merchant ID
+read -p "How Many Processes do you want to run? (ex: 1, 2, 3): " PROCESS_COUNT # Get Number of Processes to run
 
 # Insert Environment Variables to .env file
 echo "MONGODB_URL=$MONGODB_URL" >> .env # Write MongoDB URL to .env file
@@ -73,6 +74,7 @@ echo "CORS_ORIGIN=$CORS_ORIGIN" >> .env # Write Live URL to .env file
 echo "JWT_SECRET=$JWT_SECRET" >> .env # Write JWT Secret to .env file
 echo "JWT_EXPIRES_IN=$JWT_EXPIRY_TIME" >> .env # Write JWT Expiry Time to .env file
 echo "RAZORPAY_MERCHANT_ID=$RAZORPAY_MERCHANT_ID" >> .env # Write Razorpay Merchant ID to .env file
+echo "CPU_COUNT_MULTIPLIERenv=$PROCESS_COUNT" >> .env # Write Number of Processes to run to .env file
 
 # Start Backend
 npm install # Install all dependencies

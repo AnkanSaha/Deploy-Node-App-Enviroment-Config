@@ -21,8 +21,9 @@ InstallDatabase() {
         BOLD=""
         NORMAL=""
     fi
-    read -p "$BOLD Do you want to install MySQL? [y/n]? (y/n): " choice
 
+    # Install MySQL
+    read -p "$BOLD Do you want to install MySQL? [y/n]? (y/n): " choice
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
         echo "$NORMAL$BOLD Installing MySQL... $NORMAL"
         # Install MySQL
@@ -33,8 +34,8 @@ InstallDatabase() {
         echo "$NORMAL$BOLD Skipping MySQL installation... $NORMAL"
     fi
 
+    # Install PostgreSQL
     read -p "$BOLD Do you want to install PostgreSQL? [y/n]? (y/n): " choice
-
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
         echo "$NORMAL$BOLD Installing PostgreSQL... $NORMAL"
         # Install PostgreSQL
@@ -48,8 +49,8 @@ InstallDatabase() {
         echo "$NORMAL$BOLD Skipping PostgreSQL installation... $NORMAL"
     fi
 
+    # Install cassandra
     read -p "$BOLD Do you want to install cassandra? [y/n]? (y/n): " choice
-
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
         echo "$NORMAL$BOLD Installing cassandra... $NORMAL"
         # Apache Cassandra Installation
@@ -64,8 +65,8 @@ InstallDatabase() {
         echo "$NORMAL$BOLD Skipping cassandra installation... $NORMAL"
     fi
 
+    # Install Redis
     read -p "$BOLD Do you want to install Redis? [y/n]? (y/n): " choice
-
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
         echo "$NORMAL$BOLD Installing Redis... $NORMAL"
         # Install Redis

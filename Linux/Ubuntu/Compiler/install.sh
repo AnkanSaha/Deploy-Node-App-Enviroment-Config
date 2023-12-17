@@ -103,5 +103,4 @@ InstallCompiler() {
         echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list # add repo for dart
         sudo apt-get update                                                                                                                                                                              # update apt again
         sudo apt-get install dart -y                                                                                                                                                                     # install dart
-
 }

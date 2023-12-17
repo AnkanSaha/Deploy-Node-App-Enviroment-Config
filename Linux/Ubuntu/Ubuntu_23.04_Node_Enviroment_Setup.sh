@@ -104,41 +104,17 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo systemctl enable mongod                                                                                                                                                                                      # enable mongodb
     sudo systemctl start mongod                                                                                                                                                                                       # start mongodb
 
- # Change MongoDB Config File Port & Bind IP
-    # Define the directory path
-    MONGODB_CONFIG_FILE_PATH="/etc/mongod.conf" # mongod.conf file path
-    read -p "$BOLD Do you want to change MongoDB Config File Port & Bind IP? (y/n): " choice
-
-    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-        read -p "$BOLD Do you want to Change MongoDB Port? (y/n): " mongoPORTchoice # ask user to change mongodb port or not
-
-        if [ "$mongoPORTchoice" == "y" ] || [ "$mongoPORTchoice" == "Y" ]; then
-            # Ask user To Enter MongoDB Port
-            read -p "$BOLD Enter MongoDB Port: " mongoPORT                                    # ask user to enter mongodb port
-            Port_line_number=$(grep -n "port:" $MONGODB_CONFIG_FILE_PATH | cut -d: -f1)       # get line number of port
-            sudo sed -i "${Port_line_number}s/.*/port: $mongoPORT/" $MONGODB_CONFIG_FILE_PATH # change port
-            sudo ufw allow $mongoPORT                                                         # allow mongodb port
-
-            read -p "$BOLD Do you want to Change MongoDB Bind IP? (y/n): " mongoBINDIPchoice # ask user to change mongodb bind ip or not
-            # Ask user To Enter MongoDB Bind IP
-            read -p "$BOLD Enter MongoDB Bind IP: " mongoBINDIP # ask user to enter mongodb bind ip
-            if [ "$mongoBINDIPchoice" == "y" ] || [ "$mongoBINDIPchoice" == "Y" ]; then
-                BindIP_line_number=$(grep -n "bindIp:" $MONGODB_CONFIG_FILE_PATH | cut -d: -f1)         # get line number of bindIp
-                sudo sed -i "${BindIP_line_number}s/.*/bindIp: $mongoBINDIP/" $MONGODB_CONFIG_FILE_PATH # change bindIp
-            else
-                echo "Skipping MongoDB Bind IP Change."
-            fi
-        else
-            echo "Skipping MongoDB Port Change."
-        fi
-        # Tell User that MongoDB Config File is changed
-        echo "$BOLD Your New MongoDB IP is: $NORMAL $mongoBINDIP & $BOLD Your New MongoDB Port is: $NORMAL $mongoPORT"
-    else
-        echo "Skipping MongoDB Config File Change."
-    fi
-    
     # Restart MongoDB
     sudo systemctl restart mongod # restart mongodb
+
+    # install other Databases
+    read -p "$BOLD Do you want to install other databases? (y/n): " choice
+
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+        InstallDatabase # Install all databases
+    else
+        echo "$YELLOW Skipping other databases installation."
+    fi
 
     #ufw configuration
     sudo ufw enable              # enable ufw
@@ -187,37 +163,6 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo systemctl enable docker                                                                                                                                                                                  # enable docker
     sudo systemctl start docker                                                                                                                                                                                   # start docker
     docker --version                                                                                                                                                                                              # check docker version
-
-    # Install Redis
-    sudo apt install redis-server -y # install redis-server
-    sudo systemctl enable redis      # enable redis
-    sudo systemctl start redis       # start redis
-    sudo systemctl status redis      # check redis status
-
-    # Apache Cassandra Installation
-    echo "deb https://debian.cassandra.apache.org 41x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list # add repo for cassandra
-    deb https://debian.cassandra.apache.org 41x main                                                                     # add repo for cassandra
-    curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -                                                # add key for cassandra
-    sudo apt-get update                                                                                                  # update apt
-    sudo apt-get install cassandra -y                                                                                    # install cassandra
-    sudo systemctl enable cassandra                                                                                      # enable cassandra
-    sudo systemctl start cassandra                                                                                       # start cassandra
-    sudo systemctl status cassandra                                                                                      # check cassandra status
-
-    # Install PostgreSQL
-    sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' # add repo for postgresql
-    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -                                         # add key for postgresql
-    sudo apt-get update                                                                                                               # update apt
-    sudo apt-get -y install postgresql                                                                                                # install postgresql
-    sudo systemctl enable postgresql                                                                                                  # enable postgresql
-    sudo systemctl start postgresql                                                                                                   # start postgresql
-    sudo systemctl status postgresql                                                                                                  # check postgresql status
-
-    # Install MySQL
-    sudo apt install mysql-server -y # install mysql-server
-    sudo systemctl enable mysql      # enable mysql
-    sudo systemctl start mysql       # start mysql
-    sudo systemctl status mysql      # check mysql status
 
     # install docker-compose
     sudo apt install docker-compose -y # install docker-compose

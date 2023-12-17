@@ -28,7 +28,8 @@ source ./Ubuntu/Ubuntu_22.04_Node_Enviroment_Setup.sh # Import the script file
 source ./Ubuntu/Ubuntu_20.04_Node_Enviroment_Setup.sh # Import the script file
 source ./Ubuntu/Ubuntu_23.04_Node_Enviroment_Setup.sh # Import the script file
 
-# Import Debian Dependencies Script
+# Import Database Installation Script
+source ./Ubuntu/Database/install.sh # Import the script file
 
 # Import Compiler Installation Script
 source ./Ubuntu/Compiler/install.sh # Import the script file

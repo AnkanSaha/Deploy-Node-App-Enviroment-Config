@@ -25,19 +25,19 @@ InstallDatabase() {
     # Install MySQL
     read -p "$BOLD Do you want to install MySQL? [y/n]? (y/n): " choice
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-        echo "$NORMAL$BOLD Installing MySQL... $NORMAL"
+        echo "$NORMAL $BOLD Installing MySQL... $NORMAL"
         # Install MySQL
         sudo apt install mysql-server -y # install mysql-server
         sudo systemctl enable mysql      # enable mysql
         sudo systemctl start mysql       # start mysql
     else
-        echo "$NORMAL$BOLD Skipping MySQL installation... $NORMAL"
+        echo "$NORMAL $BOLD Skipping MySQL installation... $NORMAL"
     fi
 
     # Install PostgreSQL
     read -p "$BOLD Do you want to install PostgreSQL? [y/n]? (y/n): " choice
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-        echo "$NORMAL$BOLD Installing PostgreSQL... $NORMAL"
+        echo "$NORMAL $BOLD Installing PostgreSQL... $NORMAL"
         # Install PostgreSQL
         sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' # add repo for postgresql
         wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -                                         # add key for postgresql
@@ -46,13 +46,13 @@ InstallDatabase() {
         sudo systemctl enable postgresql                                                                                                  # enable postgresql
         sudo systemctl start postgresql
     else
-        echo "$NORMAL$BOLD Skipping PostgreSQL installation... $NORMAL"
+        echo "$NORMAL $BOLD Skipping PostgreSQL installation... $NORMAL"
     fi
 
     # Install cassandra
     read -p "$BOLD Do you want to install cassandra? [y/n]? (y/n): " choice
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-        echo "$NORMAL$BOLD Installing cassandra... $NORMAL"
+        echo "$NORMAL $BOLD Installing cassandra... $NORMAL"
         # Apache Cassandra Installation
         echo "deb https://debian.cassandra.apache.org 41x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list # add repo for cassandra
         deb https://debian.cassandra.apache.org 41x main                                                                     # add repo for cassandra
@@ -68,12 +68,12 @@ InstallDatabase() {
     # Install Redis
     read -p "$BOLD Do you want to install Redis? [y/n]? (y/n): " choice
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-        echo "$NORMAL$BOLD Installing Redis... $NORMAL"
+        echo "$NORMAL $BOLD Installing Redis... $NORMAL"
         # Install Redis
         sudo apt install redis-server -y # install redis-server
         sudo systemctl enable redis      # enable redis
         sudo systemctl start redis       # start redis
     else
-        echo "$NORMAL$BOLD Skipping Redis installation... $NORMAL"
+        echo "$NORMAL $BOLD Skipping Redis installation... $NORMAL"
     fi
 }

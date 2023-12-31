@@ -25,6 +25,19 @@ git clone $GithubLink # Clone PaisaPay Project from Github
 
 #Build Frontend
 cd "$StaticDirectoryName/$ClientFolder" # Go to PaisaPay Frontend Project Directory
+
+# Ask for IP_INFO_API_KEY prompt
+read -p "Enter IP_INFO_API_KEY: " IP_INFO_API_KEY # Get IP_INFO_API_KEY from user
+read -p "Enter ENCRYPTION_KEY Secret: " ENCRYPTION_KEY # Get ENCRYPTION_KEY from user
+
+# create .env file for Vite
+touch .env # Create .env File
+
+# Insert Environment Variables to .env file
+echo "VITE_ENCRYPTION_KEY=$ENCRYPTION_KEY" >> .env # Write ENCRYPTION_KEY to .env file
+echo "VITE_IP_INFO_API_KEY=$IP_INFO_API_KEY" >> .env # Write IP_INFO_API_KEY to .env file
+
+# Start building Frontend App
 npm install # Install all dependencies
 npm run build # Build Frontend
 

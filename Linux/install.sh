@@ -59,5 +59,5 @@ elif [ "$os" == "2" ]; then
     echo "$YELLOW You can use Ubuntu Script for Debian as ubuntu is based on Debian" # If the user chooses Debian, then run
 else
     echo "$RED Currently not supported" # If the user chooses another OS, then run
-    exit 1                              # Exit with error code 1 when the user chooses another OS
+    exit 1                              # Exit with error code 1 when the user chooses another OS in Option
 fi

@@ -51,9 +51,6 @@ sudo mv "$StaticDirectoryName"/* "$StaticDirectoryPATH"/ # Move the Frontend App
 cd ~ # Go to Home Directory
 cd "$StaticDirectoryName/$ServerFolder" # Go to PaisaPay Frontend Project Directory
 npm install # Install all dependencies
-npm run build # Build Backend
-
-cd Build # Go to Build Directory
 
 # Create .env file
 touch .env # Create .env File

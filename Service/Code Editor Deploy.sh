@@ -4,8 +4,8 @@
 cd ~
 
 # Directory Variables
-ClientFolder="Client" # Frontend Project Name
-ServerFolder="Server" # Backend Project Name
+ClientFolder="client" # Frontend Project Name
+ServerFolder="server" # Backend Project Name
 StaticDirectoryPATH="/var/www/html/Code-Editor" # Static Directory to check
 StaticDirectoryName="Code-Editor" # Directory Name to check
 

@@ -6,11 +6,11 @@ cd ~
 # Directory Variables
 ClientFolder="client" # Frontend Project Name
 ServerFolder="server" # Backend Project Name
-StaticDirectoryPATH="/var/www/html/Code-Editor" # Static Directory to check
-StaticDirectoryName="Code-Editor" # Directory Name to check
+StaticDirectoryPATH="/var/www/html/Code-Compiler" # Static Directory to check
+StaticDirectoryName="Code-Compiler" # Directory Name to check
 
 # Git Link Variables
-GithubLink="https://github.com/AnkanSaha/Code-Editor.git" # PaisaPay Project Link
+GithubLink="https://github.com/AnkanSaha/Code-Compiler.git" # PaisaPay Project Link
 
 # Check if PaisaPay-Frontend directory exists
 if [ -d "$StaticDirectoryName" ]; then

@@ -34,7 +34,6 @@ read -p "Enter ENCRYPTION_KEY Secret: " ENCRYPTION_KEY # Get ENCRYPTION_KEY from
 touch .env # Create .env File
 
 # Insert Environment Variables to .env file
-echo "VITE_ENCRYPTION_KEY=$ENCRYPTION_KEY" >> .env # Write ENCRYPTION_KEY to .env file
 echo "VITE_IP_INFO_API_KEY=$IP_INFO_API_KEY" >> .env # Write IP_INFO_API_KEY to .env file
 
 # Start building Frontend App

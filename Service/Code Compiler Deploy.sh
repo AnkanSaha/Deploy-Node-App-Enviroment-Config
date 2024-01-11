@@ -10,21 +10,21 @@ StaticDirectoryPATH="/var/www/html/Code-Compiler" # Static Directory to check
 StaticDirectoryName="Code-Compiler" # Directory Name to check
 
 # Git Link Variables
-GithubLink="https://github.com/AnkanSaha/Code-Compiler.git" # PaisaPay Project Link
+GithubLink="https://github.com/AnkanSaha/Code-Compiler.git" # Code Compiler Project Link
 
-# Check if PaisaPay-Frontend directory exists
+# Check if Code Compiler-Frontend directory exists
 if [ -d "$StaticDirectoryName" ]; then
-  # Delete PaisaPay-Frontend directory
+  # Delete Code Compiler-Frontend directory
   sudo rm -rf "$StaticDirectoryName"
   echo "$StaticDirectoryName directory deleted."
 fi
 
 
 # # Import All Required Files form Github
-git clone $GithubLink # Clone PaisaPay Project from Github
+git clone $GithubLink # Clone Code Compiler Project from Github
 
 #Build Frontend
-cd "$StaticDirectoryName/$ClientFolder" # Go to PaisaPay Frontend Project Directory
+cd "$StaticDirectoryName/$ClientFolder" # Go to Code Compiler Frontend Project Directory
 
 # Start building Frontend App
 npm install # Install all dependencies
@@ -44,12 +44,12 @@ else
     echo "Directory created." # Directory Created Message
 fi
 
-# Move Frontend to /var/www/html/PaisaPay
+# Move Frontend to /var/www/html/Code Compiler
 sudo mv "$StaticDirectoryName"/* "$StaticDirectoryPATH"/ # Move the Frontend App to the Directory
 
 # Register All Environment Variables
 cd ~ # Go to Home Directory
-cd "$StaticDirectoryName/$ServerFolder" # Go to PaisaPay Frontend Project Directory
+cd "$StaticDirectoryName/$ServerFolder" # Go to Code Compiler Frontend Project Directory
 npm install # Install all dependencies
 
 # Create .env file
@@ -66,7 +66,7 @@ read -p "Enter IPINFO API KEY: " IPINFO_API_KEY # Get Razorpay Merchant ID
 read -p "How Many Processes do you want to run? (ex: 1, 2, 3): " PROCESS_COUNT # Get Number of Processes to run
 
 # Insert Environment Variables to .env file
-echo "MONGODB_URI=$MONGODB_URI" >> .env # Write MongoDB URL to .env file
+echo "MONGODB_URL=$MONGODB_URI" >> .env # Write MongoDB URL to .env file
 echo "DB_NAME=$MONGODB_DB_NAME" >> .env # Write MongoDB Database Name to .env file
 echo "PORT=$PORT" >> .env # Write PORT Number to .env file
 echo "ALLOWED_ORIGINS=$ALLOWED_ORIGINS" >> .env # Write Live URL to .env file

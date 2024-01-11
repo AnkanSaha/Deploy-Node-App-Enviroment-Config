@@ -1,52 +1,36 @@
-# Let's Import the Frontend App from Github
+#!/bin/bash
+
 # Go to Home Directory
 cd ~
 
 # Directory Variables
-GithubFrontendPATH="Store-Management-Frontend"
-GithubBackendPATH="Store-Management-Backend"
-StaticDirectoryPATH="/var/www/html/StoreManagement" # Directory to check
-StaticDirectoryName="StoreManagement" # Directory Name
+ClientFolder="client" # Frontend Project Name
+ServerFolder="server" # Backend Project Name
+StaticDirectoryPATH="/var/www/html/Store-Management" # Static Directory to check
+StaticDirectoryName="Store-Management" # Directory Name to check
 
 # Git Link Variables
-GithubFrontendLink="https://github.com/AnkanSaha/Store-Management-Frontend.git"
-GithubBackendLink="https://github.com/AnkanSaha/Store-Management-Backend.git"
+GithubLink="https://github.com/AnkanSaha/Store-Management.git" # Store Management Project Link
 
-# Check if PaisaPay-Frontend directory exists
-if [ -d "$GithubFrontendPATH" ]; then
-  # Delete PaisaPay-Frontend directory
-  sudo rm -rf "$GithubFrontendPATH"
-  echo "$GithubFrontendPATH directory deleted."
+# Check if Store Management-Frontend directory exists
+if [ -d "$StaticDirectoryName" ]; then
+  # Delete Store Management-Frontend directory
+  sudo rm -rf "$StaticDirectoryName"
+  echo "$StaticDirectoryName directory deleted."
 fi
 
-# Check if PaisaPay-Backend directory exists
-if [ -d "$GithubBackendPATH" ]; then
-  # Delete PaisaPay-Backend directory
-  rm -rf "$GithubBackendPATH"
-  echo "$GithubBackendPATH directory deleted."
-fi
 
-git clone $GithubFrontendLink # Import the Frontend App from Github
-cd "$GithubFrontendPATH"/ # Go to Frontend Folder
+# # Import All Required Files form Github
+git clone $GithubLink # Clone Store Management Project from Github
 
-# Let's build our Production ready version of the app
-npm install # Install all the dependencies
-npm run build # Build the Frontend App
+#Build Frontend
+cd "$StaticDirectoryName/$ClientFolder" # Go to Store Management Frontend Project Directory
 
-# import the Backend App from Github
-cd # Go to the parent folder
-git clone $GithubBackendLink # Import the Backend App from Github
+# Start building Frontend App
+npm install # Install all dependencies
+npm run build # Build Frontend
 
-# Let's Build our Production ready version of Backend App
-cd "$GithubBackendPATH"/ # Go to Backend Folder
-npm install # Install all the dependencies
-npm run build # Build the Backend App
-
-# Lets copy the build folder to the backend folder
-cd ../"$GithubFrontendPATH" # Go to Frontend Folder
-
-# Move Frontend to /var/www/html/StoreManagement
-
+# If Directory Exists then Remove Directory else Create Directory
 
 if [ -d "$StaticDirectoryPATH" ]; then
     echo "Directory exists. Deleting..." # Directory Exists Message
@@ -60,37 +44,38 @@ else
     echo "Directory created." # Directory Created Message
 fi
 
-# Move Frontend to /var/www/html/StoreManagement
-sudo mv "$StaticDirectoryName"/* "$StaticDirectoryPATH" # Move the Frontend App to the Directory
+# Move Frontend to /var/www/html/Store Management
+sudo mv "$StaticDirectoryName"/* "$StaticDirectoryPATH"/ # Move the Frontend App to the Directory
 
-# Let's start the Backend App and serve the Frontend App
-cd ../"$GithubBackendPATH"/Build # Go to Backend Folder
+# Register All Environment Variables
+cd ~ # Go to Home Directory
+cd "$StaticDirectoryName/$ServerFolder" # Go to Store Management Frontend Project Directory
+npm install # Install all dependencies
 
 # Create Enviromental variables File for the Backend App
 touch .env # Create the .env file
 
 # Add the enviromental variables to the .env file
 read -p "Enter PORT Number (only value) To Run Backend APP: " PORT # Ask the user to enter the PORT
-echo "STORE_MANAGEMENT_BACKEND_PORT=$PORT" >> .env # Add the PORT to the .env file
+echo "PORT=$PORT" >> .env # Add the PORT to the .env file
 
 read -p "Enter the MongoDB Database URL (only value): " DB_URL # Ask the user to enter the DB_URL
-echo "STORE_MANAGEMENT_BACKEND_MONGOURL=$DB_URL" >> .env # Add the DB_URL to the .env file
+echo "MONGODB_URL=$DB_URL" >> .env # Add the DB_URL to the .env file
 
 read -p "Enter the LIVE URL for CORS: " LIVE_URL # Ask the user to enter the LIVE_URL
-echo "STORE_MANAGEMENT_LIVE_URL=$LIVE_URL" >> .env # Add the LIVE_URL to the .env file
+echo "LIVE_URL=$LIVE_URL" >> .env # Add the LIVE_URL to the .env file
 
 read -p "Enter JWT Secret Key : " JWT_SECRET_KEY # Ask the user to enter the JWT_SECRET_KEY
-echo "STORE_MANAGEMENT_JWT_SECRET=$JWT_SECRET_KEY" >> .env # Add the JWT_SECRET_KEY to the .env file
+echo "JWT_SECRET=$JWT_SECRET_KEY" >> .env # Add the JWT_SECRET_KEY to the .env file
 
 read -p "Enter Database Name: " DB_NAME # Ask the user to enter the DB_NAME
-echo "STORE_MANAGEMENT_DB_NAME=$DB_NAME" >> .env # Add the DB_NAME to the .env file
+echo "DB_NAME=$DB_NAME" >> .env # Add the DB_NAME to the .env file
 
-# Let's start the Backend App and serve the Frontend App
-cd ../"$GithubBackendPATH"/Build # Go to Backend Folder
-npm run start # Start the Backend App
+# Start Backend
+npm install # Install all dependencies
 
-# Let's Restart the Nginx Service
-sudo systemctl restart nginx
+npm start # Start Backend
+pm2 ls # List all running processes
 
 #PM2
 sudo  pm2 startup # Start PM2 on Boot

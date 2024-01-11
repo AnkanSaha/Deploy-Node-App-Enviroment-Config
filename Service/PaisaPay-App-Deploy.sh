@@ -28,7 +28,6 @@ cd "$StaticDirectoryName/$ClientFolder" # Go to PaisaPay Frontend Project Direct
 
 # Ask for IP_INFO_API_KEY prompt
 read -p "Enter IP_INFO_API_KEY: " IP_INFO_API_KEY # Get IP_INFO_API_KEY from user
-read -p "Enter ENCRYPTION_KEY Secret: " ENCRYPTION_KEY # Get ENCRYPTION_KEY from user
 
 # create .env file for Vite
 touch .env # Create .env File

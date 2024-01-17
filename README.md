@@ -1,4 +1,3 @@
-
 # Node-Deployment-Configuration
 
 Deployment-Shell-Script for NodeJS Application and various Linux Versions

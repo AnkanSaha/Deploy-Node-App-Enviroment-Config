@@ -1,6 +1,6 @@
 # Node-Deployment-Configuration
 
-Deployment-Shell-Script for NodeJS Application and various Linux Versions
+Deploy Shell-Script for NodeJS Application and various Linux Versions
 
 ## Authors
 

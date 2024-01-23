@@ -36,7 +36,7 @@ touch .env # Create .env File
 echo "VITE_IP_INFO_API_KEY=$IP_INFO_API_KEY" >> .env # Write IP_INFO_API_KEY to .env file
 
 # Start building Frontend App
-npm install # Install all dependencies
+npm install --force # Install all dependencies with  --force
 npm run build # Build Frontend
 
 # If Directory Exists then Remove Directory else Create Directory
@@ -88,7 +88,7 @@ echo "RAZORPAY_MERCHANT_ID=$RAZORPAY_MERCHANT_ID" >> .env # Write Razorpay Merch
 echo "CPU_COUNT_MULTIPLIERenv=$PROCESS_COUNT" >> .env # Write Number of Processes to run to .env file
 
 # Start Backend
-npm install # Install all dependencies
+npm install --force # Install all dependencies with  --force
 
 npm start # Start Backend
 pm2 ls # List all running processes

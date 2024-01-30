@@ -12,14 +12,7 @@
 	"forwardPorts": [27017, 6379],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand":[
-		"docker pull mongodb/mongodb-community-server:latest",
-		"docker pull redis:latest",
-		"sleep 5",
-		"docker run -d -p 27017:27017 --name MongoDB mongodb/mongodb-community-server",
-		"sleep 5",
-		"docker run -d -p 6379:6379 --name Redis redis"
-	],
+	"postCreateCommand":"/workspaces/.devcontainer/postCreateCommand.sh",
 
 	// Configure tool-specific properties.
 	"customizations": {

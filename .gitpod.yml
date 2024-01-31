@@ -25,14 +25,6 @@ vscode:
 # Run Some Commands
 tasks:
   - name: Docker MongoDB Setup
-    init: |
-      docker pull mongodb/mongodb-community-server:latest && \
-      docker pull redis/redis-stack:latest && \
-      docker pull bitnami/postgresql:latest && \
-      docker pull mysql:latest && \
-      docker pull phpmyadmin:latest && \
-      docker pull mariadb:latest
-
   - command: bash ./.devcontainer/postCreateCommand.sh
   # - command: docker run -d -p 4442:27017 --name MongoDB mongodb/mongodb-community-server:latest # MongoDB Start in Docker
   # - command: docker run -d -p 6379:6379 --name Redis redis/redis-stack:latest # Redis Start in Docker

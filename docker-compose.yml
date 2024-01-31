@@ -22,7 +22,7 @@ services:
     container_name: PostgreSQL
 
   mysql:
-    image: bitnami/mysql:latest
+    image: mysql:latest
     environment:
       - ALLOW_EMPTY_PASSWORD=true
     ports:

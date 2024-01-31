@@ -29,16 +29,16 @@ tasks:
       docker pull mongodb/mongodb-community-server:latest && \
       docker pull redis/redis-stack:latest && \
       docker pull bitnami/postgresql:latest && \
-      docker pull bitnami/mysql:latest && \
+      docker pull mysql:latest && \
       docker pull phpmyadmin:latest && \
       docker pull mariadb:latest
 
   - command: docker run -d -p 4442:27017 --name MongoDB mongodb/mongodb-community-server:latest # MongoDB Start in Docker
   - command: docker run -d -p 6379:6379 --name Redis redis/redis-stack:latest # Redis Start in Docker
   - command: docker run -d -e ALLOW_EMPTY_PASSWORD=true -p 5432:5432 --name PostgreSQL bitnami/postgresql:latest # PostgreSQL Start in Docker
-  - command: docker run -d -e ALLOW_EMPTY_PASSWORD=true -p 3306:3306 --name MySQL bitnami/mysql:latest # MySQL Start in Docker
-  - command: docker run -d -e ALLOW_EMPTY_PASSWORD=true -p 3307:3306 --name MariaDB mariadb:latest # MariaDB Start in Docker
-  - command: docker run -d -p 8080:80 --name phpMyAdmin phpmyadmin:latest # phpMyAdmin Start in Docker
+  - command: docker run -d -e ALLOW_EMPTY_PASSWORD=true -p 3306:3306 --name MySQL mysql:latest # MySQL Start in Docker
+  - command: docker run -d -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true -p 3307:3306 --name MariaDB mariadb:latest # MariaDB Start in Docker
+  - command: docker run -d -p 8080:80 --name phpMyAdmin --link mysql:db phpmyadmin:latest # phpMyAdmin Start in Docker
 
 # Expose PORTS
 ports:

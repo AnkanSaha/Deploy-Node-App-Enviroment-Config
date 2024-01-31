@@ -29,6 +29,14 @@ services:
       - "3306:3306"
     container_name: MySQL
 
+  mariadb:
+    image: mariadb:latest
+    ports:
+      - "3307:3306"
+    environment:
+      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true
+    container_name: MariaDB
+
   phpmyadmin:
     image: phpmyadmin:latest
     links:
@@ -37,10 +45,3 @@ services:
       - "8080:80"
     container_name: phpMyAdmin
 
-  mariadb:
-    image: mariadb:latest
-    ports:
-      - "3307:3306"
-    environment:
-      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true
-    container_name: MariaDB

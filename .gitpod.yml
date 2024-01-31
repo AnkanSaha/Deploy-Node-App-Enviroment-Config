@@ -19,7 +19,7 @@ vscode:
     - mongodb.mongodb-vscode
     - christian-kohler.npm-intellisense
     - esbenp.prettier-vscode
-    - bradlc.vscode-tailwinds
+    - bradlc.vscode-tailwindcss
     - gitpod.gitpod-theme
 
 # Run Some Commands

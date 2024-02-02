@@ -39,8 +39,8 @@ InstallDatabase() {
         fi
 
         # install mysql in docker
-        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true bitnami/mysql:latest # install mysql in docker
-
+        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e ALLOW_EMPTY_PASSWORD=yes bitnami/mysql:latest # install mysql in docker
+        sudo ufw allow $mysql_port # allow mysql port
     else
         echo "$NORMAL $BOLD Skipping MySQL installation... $NORMAL"
     fi
@@ -62,8 +62,8 @@ InstallDatabase() {
         fi
 
         # install postgresql in docker
-        sudo docker run -d --restart always -p $postgresql_port:5432 --name postgresql -e ALLOW_EMPTY_PASSWORD=true bitnami/postgresql:latest # install postgresql in docker
-
+        sudo docker run -d --restart always -p $postgresql_port:5432 --name postgresql -e ALLOW_EMPTY_PASSWORD=yes bitnami/postgresql:latest # install postgresql in docker
+        sudo ufw allow $postgresql_port # allow postgresql port
     else
         echo "$NORMAL $BOLD Skipping PostgreSQL installation... $NORMAL"
     fi
@@ -85,7 +85,7 @@ InstallDatabase() {
 
         # install redis in docker
         sudo docker run -d --restart always -p $redis_port:6379 -e ALLOW_EMPTY_PASSWORD=yes --name redis bitnami/redis:latest # install redis in docker
-
+        sudo ufw allow $redis_port # allow redis port
     else
         echo "$NORMAL $BOLD Skipping Redis installation... $NORMAL"
     fi
@@ -106,7 +106,7 @@ InstallDatabase() {
 
         # install mariadb in docker
         sudo docker run -d --restart always -p $mariadb_port:3306 --name mariadb -e ALLOW_EMPTY_PASSWORD=yes bitnami/mariadb:latest # install mariadb in docker
-
+        sudo ufw allow $mariadb_port # allow mariadb port
     else
         echo "$NORMAL $BOLD Skipping MariaDB installation... $NORMAL"
     fi
@@ -134,7 +134,8 @@ InstallDatabase() {
                 echo "MySQL or $db_choice is running in Docker container."
 
                 # Install phpmyadmin in docker
-                sudo docker run -d --restart always --name phpMyAdmin --link mariadb:db -p $phpmyadmin_port:80 phpmyadmin:latest
+                sudo docker run -d --restart always --name phpMyAdmin --link mysql:db -p $phpmyadmin_port:80 phpmyadmin:latest
+                sudo ufw allow $phpmyadmin_port # allow phpmyadmin port
             else
                 echo "MySQL or $db_choice is not running in Docker container."
                 exit 1 # Exit with failure status
@@ -145,6 +146,7 @@ InstallDatabase() {
 
                 # Install phpmyadmin in docker
                 sudo docker run -d --restart always --name phpMyAdmin --link mariadb:db -p $phpmyadmin_port:80 phpmyadmin:latest
+                sudo ufw allow $phpmyadmin_port # allow phpmyadmin port
             else
                 echo "MariaDB or $db_choice is not running in Docker container."
                 exit 1 # Exit with failure status

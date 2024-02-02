@@ -20,7 +20,7 @@ services:
   postgresql:
     image: bitnami/postgresql:latest
     environment:
-      - ALLOW_EMPTY_PASSWORD=true
+      - ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "5432:5432"
     container_name: PostgreSQL
@@ -38,7 +38,7 @@ services:
     ports:
       - "3307:3306"
     environment:
-      - ALLOW_EMPTY_PASSWORD=true
+      - ALLOW_EMPTY_PASSWORD=yes
     container_name: MariaDB
 
   phpmyadmin:

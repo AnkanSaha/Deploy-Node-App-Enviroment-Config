@@ -73,8 +73,8 @@ InstallDatabase() {
 
         # Check if user entered port number or not
         if [ -z "$postgresql_port" ]; then
-            echo "Port number is not set. Using default port number '3306'."
-            postgresql_port='3306' # set default port number for postgresql
+            echo "Port number is not set. Using default port number '5432'."
+            postgresql_port='5432' # set default port number for postgresql
         else
             echo "Port number is set to $postgresql_port."
         fi
@@ -116,8 +116,8 @@ InstallDatabase() {
 
         # Check if user entered port number or not
         if [ -z "$redis_port" ]; then
-            echo "Port number is not set. Using default port number '9042'."
-            redis_port='9042' # set default port number for cassandra
+            echo "Port number is not set. Using default port number '6379'."
+            redis_port='6379' # set default port number for cassandra
         else
             echo "Port number is set to $redis_port."
         fi

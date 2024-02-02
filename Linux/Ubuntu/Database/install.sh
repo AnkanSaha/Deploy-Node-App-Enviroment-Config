@@ -60,16 +60,7 @@ InstallDatabase() {
         echo "$NORMAL $BOLD Installing PostgreSQL... $NORMAL"
 
         # Ask user to enter the password for the PostgreSQL root user
-        read -s -p "Enter the password for the PostgreSQL root user (default is 'root'): " postgresql_root_password # ask user to enter the password for the PostgreSQL root user
         read -p "Enter the port number for PostgreSQL (default is '5432'): " postgresql_port                        # ask user to enter the port number for PostgreSQL
-
-        # Check if the user has entered the root password & port number or not
-        if [ -z "$postgresql_root_password" ]; then
-            echo "Password is not set. Using default password 'root'."
-            postgresql_root_password='root' # set default password for postgresql
-        else
-            echo "Password is set to $postgresql_root_password."
-        fi
 
         # Check if user entered port number or not
         if [ -z "$postgresql_port" ]; then
@@ -80,7 +71,7 @@ InstallDatabase() {
         fi
 
         # install postgresql in docker
-        sudo docker run -d --restart always -p $postgresql_port:5432 --name postgresql -e POSTGRES_PASSWORD=$postgresql_root_password postgres:latest # install postgresql in docker
+        sudo docker run -d --restart always -p $postgresql_port:5432 --name postgresql -e ALLOW_EMPTY_PASSWORD=true bitnami/postgresql:latest # install postgresql in docker
 
     else
         echo "$NORMAL $BOLD Skipping PostgreSQL installation... $NORMAL"

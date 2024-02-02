@@ -48,7 +48,7 @@ InstallDatabase() {
         fi
 
         # install mysql in docker
-        sudo docker run -d -p $mysql_port:3306 --name mysql -e MYSQL_ROOT_PASSWORD=$mysql_root_password mysql:latest # install mysql in docker
+        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e MYSQL_ROOT_PASSWORD=$mysql_root_password mysql:latest # install mysql in docker
 
     else
         echo "$NORMAL $BOLD Skipping MySQL installation... $NORMAL"
@@ -73,14 +73,14 @@ InstallDatabase() {
 
         # Check if user entered port number or not
         if [ -z "$postgresql_port" ]; then
-            echo "Port number is not set. Using default port number '3306'."
-            postgresql_port='3306' # set default port number for postgresql
+            echo "Port number is not set. Using default port number '5432'."
+            postgresql_port='5432' # set default port number for postgresql
         else
             echo "Port number is set to $postgresql_port."
         fi
 
         # install postgresql in docker
-        sudo docker run -d -p $postgresql_port:5432 --name postgresql -e POSTGRES_PASSWORD=$postgresql_root_password postgres:latest # install postgresql in docker
+        sudo docker run -d --restart always -p $postgresql_port:5432 --name postgresql -e POSTGRES_PASSWORD=$postgresql_root_password postgres:latest # install postgresql in docker
 
     else
         echo "$NORMAL $BOLD Skipping PostgreSQL installation... $NORMAL"
@@ -102,7 +102,7 @@ InstallDatabase() {
         fi
 
         # install cassandra in docker
-        sudo docker run -d -p $cassandra_port:9042 --name cassandra cassandra:latest # install cassandra in docker
+        sudo docker run -d --restart always -p $cassandra_port:9042 --name cassandra cassandra:latest # install cassandra in docker
 
     else
         echo "$NORMAL$BOLD Skipping cassandra installation... $NORMAL"
@@ -116,14 +116,14 @@ InstallDatabase() {
 
         # Check if user entered port number or not
         if [ -z "$redis_port" ]; then
-            echo "Port number is not set. Using default port number '9042'."
-            redis_port='9042' # set default port number for cassandra
+            echo "Port number is not set. Using default port number '6379'."
+            redis_port='6379' # set default port number for cassandra
         else
             echo "Port number is set to $redis_port."
         fi
 
         # install redis in docker
-        sudo docker run -d -p $redis_port:6379 --name redis redis/redis-stack:latest # install redis in docker
+        sudo docker run -d --restart always -p $redis_port:6379 --name redis redis/redis-stack:latest # install redis in docker
 
     else
         echo "$NORMAL $BOLD Skipping Redis installation... $NORMAL"
@@ -153,7 +153,7 @@ InstallDatabase() {
         fi
 
         # install mariadb in docker
-        sudo docker run -d -p $mariadb_port:3306 --name mariadb -e MYSQL_ROOT_PASSWORD=$mariadb_root_password mariadb:latest # install mariadb in docker
+        sudo docker run -d --restart always -p $mariadb_port:3306 --name mariadb -e MYSQL_ROOT_PASSWORD=$mariadb_root_password mariadb:latest # install mariadb in docker
 
     else
         echo "$NORMAL $BOLD Skipping MariaDB installation... $NORMAL"
@@ -182,7 +182,7 @@ InstallDatabase() {
                 echo "MySQL or $db_choice is running in Docker container."
 
                 # Install phpmyadmin in docker
-                sudo docker run -d --name phpMyAdmin --link mariadb:db -p $phpmyadmin_port:80 phpmyadmin:latest
+                sudo docker run -d --restart always --name phpMyAdmin --link mariadb:db -p $phpmyadmin_port:80 phpmyadmin:latest
             else
                 echo "MySQL or $db_choice is not running in Docker container."
                 exit 1 # Exit with failure status
@@ -192,7 +192,7 @@ InstallDatabase() {
                 echo "MariaDB or $db_choice is running in Docker container."
 
                 # Install phpmyadmin in docker
-                sudo docker run -d --name phpMyAdmin --link mariadb:db -p $phpmyadmin_port:80 phpmyadmin:latest
+                sudo docker run -d --restart always --name phpMyAdmin --link mariadb:db -p $phpmyadmin_port:80 phpmyadmin:latest
             else
                 echo "MariaDB or $db_choice is not running in Docker container."
                 exit 1 # Exit with failure status

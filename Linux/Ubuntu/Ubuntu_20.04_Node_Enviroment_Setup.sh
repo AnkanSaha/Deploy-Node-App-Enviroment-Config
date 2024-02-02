@@ -55,7 +55,7 @@ Ubuntu20.04NodeEnviromentSetup() {
         sudo apt update           # update apt
         sudo apt install snapd -y # install snapd
     else
-        echo "$GREEEN Directory is empty."
+        echo "$GREEN Directory is empty."
         echo "$BLUE No need to remove nosnap.pref file"
         sudo apt update           # update apt
         sudo apt install snapd -y # install snapd

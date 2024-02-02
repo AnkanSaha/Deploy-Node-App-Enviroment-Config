@@ -69,7 +69,7 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo apt install -y python2     # python2
     sudo apt install -y python2-pip # python2-pip
 
-    # installing NodeJS 20 for Ubuntu 23.04 LTS
+    # installing NodeJS 21 for Ubuntu 23.04 LTS
     sudo apt-get update
     sudo apt-get install -y ca-certificates curl gnupg
     sudo mkdir -p /etc/apt/keyrings
@@ -99,21 +99,6 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo npm install -g pm2               # install pm2
     sudo npm install -g nodemon           # install nodemon
     sudo npm install -g yarn              # install yarn
-
-    # installing MongoDB for Ubuntu 23.04 LTS
-    sudo apt-get install gnupg curl -y # gnupg & curl
-    curl -fsSL https://pgp.mongodb.com/server-7.0.asc |
-        sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
-            --dearmor -                                                                                                                                                                                               # add key for mongodb
-    sudo touch /etc/apt/sources.list.d/mongodb-org-7.0.list                                                                                                                                                           # create file
-    echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list # add repo
-    sudo apt-get update                                                                                                                                                                                               # update
-    sudo apt-get install -y mongodb-org                                                                                                                                                                               # install mongodb
-    sudo systemctl enable mongod                                                                                                                                                                                      # enable mongodb
-    sudo systemctl start mongod                                                                                                                                                                                       # start mongodb
-
-    # Restart MongoDB
-    sudo systemctl restart mongod # restart mongodb
 
     # install other Databases
     read -p "$BOLD Do you want to install other databases? (y/n): " choice
@@ -176,6 +161,30 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo apt install docker-compose -y # install docker-compose
     docker-compose --version           # check docker-compose version
 
+    # Ask user to set port for MongoDB
+    read -p "Enter Port for MongoDB (Default: 4442): " mongodbport # ask user to enter port for mongodb
+
+    # Check if the user has entered the port or not
+    if [ -z "$mongodbport" ]; then
+        echo "Port is not set. Using default port 4442."
+        mongodbport=4442 # set default port for mongodb
+         sudo ufw allow $mongodbport # allow mongodb port in ufw
+    else
+        echo "Port is set to $mongodbport."
+    fi
+
+    # installing MongoDB for Ubuntu 20.04 LTS
+    docker run -d -p $mongodbport:27017 --name mongodb mongodb/mongodb-community-server:latest # install mongodb in docker                                                                                                                                                                                    # start mongodb
+    
+    # install other Databases
+    read -p "$BOLD Do you want to install other databases? (y/n): " choice
+
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+        InstallDatabase # Install all databases
+    else
+        echo "$YELLOW Skipping other databases installation."
+    fi
+
     # install pm2
     sudo npm install -g pm2 # install pm2
     sudo pm2 update         # update pm2
@@ -193,6 +202,5 @@ Ubuntu23.04NodeEnviromentSetup() {
 
     # Continue with the rest of your script
     # End of Script
-    echo " Please Edit MongoDB Config File  with sudo nano /etc/mongod.conf command & set Bind IP to 0.0.0.0 with PORT 4442"
     echo "MERN Server Ready 😄 Happy Deployment 🇮🇳 🛕 Jay Hind 🛕 🇮🇳" # End of Script
 }

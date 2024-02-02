@@ -27,17 +27,8 @@ InstallDatabase() {
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
         echo "$NORMAL $BOLD Installing MySQL... $NORMAL"
 
-        # Ask user to enter the password for the MySQL root user
-        read -s -p "Enter the password for the MySQL root user (default is 'root'): " mysql_root_password # ask user to enter the password for the MySQL root user
+        # Ask user to enter the PORT
         read -p "Enter the port number for MySQL (default is '3306'): " mysql_port                        # ask user to enter the port number for MySQL
-
-        # Check if the user has entered the root password & port number or not
-        if [ -z "$mysql_root_password" ]; then
-            echo "Password is not set. Using default password 'root'."
-            mysql_root_password='root' # set default password for mysql
-        else
-            echo "Password is set to $mysql_root_password."
-        fi
 
         # Check if user entered port number or not
         if [ -z "$mysql_port" ]; then
@@ -48,7 +39,7 @@ InstallDatabase() {
         fi
 
         # install mysql in docker
-        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e MYSQL_ROOT_PASSWORD=$mysql_root_password mysql:latest # install mysql in docker
+        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true bitnami/mysql:latest # install mysql in docker
 
     else
         echo "$NORMAL $BOLD Skipping MySQL installation... $NORMAL"
@@ -77,27 +68,6 @@ InstallDatabase() {
         echo "$NORMAL $BOLD Skipping PostgreSQL installation... $NORMAL"
     fi
 
-    # Install cassandra
-    read -p "$BOLD Do you want to install cassandra? [y/n]? (y/n): " choice
-    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-
-        # Ask user to enter the Port number for cassandra
-        read -p "Enter the port number for cassandra (default is '9042'): " cassandra_port # ask user to enter the port number for cassandra
-
-        # Check if user entered port number or not
-        if [ -z "$cassandra_port" ]; then
-            echo "Port number is not set. Using default port number '9042'."
-            cassandra_port='9042' # set default port number for cassandra
-        else
-            echo "Port number is set to $cassandra_port."
-        fi
-
-        # install cassandra in docker
-        sudo docker run -d --restart always -p $cassandra_port:9042 --name cassandra cassandra:latest # install cassandra in docker
-
-    else
-        echo "$NORMAL$BOLD Skipping cassandra installation... $NORMAL"
-    fi
 
     # Install Redis
     read -p "$BOLD Do you want to install Redis? [y/n]? (y/n): " choice
@@ -114,7 +84,7 @@ InstallDatabase() {
         fi
 
         # install redis in docker
-        sudo docker run -d --restart always -p $redis_port:6379 --name redis redis/redis-stack:latest # install redis in docker
+        sudo docker run -d --restart always -p $redis_port:6379 -e ALLOW_EMPTY_PASSWORD=yes --name redis bitnami/redis:latest # install redis in docker
 
     else
         echo "$NORMAL $BOLD Skipping Redis installation... $NORMAL"
@@ -124,16 +94,7 @@ InstallDatabase() {
     read -p "$BOLD Do you want to install MariaDB? [y/n]? (y/n): " choice
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
         # Ask user to enter the password for the MariaDB root user
-        read -s -p "Enter the password for the MariaDB root user (default is 'root'): " mariadb_root_password # ask user to enter the password for the MariaDB root user
         read -p "Enter the port number for MariaDB (default is '3307'): " mariadb_port                        # ask user to enter the port number for MariaDB
-
-        # Check if the user has entered the root password & port number or not
-        if [ -z "$mariadb_root_password" ]; then
-            echo "Password is not set. Using default password 'root'."
-            mariadb_root_password='root' # set default password for mariadb
-        else
-            echo "Password is set to $mariadb_root_password."
-        fi
 
         # Check if user entered port number or not
         if [ -z "$mariadb_port" ]; then
@@ -144,7 +105,7 @@ InstallDatabase() {
         fi
 
         # install mariadb in docker
-        sudo docker run -d --restart always -p $mariadb_port:3306 --name mariadb -e MYSQL_ROOT_PASSWORD=$mariadb_root_password mariadb:latest # install mariadb in docker
+        sudo docker run -d --restart always -p $mariadb_port:3306 --name mariadb -e ALLOW_EMPTY_PASSWORD=yes bitnami/mariadb:latest # install mariadb in docker
 
     else
         echo "$NORMAL $BOLD Skipping MariaDB installation... $NORMAL"

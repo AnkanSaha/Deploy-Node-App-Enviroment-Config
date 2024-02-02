@@ -39,7 +39,7 @@ InstallDatabase() {
         fi
 
         # install mysql in docker
-        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true bitnami/mysql:latest # install mysql in docker
+        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e ALLOW_EMPTY_PASSWORD=yes bitnami/mysql:latest # install mysql in docker
 
     else
         echo "$NORMAL $BOLD Skipping MySQL installation... $NORMAL"
@@ -62,7 +62,7 @@ InstallDatabase() {
         fi
 
         # install postgresql in docker
-        sudo docker run -d --restart always -p $postgresql_port:5432 --name postgresql -e ALLOW_EMPTY_PASSWORD=true bitnami/postgresql:latest # install postgresql in docker
+        sudo docker run -d --restart always -p $postgresql_port:5432 --name postgresql -e ALLOW_EMPTY_PASSWORD=yes bitnami/postgresql:latest # install postgresql in docker
 
     else
         echo "$NORMAL $BOLD Skipping PostgreSQL installation... $NORMAL"
@@ -134,7 +134,7 @@ InstallDatabase() {
                 echo "MySQL or $db_choice is running in Docker container."
 
                 # Install phpmyadmin in docker
-                sudo docker run -d --restart always --name phpMyAdmin --link mariadb:db -p $phpmyadmin_port:80 phpmyadmin:latest
+                sudo docker run -d --restart always --name phpMyAdmin --link mysql:db -p $phpmyadmin_port:80 phpmyadmin:latest
             else
                 echo "MySQL or $db_choice is not running in Docker container."
                 exit 1 # Exit with failure status

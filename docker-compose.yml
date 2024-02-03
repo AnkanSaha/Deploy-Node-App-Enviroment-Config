@@ -26,19 +26,19 @@ services:
     container_name: PostgreSQL
 
   mysql:
-    image: bitnami/mysql:latest
+    image: mysql:latest
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "3306:3306"
     container_name: MySQL
 
   mariadb:
-    image: bitnami/mariadb:latest
+    image: mariadb:latest
     ports:
       - "3307:3306"
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true
     container_name: MariaDB
 
   phpmyadmin:

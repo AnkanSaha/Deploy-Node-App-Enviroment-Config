@@ -39,7 +39,7 @@ InstallDatabase() {
         fi
 
         # install mysql in docker
-        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e ALLOW_EMPTY_PASSWORD=yes bitnami/mysql:latest # install mysql in docker
+        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql:latest # install mysql in docker
         sudo ufw allow $mysql_port # allow mysql port
     else
         echo "$NORMAL $BOLD Skipping MySQL installation... $NORMAL"
@@ -105,7 +105,7 @@ InstallDatabase() {
         fi
 
         # install mariadb in docker
-        sudo docker run -d --restart always -p $mariadb_port:3306 --name mariadb -e ALLOW_EMPTY_PASSWORD=yes bitnami/mariadb:latest # install mariadb in docker
+        sudo docker run -d --restart always -p $mariadb_port:3306 --name mariadb -e MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true mariadb:latest # install mariadb in docker
         sudo ufw allow $mariadb_port # allow mariadb port
     else
         echo "$NORMAL $BOLD Skipping MariaDB installation... $NORMAL"

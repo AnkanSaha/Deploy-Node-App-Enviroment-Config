@@ -39,7 +39,7 @@ InstallDatabase() {
         fi
 
         # install mysql in docker
-        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes mysql:latest # install mysql in docker
+        sudo docker run -d --restart always -p $mysql_port:3306 --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql:latest # install mysql in docker
         sudo ufw allow $mysql_port # allow mysql port
     else
         echo "$NORMAL $BOLD Skipping MySQL installation... $NORMAL"

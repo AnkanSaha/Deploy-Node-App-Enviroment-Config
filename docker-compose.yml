@@ -2,20 +2,16 @@ version: '3'
 
 services:
   mongodb:
-    image: bitnami/mongodb:latest
+    image: mongodb/mongodb-community-server:latest
     ports:
       - "4442:27017"
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
     container_name: MongoDB
 
   redis:
-    image: bitnami/redis:latest
+    image: redis:latest
     ports:
       - "6379:6379"
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-    container_name: RedisStack
+    container_name: Redis
 
   postgresql:
     image: bitnami/postgresql:latest

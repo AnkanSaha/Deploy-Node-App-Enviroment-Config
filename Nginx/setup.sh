@@ -59,7 +59,7 @@ fi
 # Start nginx
 sudo nginx -t                # Test nginx config
 sudo systemctl enable nginx  # Enable nginx
-sudo systemctl restart nginx # Restart nginx
+sudo systemctl restart nginx # Restart nginx when restarting
 
 ## issue ssl certificate
 #All Domain Name for SSL Issue

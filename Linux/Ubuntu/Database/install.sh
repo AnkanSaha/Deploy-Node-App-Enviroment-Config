@@ -84,7 +84,7 @@ InstallDatabase() {
         fi
 
         # install redis in docker
-        sudo docker run -d --restart always -p $redis_port:6379 -e ALLOW_EMPTY_PASSWORD=yes --name redis bitnami/redis:latest # install redis in docker
+        sudo docker run -d --restart always -p $redis_port:6379 --name redis redis:latest # install redis in docker
         sudo ufw allow $redis_port # allow redis port
     else
         echo "$NORMAL $BOLD Skipping Redis installation... $NORMAL"

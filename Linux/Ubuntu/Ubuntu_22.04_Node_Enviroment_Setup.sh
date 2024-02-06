@@ -164,14 +164,13 @@ Ubuntu22.04NodeEnviromentSetup() {
     if [ -z "$mongodbport" ]; then
         echo "Port is not set. Using default port 4442."
         mongodbport=4442 # set default port for mongodb
-         sudo ufw allow $mongodbport # allow mongodb port in ufw
     else
         echo "Port is set to $mongodbport."
     fi
 
     # installing MongoDB for Ubuntu 20.04 LTS
-    sudo docker run -d --restart always -p $mongodbport:27017 -e ALLOW_EMPTY_PASSWORD=yes --name mongodb bitnami/mongodb:latest # install mongodb in docker                                                                                                                                                                                    # start mongodb
-    
+    sudo docker run -d --restart always -p $mongodbport:27017 --name MongoDB mongodb/mongodb-community-server:latest # install mongodb in docker                                                                                                                                                                                    # start mongodb
+    sudo ufw allow "$mongodbport" # allow mongodb port in ufw after installing mongodb
     # install other Databases
     read -p "$BOLD Do you want to install other databases? (y/n): " choice
 

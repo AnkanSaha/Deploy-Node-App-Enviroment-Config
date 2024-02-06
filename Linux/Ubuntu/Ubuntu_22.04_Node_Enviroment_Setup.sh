@@ -170,8 +170,7 @@ Ubuntu22.04NodeEnviromentSetup() {
 
     # installing MongoDB for Ubuntu 20.04 LTS
     sudo docker run -d --restart always -p $mongodbport:27017 --name MongoDB mongodb/mongodb-community-server:latest # install mongodb in docker                                                                                                                                                                                    # start mongodb
-    sudo ufw allow $mongodbport # allow mongodb port in ufw after installing mongodb
-
+    sudo ufw allow "$mongodbport" # allow mongodb port in ufw after installing mongodb
     # install other Databases
     read -p "$BOLD Do you want to install other databases? (y/n): " choice
 

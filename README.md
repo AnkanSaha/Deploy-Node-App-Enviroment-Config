@@ -34,6 +34,7 @@ Run the script
 ## Features
 
 - Automate your NodeJS Deployment in Linux VPS
+- Automate your NodeJS Deployment in Windows VPS
 
 ## 🔗 Links
 

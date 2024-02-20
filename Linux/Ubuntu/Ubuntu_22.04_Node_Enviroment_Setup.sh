@@ -136,48 +136,52 @@ Ubuntu22.04NodeEnviromentSetup() {
         echo "Skipping ngrok authtoken injection."
     fi
 
-    # install Docker
-    sudo apt update                                                                                                                                                                                               # update apt
-    sudo apt install apt-transport-https ca-certificates curl software-properties-common -y                                                                                                                       # install dependencies for docker
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg                                                                                # add key for docker
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null # add repo for docker
-    sudo apt update                                                                                                                                                                                               # update apt again
-    sudo apt install docker-ce docker-ce-cli containerd.io -y                                                                                                                                                     # install docker
-    sudo usermod -aG docker $USER                                                                                                                                                                                 # add user to docker group for docker
-    sudo systemctl enable docker                                                                                                                                                                                  # enable docker
-    sudo systemctl start docker                                                                                                                                                                                   # start docker
-    docker --version                                                                                                                                                                                              # check docker version
-
-    # install docker-compose
-    sudo apt install docker-compose -y # install docker-compose
-    docker-compose --version           # check docker-compose version
-
-
-    # install docker-compose
-    sudo apt install docker-compose -y # install docker-compose
-    docker-compose --version           # check docker-compose version
-
-    # Ask user to set port for MongoDB
-    read -p "Enter Port for MongoDB (Default: 4442): " mongodbport # ask user to enter port for mongodb
-
-    # Check if the user has entered the port or not
-    if [ -z "$mongodbport" ]; then
-        echo "Port is not set. Using default port 4442."
-        mongodbport=4442 # set default port for mongodb
-    else
-        echo "Port is set to $mongodbport."
-    fi
-
-    # installing MongoDB for Ubuntu 20.04 LTS
-    sudo docker run -d --restart always -p $mongodbport:27017 --name MongoDB mongodb/mongodb-community-server:latest # install mongodb in docker                                                                                                                                                                                    # start mongodb
-    sudo ufw allow "$mongodbport" # allow mongodb port in ufw after installing mongodb
-    # install other Databases
-    read -p "$BOLD Do you want to install other databases? (y/n): " choice
+    # Ask User is user want to install Docker or not
+    read -p "$BOLD Do you want to install Docker? (y/n): " choice
 
     if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-        InstallDatabase # Install all databases
+        # install Docker
+        sudo apt update                                                                                                                                                                                               # update apt
+        sudo apt install apt-transport-https ca-certificates curl software-properties-common -y                                                                                                                       # install dependencies for docker
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg                                                                                # add key for docker
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null # add repo for docker
+        sudo apt update                                                                                                                                                                                               # update apt again
+        sudo apt install docker-ce docker-ce-cli containerd.io -y                                                                                                                                                     # install docker
+        sudo usermod -aG docker $USER                                                                                                                                                                                 # add user to docker group for docker
+        sudo systemctl enable docker                                                                                                                                                                                  # enable docker
+        sudo systemctl start docker                                                                                                                                                                                   # start docker
+        docker --version                                                                                                                                                                                              # check docker version
+
+        # install docker-compose
+        sudo apt install docker-compose -y # install docker-compose
+        docker-compose --version           # check docker-compose version
+
+        # Ask user to set port for MongoDB
+        read -p "Enter Port for MongoDB (Default: 4442): " mongodbport # ask user to enter port for mongodb
+
+        # Check if the user has entered the port or not
+        if [ -z "$mongodbport" ]; then
+            echo "Port is not set. Using default port 4442."
+            mongodbport=4442 # set default port for mongodb
+        else
+            echo "Port is set to $mongodbport."
+        fi
+
+        # installing MongoDB for Ubuntu 20.04 LTS
+        sudo docker run -d --restart always -p $mongodbport:27017 --name MongoDB mongodb/mongodb-community-server:latest # install mongodb in docker                                                                                                                                                                                    # start mongodb
+        sudo ufw allow "$mongodbport"                                                                                    # allow mongodb port in ufw after installing mongodb
+
+        # install other Databases
+        read -p "$BOLD Do you want to install other databases? (y/n): " choice
+
+        if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+            InstallDatabase # Install all databases
+        else
+            echo "$YELLOW Skipping other databases installation."
+        fi
+
     else
-        echo "$YELLOW Skipping other databases installation."
+        echo "$YELLOW Skipping Docker installation."
     fi
 
     # install pm2

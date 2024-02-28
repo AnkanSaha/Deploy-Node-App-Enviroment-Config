@@ -74,6 +74,9 @@ echo "JWT_SECRET=$JWT_SECRET_KEY" >> .env # Add the JWT_SECRET_KEY to the .env f
 read -p "Enter Database Name: " DB_NAME # Ask the user to enter the DB_NAME
 echo "DB_NAME=$DB_NAME" >> .env # Add the DB_NAME to the .env file
 
+read -p "Enter How many workers you want to run: " WORKERS # Ask the user to enter the WORKERS
+echo "CPU_COUNT_MULTIPLIERENV=$WORKERS" >>.env # Add the WORKERS to the.
+
 # Start Backend
 npm install # Install all dependencies
 

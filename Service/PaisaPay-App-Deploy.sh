@@ -26,15 +26,6 @@ git clone $GithubLink # Clone PaisaPay Project from Github
 #Build Frontend
 cd "$StaticDirectoryName/$ClientFolder" # Go to PaisaPay Frontend Project Directory
 
-# Ask for IP_INFO_API_KEY prompt
-read -p "Enter IP_INFO_API_KEY: " IP_INFO_API_KEY # Get IP_INFO_API_KEY from user
-
-# create .env file for Vite
-touch .env # Create .env File
-
-# Insert Environment Variables to .env file
-echo "VITE_IP_INFO_API_KEY=$IP_INFO_API_KEY" >> .env # Write IP_INFO_API_KEY to .env file
-
 # Start building Frontend App
 npm install --force # Install all dependencies with  --force
 npm run build # Build Frontend
@@ -76,6 +67,7 @@ read -p "Enter JWT Secret : " JWT_SECRET # Get JWT Secret
 read -p "Enter JWT Expiry Time (ex: 1d, 1h, 1m, 1s): " JWT_EXPIRY_TIME # Get JWT Expiry Time
 read -p "Enter Razorpay Merchant ID: " RAZORPAY_MERCHANT_ID # Get Razorpay Merchant ID
 read -p "How Many Processes do you want to run? (ex: 1, 2, 3): " PROCESS_COUNT # Get Number of Processes to run
+read -p "Enter IPinfo Token: " IPINFO # Get IPinfo Token for IP Address Tracking
 
 # Insert Environment Variables to .env file
 echo "MONGODB_URL=$MONGODB_URL" >> .env # Write MongoDB URL to .env file
@@ -85,7 +77,8 @@ echo "CORS_ORIGIN=$CORS_ORIGIN" >> .env # Write Live URL to .env file
 echo "JWT_SECRET=$JWT_SECRET" >> .env # Write JWT Secret to .env file
 echo "JWT_EXPIRES_IN=$JWT_EXPIRY_TIME" >> .env # Write JWT Expiry Time to .env file
 echo "RAZORPAY_MERCHANT_ID=$RAZORPAY_MERCHANT_ID" >> .env # Write Razorpay Merchant ID to .env file
-echo "CPU_COUNT_MULTIPLIERenv=$PROCESS_COUNT" >> .env # Write Number of Processes to run to .env file
+echo "CPU_COUNT_MULTIPLIERENV=$PROCESS_COUNT" >> .env # Write Number of Processes to run to .env file
+echo "IP_INFO_API_KEY=$IPINFO" >> .env # Write IPinfo Token to .env file
 
 # Start Backend
 npm install --force # Install all dependencies with  --force

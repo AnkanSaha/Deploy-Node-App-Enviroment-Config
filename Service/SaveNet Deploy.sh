@@ -28,7 +28,7 @@ read -p "Enter Database Name: " DB_NAME # Get the Database Name
 # Create .env File
 touch .env # Create .env File
 echo "CORS_ORIGIN=$LIVE_URL" >> .env # Add LIVE_URL to .env File
-echo "MONGO_URI=$MONGODB_URL" >> .env # Add MONGODB_URL to .env File
+echo "MONGODB_URL=$MONGODB_URL" >> .env # Add MONGODB_URL to .env File
 echo "PORT=$PORT" >> .env # Add PORT to .env File
 echo "DB_NAME=$DB_NAME" >> .env # Add DB_NAME to .env File
 

@@ -26,8 +26,10 @@ touch .env # Create the .env file
 # Insert the .env variables
 read -p "Enter the value of PORT: " PORT # PORT
 echo "PORT=$PORT" >> .env
+
 read -p "Enter the value of MONGODB_URI: " MONGODB_URI # MONGODB_URI
-echo "MONGODB_URI=$MONGODB_URI" >> .env
+echo "MONGODB_URL=$MONGODB_URI" >> .env
+
 read -p "Enter Database Name: " DB_NAME # DB_NAME
 echo "DB_NAME=$DB_NAME" >> .env
 

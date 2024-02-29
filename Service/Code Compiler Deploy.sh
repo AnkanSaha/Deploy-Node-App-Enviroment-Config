@@ -69,11 +69,11 @@ read -p "How Many Processes do you want to run? (ex: 1, 2, 3): " PROCESS_COUNT #
 echo "MONGODB_URL=$MONGODB_URI" >> .env # Write MongoDB URL to .env file
 echo "DB_NAME=$MONGODB_DB_NAME" >> .env # Write MongoDB Database Name to .env file
 echo "PORT=$PORT" >> .env # Write PORT Number to .env file
-echo "ALLOWED_ORIGINS=$ALLOWED_ORIGINS" >> .env # Write Live URL to .env file
+echo "CORS_ORIGIN=$ALLOWED_ORIGINS" >> .env # Write Live URL to .env file
 echo "JWT_SECRET=$JWT_SECRET" >> .env # Write JWT Secret to .env file
 echo "JWT_EXPIRES_IN=$JWT_EXPIRES_IN" >> .env # Write JWT Expiry Time to .env file
-echo "IPINFO_API_KEY=$IPINFO_API_KEY" >> .env # Write Razorpay Merchant ID to .env file
-echo "CPU_COUNT_MULTIPLIERenv=$PROCESS_COUNT" >> .env # Write Number of Processes to run to .env file
+echo "IP_INFO_API_KEY=$IPINFO_API_KEY" >> .env # Write Razorpay Merchant ID to .env file
+echo "CPU_COUNT_MULTIPLIERENV=$PROCESS_COUNT" >> .env # Write Number of Processes to run to .env file
 
 # Start Backend
 npm install # Install all dependencies

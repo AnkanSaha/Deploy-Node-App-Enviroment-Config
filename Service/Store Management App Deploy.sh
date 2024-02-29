@@ -66,7 +66,7 @@ read -p "Enter the MongoDB Database URL (only value): " DB_URL # Ask the user to
 echo "MONGODB_URL=$DB_URL" >> .env # Add the DB_URL to the .env file
 
 read -p "Enter the LIVE URL for CORS: " LIVE_URL # Ask the user to enter the LIVE_URL
-echo "LIVE_URL=$LIVE_URL" >> .env # Add the LIVE_URL to the .env file
+echo "CORS_ORIGIN=$LIVE_URL" >> .env # Add the LIVE_URL to the .env file
 
 read -p "Enter JWT Secret Key : " JWT_SECRET_KEY # Ask the user to enter the JWT_SECRET_KEY
 echo "JWT_SECRET=$JWT_SECRET_KEY" >> .env # Add the JWT_SECRET_KEY to the .env file

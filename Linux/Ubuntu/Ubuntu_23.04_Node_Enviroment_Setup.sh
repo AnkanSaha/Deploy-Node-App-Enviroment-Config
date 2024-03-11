@@ -100,14 +100,6 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo npm install -g nodemon           # install nodemon
     sudo npm install -g yarn              # install yarn
 
-    # install other Databases
-    read -p "$BOLD Do you want to install other databases? (y/n): " choice
-
-    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
-        InstallDatabase # Install all databases
-    else
-        echo "$YELLOW Skipping other databases installation."
-    fi
 
     #ufw configuration
     sudo ufw enable              # enable ufw

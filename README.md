@@ -2,7 +2,7 @@
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/AnkanSaha/Deploy-Node-App-Enviroment-Config/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/AnkanSaha/Deploy-Node-App-Enviroment-Config/tree/main)
 
-Deploy Shell-Script for NodeJS Application and various Linux Versions
+Deploy Shell-Script for NodeJS Application and various Linux Versions (Currently Ubuntu Only)
 
 ## Authors
 

@@ -25,7 +25,7 @@ jobs:
 
       - name: Copy code to VM
         run: |
-          scp -i private_key.pem -r ./* ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:/
+          scp -o StrictHostKeyChecking=no -i private_key.pem -r ./* ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:/
 
       - name: Clean Up
         run: |

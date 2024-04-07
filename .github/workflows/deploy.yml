@@ -25,7 +25,7 @@ jobs:
           
       - name: Check if App folder exists and delete if it does
         run: |
-          ssh -i private_key.pem ${{ secrets.USERNAME }}@${{ secrets.VM_IP }} '[ -d ~/App ] && rm -rf ~/App || true'
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.USERNAME }}@${{ secrets.VM_IP }} '[ -d ~/App ] && rm -rf ~/App || true'
   
       - name: Copy code to VM
         run: |

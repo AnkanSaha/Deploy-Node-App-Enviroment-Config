@@ -1,0 +1,23 @@
+name: Send Code to VM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  send-code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Copy code to VM
+        run: |
+          scp -i ${{ secrets.SSH_PRIVATE_KEY }} -r ./* ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:/

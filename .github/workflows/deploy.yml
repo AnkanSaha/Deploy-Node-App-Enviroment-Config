@@ -18,6 +18,15 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Create SSH Private Key File
+          run: |
+            echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
+            chmod 600 private_key.pem
+  
       - name: Copy code to VM
-        run: |
-          scp -i ${{ secrets.SSH_PRIVATE_KEY }} -r ./* ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:/
+          run: |
+            scp -i private_key.pem -r ./* ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:/
+  
+      - name: Clean Up
+          run: |
+            rm private_key.pem

@@ -22,10 +22,14 @@ jobs:
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
           chmod 600 private_key.pem
-
+          
+      - name: Check if App folder exists and delete if it does
+        run: |
+          ssh -i private_key.pem ${{ secrets.USERNAME }}@${{ secrets.VM_IP }} '[ -d ~/App ] && rm -rf ~/App || true'
+  
       - name: Copy code to VM
         run: |
-          sudo scp -o StrictHostKeyChecking=no -i private_key.pem -r ./* ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:~/  # Copies all files and directories to the home directory of the user on VM
+          sudo scp -o StrictHostKeyChecking=no -i private_key.pem -r ./* ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:~/App  # Copies all files and directories to the home directory of the user on VM
 
       - name: Clean Up
         run: |

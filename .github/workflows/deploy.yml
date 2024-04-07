@@ -30,7 +30,8 @@ jobs:
   
       - name: Copy code to VM
         run: |
-          sudo scp -o StrictHostKeyChecking=no -i private_key.pem -r ./ ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:~/App  # Copies all files and directories to the home directory of the user on VM
+          ls -a # Lists all files and directories in the current directory
+          sudo scp -o StrictHostKeyChecking=no -i private_key.pem -r ./* ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:~/App  # Copies all files and directories to the home directory of the user on VM
 
       - name: Clean Up
         run: |

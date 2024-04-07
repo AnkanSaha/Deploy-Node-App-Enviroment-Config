@@ -16,12 +16,12 @@ jobs:
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }} # Sets up the SSH private key
 
       - name: Create SSH Private Key File
         run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
-          chmod 600 private_key.pem
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem # Creates a new file named private_key.pem and writes the private key to it
+          chmod 600 private_key.pem # Changes the permission of the private key file to read and write only by the owner
           
       - name: Check if App folder exists and delete if it does
         run: |
@@ -34,4 +34,4 @@ jobs:
 
       - name: Clean Up
         run: |
-          rm private_key.pem
+          rm private_key.pem # Deletes the private key file

@@ -25,7 +25,8 @@ jobs:
           
       - name: Check if App folder exists and delete if it does
         run: |
-          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.USERNAME }}@${{ secrets.VM_IP }} '[ -d ~/App ] && rm -rf ~/App || true'
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.USERNAME }}@${{ secrets.VM_IP }} '[ -d ~/App ] && rm -rf ~/App || true' # Deletes the App directory if it exists
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.USERNAME }}@${{ secrets.VM_IP }} 'mkdir App' # Creates a new directory named App in the home directory of the user on VM
   
       - name: Copy code to VM
         run: |

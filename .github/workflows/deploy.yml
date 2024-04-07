@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          path: ./GitApp # Specifies the directory where the repository will be checked out
 
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.3
@@ -31,7 +33,7 @@ jobs:
       - name: Copy code to VM
         run: |
           ls -a # Lists all files and directories in the current directory
-          scp -o StrictHostKeyChecking=no -i private_key.pem -r ./* ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:~/App # Copies all files and directories to the home directory of the user on VM
+          sudo scp -o StrictHostKeyChecking=no -i private_key.pem -r ./GitApp ${{ secrets.USERNAME }}@${{ secrets.VM_IP }}:~/ # Copies all files and directories to the home directory of the user on VM
 
       - name: Clean Up
         run: |

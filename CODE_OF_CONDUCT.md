@@ -1,5 +1,5 @@
 # Code of Conduct
-# =================
+# ================
 
 # Our Pledge
 # We take the Code of Conduct seriously and expect all participants to adhere to it. Please read the full text so that you can understand what actions will and will not be tolerated.

@@ -100,7 +100,6 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo npm install -g nodemon           # install nodemon
     sudo npm install -g yarn              # install yarn
 
-
     #ufw configuration
     sudo ufw enable              # enable ufw
     sudo ufw allow 'Nginx Full'  # allow nginx full
@@ -190,6 +189,17 @@ Ubuntu23.04NodeEnviromentSetup() {
     sudo pm2 update         # update pm2
     sudo pm2 startup        # pm2 startup
     sudo pm2 save           # pm2 save
+
+    # install openvpn
+    read -p "$BOLD Do you want to install OpenVPN? (y/n): " choice
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+        # install openvpn
+        wget https://git.io/vpn -O openvpn-install.sh # download openvpn-install.sh
+        chmod +x openvpn-install.sh                   # make openvpn-install.sh executable
+        sudo ./openvpn-install.sh                     # install openvpn
+    else
+        echo "$YELLOW Skipping OpenVPN installation."
+    fi
 
     # Install GUI (Optional)
     read -p "$BOLD Do you want to install a GUI? (y/n): " choice

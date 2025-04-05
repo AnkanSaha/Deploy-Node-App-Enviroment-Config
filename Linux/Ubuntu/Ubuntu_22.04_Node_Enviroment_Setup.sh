@@ -190,6 +190,17 @@ Ubuntu22.04NodeEnviromentSetup() {
     sudo pm2 startup        # pm2 startup
     sudo pm2 save           # pm2 save
 
+    # install openvpn
+    read -p "$BOLD Do you want to install OpenVPN? (y/n): " choice
+    if [ "$choice" == "y" ] || [ "$choice" == "Y" ]; then
+        # install openvpn
+        wget https://git.io/vpn -O openvpn-install.sh # download openvpn-install.sh
+        chmod +x openvpn-install.sh                   # make openvpn-install.sh executable
+        sudo ./openvpn-install.sh                     # install openvpn
+    else
+        echo "$YELLOW Skipping OpenVPN installation."
+    fi
+
     # Install GUI (Optional)
     read -p "$BOLD Do you want to install a GUI? (y/n): " choice
 
